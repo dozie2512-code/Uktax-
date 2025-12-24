@@ -1,0 +1,626 @@
+/**
+ * Application Styles
+ */
+
+/* Layout */
+.App {
+  min-height: 100vh;
+}
+
+/* Auth Pages */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.auth-card {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-card h1 {
+  color: #667eea;
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.form-group.checkbox label {
+  margin-bottom: 0;
+  margin-left: 8px;
+}
+
+.form-group.checkbox input {
+  width: auto;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Buttons */
+button, .btn-primary, .btn-secondary, .btn-logout {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+  margin-left: 10px;
+}
+
+button:first-child, .btn-primary:first-child {
+  margin-left: 0;
+}
+
+.btn-primary, button[type="submit"] {
+  background: #667eea;
+  color: white;
+}
+
+.btn-primary:hover, button[type="submit"]:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+.btn-secondary {
+  background: #95a5a6;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #7f8c8d;
+}
+
+.btn-logout {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-logout:hover {
+  background: #c0392b;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border-left: 4px solid #c33;
+}
+
+.success-message {
+  background: #efe;
+  color: #3c3;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border-left: 4px solid #3c3;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #7f8c8d;
+}
+
+.auth-link a {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard */
+.dashboard {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.dashboard-header {
+  background: white;
+  padding: 20px 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  color: #667eea;
+  font-size: 24px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info span {
+  font-weight: 500;
+}
+
+.dashboard-content {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-section {
+  margin-bottom: 40px;
+}
+
+.dashboard-section h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.quick-link-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.quick-link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quick-link-card h3 {
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.quick-link-card p {
+  color: #7f8c8d;
+}
+
+.business-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.business-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.business-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.business-card h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.business-card p {
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #667eea;
+  color: white;
+}
+
+.badge.income {
+  background: #27ae60;
+}
+
+.badge.expense {
+  background: #e74c3c;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+}
+
+.empty-state p {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.feature-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item h4 {
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.feature-item p {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+/* Page Container */
+.page-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.page-header {
+  background: white;
+  padding: 20px 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header h1 {
+  color: #667eea;
+  font-size: 24px;
+}
+
+.page-content {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.action-bar {
+  margin-bottom: 20px;
+}
+
+.form-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.form-card h3 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Business List */
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.business-card-full {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.business-card-full h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.business-card-full p {
+  color: #7f8c8d;
+  margin-bottom: 8px;
+}
+
+.vat-badge {
+  color: #27ae60 !important;
+  font-weight: 600;
+}
+
+.card-actions {
+  margin-top: 20px;
+}
+
+/* Transactions */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #667eea;
+}
+
+.summary-card.income {
+  border-left-color: #27ae60;
+}
+
+.summary-card.expense {
+  border-left-color: #e74c3c;
+}
+
+.summary-card.profit {
+  border-left-color: #3498db;
+}
+
+.summary-card.vat {
+  border-left-color: #f39c12;
+}
+
+.summary-card h3 {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.summary-card .amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.table-container {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table th {
+  background: #667eea;
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.transactions-table td {
+  padding: 15px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.transactions-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+/* Tax Calculator */
+.calculator-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 15px;
+  background: white;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  color: #7f8c8d;
+  transition: all 0.3s;
+  margin: 0;
+  border-radius: 0;
+}
+
+.tabs button:hover {
+  background: #f8f9fa;
+}
+
+.tabs button.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.calculator-content {
+  padding: 30px;
+}
+
+.calculator-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.calculator-form h3 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.result-card {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 30px;
+  border-left: 4px solid #667eea;
+}
+
+.result-card h3 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.result-row.total {
+  font-size: 18px;
+  font-weight: 700;
+  border-top: 2px solid #667eea;
+  border-bottom: none;
+  margin-top: 10px;
+  padding-top: 15px;
+  color: #667eea;
+}
+
+.breakdown {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.breakdown h4 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.result-info {
+  margin-top: 15px;
+  padding: 12px;
+  background: #e8eaf6;
+  border-radius: 5px;
+}
+
+.result-info p {
+  color: #5568d3;
+  font-weight: 500;
+}
+
+.tax-info {
+  padding: 20px 30px;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.tax-info h3 {
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.tax-info p {
+  color: #7f8c8d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-header,
+  .page-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .dashboard-content,
+  .page-content {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+  }
+
+  .tabs button {
+    flex: 1 1 50%;
+  }
+}
