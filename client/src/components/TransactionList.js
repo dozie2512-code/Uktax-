@@ -215,7 +215,7 @@ function TransactionList({ onLogout }) {
                       <td>{transaction.description || '-'}</td>
                       <td>{formatCurrency(transaction.netAmount)}</td>
                       <td>{formatCurrency(transaction.vatAmount)}</td>
-                      <td><strong>{formatCurrency(transaction.amount + transaction.vatAmount)}</strong></td>
+                      <td><strong>{formatCurrency(transaction.netAmount + transaction.vatAmount)}</strong></td>
                     </tr>
                   ))}
                 </tbody>

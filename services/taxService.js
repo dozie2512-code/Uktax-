@@ -141,6 +141,7 @@ class TaxService {
       description = 'Main Rate';
     } else {
       // Marginal relief applies
+      // UK formula: marginalRelief = ((upper threshold - profit) / upper threshold) * rate difference * profit
       const marginalRelief = ((mainRateThreshold - profit) / mainRateThreshold) * 
                              (mainRate - smallProfitsRate) * profit;
       tax = (profit * mainRate) - marginalRelief;
