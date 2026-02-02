@@ -106,7 +106,8 @@
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            color: #ffffff;
+            opacity: 1;
             animation: fadeInUp 1s ease 0.2s both;
         }
 
@@ -695,7 +696,7 @@
         <div class="privacy-box" style="margin-top: 4rem;">
             <h3>💼 Why Choose Us?</h3>
             <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                <li>Qualified UK accountants (ACCA/ICAEW)</li>
+                <li>Experienced Accountant</li>
                 <li>Fixed transparent pricing</li>
                 <li>Fast turnaround times</li>
                 <li>Dedicated account manager</li>
@@ -718,11 +719,10 @@
                 <ul class="plan-features">
                     <li>Basic bookkeeping (up to 50 transactions)</li>
                     <li>Monthly bank reconciliation</li>
-                    <li>Self Assessment</li>
-                    <li>Corporate Tax Returns for Small Companies</li>
+                    <li>Corporation Tax and Self-Assessment Filing</li>
                     <li>Annual accounts preparation</li>
                     <li>Email support</li>
-                    <li>Cloud accounting software access</li>
+                    <li>Cloud accounting software (FinancialBooks) access</li>
                 </ul>
                 <button class="plan-button" onclick="openContactForm('Starter Plan')">Contact Us</button>
             </div>
@@ -736,8 +736,8 @@
                     <li>Full bookkeeping (up to 150 transactions)</li>
                     <li>Weekly bank reconciliation</li>
                     <li>Quarterly VAT returns & MTD compliance</li>
-                    <li>Corporation tax planning & filing</li>
-                    <li>Payroll for up to 5 employees</li>
+                    <li>Corporation Tax and Self-Assessment Filing</li>
+                    <li>Payroll for up to 3 employees</li>
                     <li>Monthly management reports</li>
                     <li>Priority phone & email support</li>
                     <li>Quarterly business review calls</li>
@@ -751,24 +751,17 @@
                 <div class="plan-period">per month</div>
                 <ul class="plan-features">
                     <li>Bookkeeping (up to 250 transactions)</li>
-                    <li>Addon: £50 per 100 additional transactions</li>
                     <li>Daily bank reconciliation</li>
                     <li>Full VAT & MTD management</li>
-                    <li>Corporation & personal tax services</li>
-                    <li>Unlimited payroll processing</li>
+                    <li>Corporation Tax and Self-Assessment Filing</li>
+                    <li>Payroll for up to 5 employees</li>
                     <li>Weekly management reports & KPIs</li>
                     <li>Dedicated account manager</li>
-                    <li>Strategic tax planning sessions</li>
-                    <li>Annual financial health check</li>
-                    <li>24/7 priority support</li>
+                    <li>Addon: £50 per 100 additional transactions</li>
                 </ul>
                 <button class="plan-button" onclick="openContactForm('Enterprise Plan')">Contact Us</button>
             </div>
         </div>
-
-        <p style="margin-top: 3rem; text-align: center; color: #666; font-size: 0.95rem;">
-            All plans include statutory compliance, Companies House filing, and secure data storage. Custom packages available for complex requirements.
-        </p>
     </section>
 
     <!-- Live Updates Section -->
@@ -856,25 +849,17 @@
                     <textarea id="message" name="message" required placeholder="Tell us about your accounting needs..."></textarea>
                 </div>
 
+                <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" id="terms" name="terms" required style="margin-top: 5px; width: auto;">
+                    <label for="terms" style="font-size: 0.95rem;">I agree to the Terms of Service. *</label>
+                </div>
+
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem; text-align: center;">
+                    By submitting this form, you agree to our Terms of Service. Your information will be sent to financialbooksng@gmail.com.
+                </p>
+
                 <button type="submit" class="submit-button" id="submitBtn">Send Message</button>
             </form>
-        </div>
-
-        <!-- Privacy & Security -->
-        <div class="privacy-box">
-            <h3>🔒 Your Privacy & Security</h3>
-            <p><strong>We take data protection seriously. Your information is safe with us.</strong></p>
-            <ul style="margin-top: 1rem;">
-                <li>All data encrypted with 256-bit SSL</li>
-                <li>GDPR compliant processes</li>
-                <li>No data sharing with third parties</li>
-                <li>Secure cloud storage with daily backups</li>
-                <li>Regular security audits & penetration testing</li>
-                <li>Professional indemnity insurance coverage</li>
-            </ul>
-            <p style="margin-top: 1rem; color: #047857;">
-                We adhere to strict confidentiality standards as required by ACCA and ICAEW professional bodies. Your financial data is treated with the highest level of security and discretion.
-            </p>
         </div>
     </section>
 
@@ -1086,4 +1071,4 @@
         console.log('All features operational - Client-side only');
     </script>
 </body>
-    </html>
+</html>
