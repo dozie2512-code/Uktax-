@@ -626,7 +626,6 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#updates">Updates</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
@@ -721,7 +720,7 @@
                     <li>Monthly bank reconciliation</li>
                     <li>Corporation Tax and Self-Assessment Filing</li>
                     <li>Annual accounts preparation</li>
-                    <li>Email support</li>
+                    <li>Phone call and email support</li>
                     <li>Cloud accounting software (FinancialBooks) access</li>
                 </ul>
                 <button class="plan-button" onclick="openContactForm('Starter Plan')">Contact Us</button>
@@ -741,6 +740,7 @@
                     <li>Monthly management reports</li>
                     <li>Priority phone & email support</li>
                     <li>Quarterly business review calls</li>
+                    <li>Cloud accounting software access</li>
                 </ul>
                 <button class="plan-button" onclick="openContactForm('Professional Plan')">Contact Us</button>
             </div>
@@ -751,53 +751,16 @@
                 <div class="plan-period">per month</div>
                 <ul class="plan-features">
                     <li>Bookkeeping (up to 250 transactions)</li>
-                    <li>Daily bank reconciliation</li>
+                    <li>Weekly bank reconciliation</li>
                     <li>Full VAT & MTD management</li>
                     <li>Corporation Tax and Self-Assessment Filing</li>
                     <li>Payroll for up to 5 employees</li>
-                    <li>Weekly management reports & KPIs</li>
+                    <li>Monthly management reports</li>
                     <li>Dedicated account manager</li>
                     <li>Addon: £50 per 100 additional transactions</li>
+                    <li>Cloud accounting software access</li>
                 </ul>
                 <button class="plan-button" onclick="openContactForm('Enterprise Plan')">Contact Us</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Updates Section -->
-    <section id="updates">
-        <h2>Latest Recordbooks Updates</h2>
-        <p>Stay informed about the latest regulations and changes</p>
-
-        <div class="updates-container">
-            <div class="update-item scroll-reveal">
-                <div class="update-date">January 2026</div>
-                <h4>Making Tax Digital for Income Tax</h4>
-                <p>From April 2026, self-employed individuals and landlords with income over £50,000 will need to keep digital records and use compatible software to submit quarterly updates to HMRC.</p>
-            </div>
-
-            <div class="update-item scroll-reveal">
-                <div class="update-date">December 2025</div>
-                <h4>Corporation Tax Rate Updates</h4>
-                <p>The small profits rate remains at 19% for companies with profits up to £50,000. The main rate continues at 25% for profits over £250,000, with marginal relief available for profits in between.</p>
-            </div>
-
-            <div class="update-item scroll-reveal">
-                <div class="update-date">November 2025</div>
-                <h4>National Insurance Contribution Changes</h4>
-                <p>New thresholds announced for 2025/26 tax year. Employees will pay 12% on earnings between £12,570 and £50,270, and 2% on earnings above this threshold.</p>
-            </div>
-
-            <div class="update-item scroll-reveal">
-                <div class="update-date">October 2025</div>
-                <h4>VAT Registration Threshold</h4>
-                <p>The VAT registration threshold remains at £85,000. Businesses must register for VAT if their taxable turnover exceeds this amount in any 12-month period.</p>
-            </div>
-
-            <div class="update-item scroll-reveal">
-                <div class="update-date">September 2025</div>
-                <h4>R&D Tax Credit Enhancement</h4>
-                <p>Enhanced R&D tax relief rates now available for SMEs investing in innovation and technology development. Eligible companies can claim up to 186% relief on qualifying R&D expenditure.</p>
             </div>
         </div>
     </section>
@@ -809,7 +772,7 @@
 
         <div class="contact-form">
             <div id="formMessage"></div>
-            <form id="contactForm" onsubmit="handleSubmit(event)">
+            <form id="contactForm" action="mailto:financialbooksng@gmail.com" method="post" enctype="text/plain" onsubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required placeholder="John Smith">
@@ -893,7 +856,6 @@
                 <ul>
                     <li><a href="#services">About Us</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#updates">Latest Updates</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#privacy">Privacy Policy</a></li>
                     <li><a href="#terms">Terms of Service</a></li>
@@ -1071,4 +1033,4 @@
         console.log('All features operational - Client-side only');
     </script>
 </body>
-</html>
+    </html>
