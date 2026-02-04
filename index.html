@@ -1,122 +1,235 @@
-Got it — you want a strong, reusable AI prompt that can be used to build a Tax + Accounting application based on the NRS 2026 Act in Nigeria, focused on tax computation. Here’s a clean, professional prompt you can copy-paste into an AI builder, developer brief, or no-code platform 👇
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nigerian Tax & Accounting Application - NRS 2026 Act Compliant">
+    <title>NigerianTax Pro - Automating Nigerian Tax Compliance</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <img src="assets/logo-placeholder.svg" alt="NigerianTax Pro" class="logo-img">
+                        <span class="logo-text">NigerianTax Pro</span>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#features" class="nav-link">Features</a></li>
+                        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-AI Product Development Prompt
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Automating Nigerian Tax Compliance Simplified</h1>
+                    <p class="hero-subtitle">
+                        Streamline your tax computations, accounting records, and compliance reports 
+                        with our NRS 2026 Act-compliant platform. Designed for Nigerian businesses, 
+                        individuals, and tax professionals.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#signup" class="btn btn-primary">Get Started</a>
+                        <a href="#features" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-placeholder">
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="300" fill="#f0f4f8"/>
+                            <text x="200" y="150" font-family="Arial" font-size="18" fill="#64748b" text-anchor="middle">Hero Illustration</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-Role:
-You are a senior full-stack software architect and Nigerian tax compliance expert.
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comprehensive Tax & Accounting Features</h2>
+                <p class="section-subtitle">Everything you need for Nigerian tax compliance in one platform</p>
+            </div>
 
-Objective:
-Design and build a web-based and mobile-friendly tax and accounting application tailored to Nigeria, fully compliant with the NRS 2026 Act and other applicable Nigerian tax laws.
+            <div class="features-grid">
+                <!-- Feature 1: PAYE -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#10b981" opacity="0.2"/>
+                            <text x="32" y="38" font-family="Arial" font-size="16" fill="#10b981" text-anchor="middle">₦</text>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Personal Income Tax (PAYE)</h3>
+                    <p class="feature-description">
+                        Automated PAYE calculations based on current Nigerian tax bands, 
+                        reliefs, and allowances. Generate payslips and remittance reports.
+                    </p>
+                </div>
 
-Core Features:
+                <!-- Feature 2: CIT -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#3b82f6" opacity="0.2"/>
+                            <text x="32" y="38" font-family="Arial" font-size="16" fill="#3b82f6" text-anchor="middle">🏢</text>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Companies Income Tax (CIT)</h3>
+                    <p class="feature-description">
+                        Compute corporate tax obligations with support for capital allowances, 
+                        losses carried forward, and compliance with NRS 2026 Act provisions.
+                    </p>
+                </div>
 
-Tax Computation Engine
+                <!-- Feature 3: VAT -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#8b5cf6" opacity="0.2"/>
+                            <text x="32" y="38" font-family="Arial" font-size="16" fill="#8b5cf6" text-anchor="middle">📊</text>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Value Added Tax (VAT)</h3>
+                    <p class="feature-description">
+                        Track VATable and exempt supplies, calculate output and input VAT, 
+                        and generate FIRS-compliant VAT returns effortlessly.
+                    </p>
+                </div>
 
-Automate tax calculations strictly based on the NRS 2026 Act
+                <!-- Feature 4: WHT -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#f59e0b" opacity="0.2"/>
+                            <text x="32" y="38" font-family="Arial" font-size="16" fill="#f59e0b" text-anchor="middle">🔖</text>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Withholding Tax (WHT)</h3>
+                    <p class="feature-description">
+                        Automate WHT deductions on payments to suppliers, contractors, 
+                        and service providers with accurate rate application.
+                    </p>
+                </div>
 
-Support:
+                <!-- Feature 5: Accounting Module -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#ec4899" opacity="0.2"/>
+                            <text x="32" y="38" font-family="Arial" font-size="16" fill="#ec4899" text-anchor="middle">📚</text>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Full Accounting Suite</h3>
+                    <p class="feature-description">
+                        Manage your chart of accounts, general ledger, trial balance, 
+                        and generate financial statements compliant with Nigerian standards.
+                    </p>
+                </div>
 
-Personal Income Tax (PAYE)
+                <!-- Feature 6: Compliance Reports -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#14b8a6" opacity="0.2"/>
+                            <text x="32" y="38" font-family="Arial" font-size="16" fill="#14b8a6" text-anchor="middle">📄</text>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">FIRS Compliance Reports</h3>
+                    <p class="feature-description">
+                        Generate all required tax reports, returns, and schedules for filing 
+                        with FIRS. Export to PDF, Excel, or CSV formats.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-Companies Income Tax (CIT)
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-heading">NigerianTax Pro</h4>
+                    <p class="footer-text">
+                        Your trusted partner for Nigerian tax compliance and accounting. 
+                        NRS 2026 Act compliant.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <circle cx="12" cy="12" r="10" fill="#3b82f6"/>
+                                <text x="12" y="16" font-family="Arial" font-size="12" fill="white" text-anchor="middle">f</text>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <circle cx="12" cy="12" r="10" fill="#1da1f2"/>
+                                <text x="12" y="16" font-family="Arial" font-size="12" fill="white" text-anchor="middle">𝕏</text>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <circle cx="12" cy="12" r="10" fill="#0077b5"/>
+                                <text x="12" y="16" font-family="Arial" font-size="12" fill="white" text-anchor="middle">in</text>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
-Value Added Tax (VAT)
+                <div class="footer-section">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
 
-Withholding Tax (WHT)
+                <div class="footer-section">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#compliance">Compliance</a></li>
+                    </ul>
+                </div>
 
-Capital Gains Tax (CGT)
+                <div class="footer-section">
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📧 info@nigeriantaxpro.com</li>
+                        <li>📞 +234 (0) 800 TAX HELP</li>
+                        <li>📍 Lagos, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
 
-Education Tax
+            <div class="footer-bottom">
+                <p>&copy; 2026 NigerianTax Pro. All rights reserved. | NRS 2026 Act Compliant</p>
+            </div>
+        </div>
+    </footer>
 
-Apply correct tax rates, exemptions, reliefs, thresholds, penalties, and allowances
-
-Accounting Module
-
-Chart of accounts compliant with Nigerian accounting standards
-
-Income & expense tracking
-
-General ledger, trial balance, profit & loss, and balance sheet
-
-Automatic linkage between accounting records and tax computation
-
-User Types
-
-Individuals
-
-SMEs
-
-Corporations
-
-Accountants / Tax consultants
-
-Compliance & Reporting
-
-Generate FIRS-compliant tax reports
-
-Annual and monthly tax summaries
-
-Export reports in PDF, Excel, and CSV
-
-Audit trail and transaction history
-
-Data Input & Validation
-
-Manual entry and bulk upload (CSV/Excel)
-
-Validation rules based on NRS 2026 Act
-
-Error detection and compliance warnings
-
-Localization
-
-Nigerian Naira (₦)
-
-Nigerian financial year structure
-
-Local terminology and tax references
-
-Security & Scalability
-
-Role-based access control
-
-Secure data encryption
-
-Scalable architecture for growing businesses
-
-Technology Expectations:
-
-Clean, modular architecture
-
-API-driven tax computation engine
-
-Clear documentation of tax logic and formulas
-
-Easy future updates when Nigerian tax laws change
-
-Output Required:
-
-System architecture
-
-Database schema
-
-Tax computation logic aligned with NRS 2026 Act
-
-User interface flow
-
-Sample tax calculation scenarios
-
-Goal:
-Deliver a reliable, compliant, and user-friendly Nigerian tax and accounting platform that reduces errors, improves compliance, and simplifies tax filing under the NRS 2026 Act.
-
-If you want, I can:
-
-Simplify this for no-code tools (Bubble, FlutterFlow, etc.)
-
-Rewrite it for ChatGPT, Claude, or Cursor
-
-Break it into developer tasks or PRDs
-
-Add sample tax formulas based on Nigerian law
-
-Just tell me 👍
+    <script src="script.js"></script>
+</body>
+</html>
