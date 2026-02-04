@@ -850,6 +850,7 @@
                 submitButton.textContent = 'Sending...';
 
                 // Simulate form submission (in production, this would send to a server)
+                // TODO: Replace with actual backend API call
                 setTimeout(() => {
                     // Show success message
                     const messageDiv = document.createElement('div');
@@ -867,18 +868,20 @@
                         messageDiv.remove();
                     }, 5000);
 
-                    console.log('Form submitted:', formData);
+                    // Note: In production, this would send data to a backend server
+                    // TODO: Integrate with backend API for actual form submission
                 }, 1000);
             });
         }
 
-        // Mobile menu toggle (placeholder for future implementation)
+        // Mobile menu toggle
+        // TODO: Implement full mobile menu functionality with proper CSS classes
         const mobileMenu = document.querySelector('.mobile-menu');
         if (mobileMenu) {
             mobileMenu.addEventListener('click', function() {
                 const navLinks = document.querySelector('.nav-links');
-                // Toggle mobile menu (would need additional CSS for mobile view)
-                console.log('Mobile menu clicked');
+                // Future implementation: Toggle mobile menu visibility
+                // navLinks.classList.toggle('mobile-active');
             });
         }
 
