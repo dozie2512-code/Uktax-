@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Nigerian Tax & Accounting Application - NRS 2026 Act Compliant">
     <title>NigerianTax Pro - Automating Nigerian Tax Compliance</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Header Section -->
@@ -14,8 +14,7 @@
             <div class="container">
                 <div class="nav-wrapper">
                     <div class="logo">
-                        <img src="assets/logo-placeholder.svg" alt="NigerianTax Pro" class="logo-img">
-                        <span class="logo-text">NigerianTax Pro</span>
+                        <span class="logo-text">₦ NigerianTax Pro</span>
                     </div>
                     <button class="mobile-menu-toggle" aria-label="Toggle navigation">
                         <span></span>
@@ -24,9 +23,9 @@
                     </button>
                     <ul class="nav-menu">
                         <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#calculators" class="nav-link">Tax Calculators</a></li>
                         <li><a href="#features" class="nav-link">Features</a></li>
-                        <li><a href="#pricing" class="nav-link">Pricing</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
                     </ul>
                 </div>
             </div>
@@ -45,7 +44,7 @@
                         individuals, and tax professionals.
                     </p>
                     <div class="hero-cta">
-                        <a href="#signup" class="btn btn-primary">Get Started</a>
+                        <a href="#calculators" class="btn btn-primary">Start Calculating</a>
                         <a href="#features" class="btn btn-secondary">Learn More</a>
                     </div>
                 </div>
@@ -53,10 +52,188 @@
                     <div class="image-placeholder">
                         <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
                             <rect width="400" height="300" fill="#f0f4f8"/>
-                            <text x="200" y="150" font-family="Arial" font-size="18" fill="#64748b" text-anchor="middle">Hero Illustration</text>
+                            <circle cx="200" cy="150" r="80" fill="#10b981" opacity="0.2"/>
+                            <text x="200" y="160" font-family="Arial" font-size="48" fill="#10b981" text-anchor="middle">₦</text>
                         </svg>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tax Calculators Section -->
+    <section id="calculators" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Nigerian Tax Calculators - NRS 2026 Act Compliant</h2>
+            
+            <div class="calculator-tabs">
+                <button class="tab-btn calculator-tab active" data-tab="paye-calculator">PAYE Calculator</button>
+                <button class="tab-btn calculator-tab" data-tab="cit-calculator">CIT Calculator</button>
+                <button class="tab-btn calculator-tab" data-tab="vat-calculator">VAT Calculator</button>
+                <button class="tab-btn calculator-tab" data-tab="wht-calculator">WHT Calculator</button>
+                <button class="tab-btn calculator-tab" data-tab="report-generator">Compliance Report</button>
+            </div>
+
+            <!-- PAYE Calculator -->
+            <div id="paye-calculator" class="calculator-content tab-content active">
+                <h3>Personal Income Tax (PAYE) Calculator</h3>
+                <div class="info-box">
+                    <h4>Nigerian PAYE Tax Bands (NRS 2026)</h4>
+                    <p><strong>First ₦300,000:</strong> 7% | <strong>Next ₦300,000:</strong> 11% | <strong>Next ₦500,000:</strong> 15%</p>
+                    <p><strong>Next ₦500,000:</strong> 19% | <strong>Next ₦1,600,000:</strong> 21% | <strong>Above ₦3,200,000:</strong> 24%</p>
+                    <p><strong>Consolidated Relief Allowance:</strong> Higher of 1% of gross income or (₦200,000 + 20% of gross income)</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="payeGrossIncome">Annual Gross Income (₦)</label>
+                        <input type="number" id="payeGrossIncome" placeholder="e.g., 5000000" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="payePension">Annual Pension Contribution (₦) - Optional</label>
+                        <input type="number" id="payePension" placeholder="Leave blank for auto-calculation (8%)" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculatePAYE()">Calculate PAYE</button>
+                <div id="payeResult"></div>
+            </div>
+
+            <!-- CIT Calculator -->
+            <div id="cit-calculator" class="calculator-content tab-content">
+                <h3>Companies Income Tax (CIT) Calculator</h3>
+                <div class="info-box">
+                    <h4>Corporate Tax Rates (NRS 2026)</h4>
+                    <p><strong>Small Companies</strong> (Turnover < ₦25M): 20%</p>
+                    <p><strong>Medium Companies</strong> (₦25M - ₦100M): 20%</p>
+                    <p><strong>Large Companies</strong> (> ₦100M): 30%</p>
+                    <p><strong>Education Tax:</strong> 2% of assessable profit</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="citTurnover">Annual Turnover (₦)</label>
+                        <input type="number" id="citTurnover" placeholder="e.g., 50000000" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="citGrossProfit">Gross Profit (₦)</label>
+                        <input type="number" id="citGrossProfit" placeholder="e.g., 20000000" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="citAssessableProfit">Assessable Profit (₦)</label>
+                        <input type="number" id="citAssessableProfit" placeholder="e.g., 15000000" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="citCapitalAllowances">Capital Allowances (₦) - Optional</label>
+                        <input type="number" id="citCapitalAllowances" placeholder="e.g., 1000000" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="citLosses">Losses Carried Forward (₦) - Optional</label>
+                        <input type="number" id="citLosses" placeholder="e.g., 500000" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="citNetAssets">Net Assets (₦) - Optional</label>
+                        <input type="number" id="citNetAssets" placeholder="For minimum tax calculation" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateCIT()">Calculate CIT</button>
+                <div id="citResult"></div>
+            </div>
+
+            <!-- VAT Calculator -->
+            <div id="vat-calculator" class="calculator-content tab-content">
+                <h3>Value Added Tax (VAT) Calculator</h3>
+                <div class="info-box">
+                    <h4>VAT Rate & Registration (NRS 2026)</h4>
+                    <p><strong>Standard VAT Rate:</strong> 10%</p>
+                    <p><strong>Registration Threshold:</strong> ₦25 million annual turnover</p>
+                    <p><strong>Filing:</strong> Monthly returns due by 21st of following month</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vatOutputSales">VATable Sales (₦)</label>
+                        <input type="number" id="vatOutputSales" placeholder="e.g., 10000000" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="vatInputPurchases">VATable Purchases (₦)</label>
+                        <input type="number" id="vatInputPurchases" placeholder="e.g., 6000000" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vatZeroRated">Zero-rated Sales (₦) - Optional</label>
+                        <input type="number" id="vatZeroRated" placeholder="Exports, etc." min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="vatExempt">Exempt Sales (₦) - Optional</label>
+                        <input type="number" id="vatExempt" placeholder="Medical services, etc." min="0" step="0.01">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateVAT()">Calculate VAT</button>
+                <div id="vatResult"></div>
+            </div>
+
+            <!-- WHT Calculator -->
+            <div id="wht-calculator" class="calculator-content tab-content">
+                <h3>Withholding Tax (WHT) Calculator</h3>
+                <div class="info-box">
+                    <h4>WHT Rates (NRS 2026)</h4>
+                    <p><strong>Dividends, Interest, Rent, Royalties:</strong> 10%</p>
+                    <p><strong>Professional Fees, Construction, Commission:</strong> 5%</p>
+                    <p><strong>Technical/Management Fees, Directors Fees:</strong> 10%</p>
+                    <p><strong>Exemption:</strong> Payments below ₦5,000</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="whtType">Payment Type</label>
+                    <select id="whtType">
+                        <option value="dividends">Dividends (10%)</option>
+                        <option value="interest">Interest (10%)</option>
+                        <option value="rent">Rent (10%)</option>
+                        <option value="professionalFees">Professional Fees (5%)</option>
+                        <option value="technicalFees">Technical Fees (10%)</option>
+                        <option value="constructionServices">Construction Services (5%)</option>
+                        <option value="commission">Commission (5%)</option>
+                        <option value="royalties">Royalties (10%)</option>
+                        <option value="directorsFees">Directors Fees (10%)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="whtAmount">Payment Amount (₦)</label>
+                    <input type="number" id="whtAmount" placeholder="e.g., 1000000" min="0" step="0.01">
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateWHT()">Calculate WHT</button>
+                <div id="whtResult"></div>
+            </div>
+
+            <!-- Compliance Report Generator -->
+            <div id="report-generator" class="calculator-content tab-content">
+                <h3>FIRS Compliance Report Generator</h3>
+                <div class="info-box">
+                    <h4>Generate Your Tax Compliance Report</h4>
+                    <p>This report summarizes all your tax obligations including PAYE, CIT, VAT, and WHT.</p>
+                    <p>Please fill in at least one of the tax calculators above before generating a report.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="reportPeriod">Reporting Period</label>
+                    <input type="text" id="reportPeriod" placeholder="e.g., January 2026 or Q1 2026">
+                </div>
+
+                <button class="btn btn-primary" onclick="generateComplianceReport()">Generate Compliance Report</button>
+                <div id="reportResult"></div>
             </div>
         </div>
     </section>
@@ -163,6 +340,70 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="features" style="background: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About NigerianTax Pro</h2>
+                <p class="section-subtitle">NRS 2026 Act Compliant Tax Accounting Software</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Our Mission</h3>
+                <p>
+                    NigerianTax Pro is designed to simplify tax compliance for Nigerian businesses and individuals. 
+                    Our platform automates complex tax calculations and ensures compliance with the latest 
+                    Nigerian Revenue Service (NRS) 2026 Tax Act provisions.
+                </p>
+            </div>
+
+            <div class="result-card">
+                <h3>Tax Act Compliance</h3>
+                <p>All tax calculations are based on the <strong>NRS 2026 Nigerian Tax Act</strong> and include:</p>
+                <ul style="margin: 1rem 0 0 2rem; line-height: 2;">
+                    <li>Progressive PAYE tax bands (7% - 24%)</li>
+                    <li>Consolidated Relief Allowance calculations</li>
+                    <li>Corporate tax rates for small, medium, and large companies</li>
+                    <li>Capital allowances and loss relief provisions</li>
+                    <li>10% VAT rate with proper exemptions</li>
+                    <li>Comprehensive WHT rates for all payment types</li>
+                    <li>Minimum tax provisions where applicable</li>
+                    <li>Education tax and other levies</li>
+                </ul>
+            </div>
+
+            <div class="result-card">
+                <h3>Key Benefits</h3>
+                <div class="features-grid" style="margin-top: 1.5rem;">
+                    <div>
+                        <h4 style="color: #10b981; margin-bottom: 0.5rem;">✓ Accurate Calculations</h4>
+                        <p>All computations follow NRS 2026 Act guidelines precisely</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #10b981; margin-bottom: 0.5rem;">✓ Easy to Use</h4>
+                        <p>Intuitive interface with clear instructions and examples</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #10b981; margin-bottom: 0.5rem;">✓ Instant Results</h4>
+                        <p>Get immediate tax calculations with detailed breakdowns</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #10b981; margin-bottom: 0.5rem;">✓ Comprehensive Reports</h4>
+                        <p>Generate FIRS-compliant reports for all tax types</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #10b981; margin-bottom: 0.5rem;">✓ No Data Storage</h4>
+                        <p>All calculations done locally - your data stays private</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #10b981; margin-bottom: 0.5rem;">✓ Free to Use</h4>
+                        <p>Complete tax calculation suite at no cost</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
@@ -199,18 +440,19 @@
                     <h4 class="footer-heading">Quick Links</h4>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#calculators">Tax Calculators</a></li>
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#about">About</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
-                    <h4 class="footer-heading">Legal</h4>
+                    <h4 class="footer-heading">Tax Calculators</h4>
                     <ul class="footer-links">
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms of Service</a></li>
-                        <li><a href="#compliance">Compliance</a></li>
+                        <li><a href="#paye-calculator">PAYE Calculator</a></li>
+                        <li><a href="#cit-calculator">CIT Calculator</a></li>
+                        <li><a href="#vat-calculator">VAT Calculator</a></li>
+                        <li><a href="#wht-calculator">WHT Calculator</a></li>
                     </ul>
                 </div>
 
@@ -230,6 +472,10 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Load Tax Engine Scripts -->
+    <script src="js/tax-rates.js"></script>
+    <script src="js/tax-engine.js"></script>
+    <script src="js/tax-utils.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
