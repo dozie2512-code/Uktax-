@@ -315,6 +315,39 @@
             box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
         }
 
+        .plan-addons {
+            margin: 1.5rem 0;
+            text-align: left;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .addon-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .addon-checkbox:last-child {
+            margin-bottom: 0;
+        }
+
+        .addon-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .addon-checkbox span {
+            line-height: 1.4;
+        }
+
         /* Contact Form */
         .contact-form {
             max-width: 600px;
@@ -711,56 +744,76 @@
         <p>Choose the perfect plan for your business needs</p>
 
         <div class="pricing-container">
+            <!-- Software Plan -->
             <div class="pricing-card scroll-reveal">
-                <div class="plan-name">Starter</div>
-                <div class="plan-price">£250</div>
+                <div class="plan-name">Software Plan</div>
+                <div class="plan-price" id="software-price">£30</div>
                 <div class="plan-period">per month</div>
+                <div class="plan-addons">
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="software-addon" onchange="updateSoftwarePrice()">
+                        <span>Xero plus support @ £37.5/month</span>
+                    </label>
+                </div>
                 <ul class="plan-features">
-                    <li>Basic bookkeeping (up to 50 transactions)</li>
-                    <li>Monthly bank reconciliation</li>
-                    <li>Corporation Tax and Self-Assessment Filing</li>
-                    <li>Annual accounts preparation</li>
-                    <li>Phone call and email support</li>
-                    <li>Cloud accounting software access</li>
+                    <li>Track income and expenses</li>
+                    <li>All features of cloud accounting software</li>
                 </ul>
-                <button class="plan-button" onclick="openContactForm('Starter Plan')">Contact Us</button>
+                <button class="plan-button" onclick="openContactForm('Software Plan')">Contact Us</button>
             </div>
 
+            <!-- Monthly Retainer Plan -->
             <div class="pricing-card featured scroll-reveal">
                 <div class="pricing-badge">Most Popular</div>
-                <div class="plan-name">Professional</div>
-                <div class="plan-price">£375</div>
+                <div class="plan-name">Monthly Retainer Plan</div>
+                <div class="plan-price" id="monthly-price">£150</div>
                 <div class="plan-period">per month</div>
+                <div class="plan-addons">
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="monthly-payroll" onchange="updateMonthlyPrice()">
+                        <span>Payroll @ £50/month (up to 3 staff)</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="monthly-vat" onchange="updateMonthlyPrice()">
+                        <span>Quarterly VAT returns @ £50/month</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="monthly-mtd" onchange="updateMonthlyPrice()">
+                        <span>Quarterly Income Tax MTD @ £50/month</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="monthly-discount" onchange="updateMonthlyPrice()">
+                        <span>Small company discount (50% off)</span>
+                    </label>
+                </div>
                 <ul class="plan-features">
                     <li>Full bookkeeping (up to 150 transactions)</li>
                     <li>Weekly bank reconciliation</li>
-                    <li>Quarterly VAT returns & MTD compliance</li>
-                    <li>Corporation Tax and Self-Assessment Filing</li>
-                    <li>Payroll for up to 3 employees</li>
                     <li>Monthly management reports</li>
-                    <li>Priority phone & email support</li>
-                    <li>Quarterly business review calls</li>
+                    <li>Priority phone &amp; email support</li>
                     <li>Cloud accounting software access</li>
                 </ul>
-                <button class="plan-button" onclick="openContactForm('Professional Plan')">Contact Us</button>
+                <button class="plan-button" onclick="openContactForm('Monthly Retainer Plan')">Contact Us</button>
             </div>
 
+            <!-- Yearly Retainer Plan -->
             <div class="pricing-card scroll-reveal">
-                <div class="plan-name">Enterprise</div>
-                <div class="plan-price">£500</div>
-                <div class="plan-period">per month</div>
+                <div class="plan-name">Yearly Retainer Plan</div>
+                <div class="plan-price" id="yearly-price">£450</div>
+                <div class="plan-period">per year</div>
+                <div class="plan-addons">
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="yearly-addon" onchange="updateYearlyPrice()">
+                        <span>Annual Account plus Corporate tax return @ £1000/year</span>
+                    </label>
+                </div>
                 <ul class="plan-features">
-                    <li>Bookkeeping (up to 250 transactions)</li>
-                    <li>Weekly bank reconciliation</li>
-                    <li>Full VAT & MTD management</li>
-                    <li>Corporation Tax and Self-Assessment Filing</li>
-                    <li>Payroll for up to 5 employees</li>
-                    <li>Monthly management reports</li>
-                    <li>Dedicated account manager</li>
-                    <li>Addon: £50 per 100 additional transactions</li>
-                    <li>Cloud accounting software access</li>
+                    <li>Annual Account preparation</li>
+                    <li>Self Assessment</li>
+                    <li>Corporate tax returns (as applicable)</li>
+                    <li>Tax Advisory</li>
                 </ul>
-                <button class="plan-button" onclick="openContactForm('Enterprise Plan')">Contact Us</button>
+                <button class="plan-button" onclick="openContactForm('Yearly Retainer Plan')">Contact Us</button>
             </div>
         </div>
     </section>
@@ -797,8 +850,9 @@
                     <label for="plan">Interested In</label>
                     <select id="plan" name="plan">
                         <option value="">Select a service or plan</option>
-                        <option value="self-assessment">Self Assessment with Annual Account @ £500/yr</option>
-                        <option value="corporate-tax">Corporate Tax with Annual Account @ £1500/yr</option>
+                        <option value="software">Software Plan</option>
+                        <option value="monthly-retainer">Monthly Retainer Plan</option>
+                        <option value="yearly-retainer">Yearly Retainer Plan</option>
                     </select>
                 </div>
 
@@ -932,14 +986,62 @@
             
             // Set plan based on button clicked
             setTimeout(() => {
-                if (planName.includes('Starter')) {
-                    planSelect.value = 'starter';
-                } else if (planName.includes('Professional')) {
-                    planSelect.value = 'professional';
-                } else if (planName.includes('Enterprise')) {
-                    planSelect.value = 'enterprise';
+                if (planName.includes('Software')) {
+                    planSelect.value = 'software';
+                } else if (planName.includes('Monthly Retainer')) {
+                    planSelect.value = 'monthly-retainer';
+                } else if (planName.includes('Yearly Retainer')) {
+                    planSelect.value = 'yearly-retainer';
                 }
             }, 500);
+        }
+
+        // Pricing calculation functions
+        function updateSoftwarePrice() {
+            const addon = document.getElementById('software-addon');
+            const priceElement = document.getElementById('software-price');
+            
+            if (addon.checked) {
+                priceElement.textContent = '£37.50';
+            } else {
+                priceElement.textContent = '£30';
+            }
+        }
+
+        function updateYearlyPrice() {
+            const addon = document.getElementById('yearly-addon');
+            const priceElement = document.getElementById('yearly-price');
+            
+            if (addon.checked) {
+                priceElement.textContent = '£1000';
+            } else {
+                priceElement.textContent = '£450';
+            }
+        }
+
+        function updateMonthlyPrice() {
+            const basePrice = 150;
+            const addonPrice = 50;
+            
+            const payroll = document.getElementById('monthly-payroll').checked;
+            const vat = document.getElementById('monthly-vat').checked;
+            const mtd = document.getElementById('monthly-mtd').checked;
+            const discount = document.getElementById('monthly-discount').checked;
+            
+            let totalPrice = basePrice;
+            
+            // Add addon prices
+            if (payroll) totalPrice += addonPrice;
+            if (vat) totalPrice += addonPrice;
+            if (mtd) totalPrice += addonPrice;
+            
+            // Apply discount
+            if (discount) {
+                totalPrice = totalPrice * 0.5;
+            }
+            
+            const priceElement = document.getElementById('monthly-price');
+            priceElement.textContent = '£' + totalPrice.toFixed(0);
         }
 
         function handleSubmit(event) {
