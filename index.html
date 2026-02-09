@@ -744,22 +744,25 @@
         <p>Choose the perfect plan for your business needs</p>
 
         <div class="pricing-container">
-            <!-- Software Plan -->
+            <!-- Micro Monthly Retainer -->
             <div class="pricing-card scroll-reveal">
-                <div class="plan-name">Software Plan</div>
-                <div class="plan-price" id="software-price">£30</div>
+                <div class="plan-name">Micro Monthly Retainer</div>
+                <div class="plan-price" id="software-price">£50</div>
                 <div class="plan-period">per month</div>
                 <div class="plan-addons">
                     <label class="addon-checkbox">
                         <input type="checkbox" id="software-addon" onchange="updateSoftwarePrice()">
-                        <span>Xero plus support @ £37.5/month</span>
+                        <span>Xero software @ £20/month</span>
                     </label>
                 </div>
                 <ul class="plan-features">
-                    <li>Track income and expenses</li>
-                    <li>All features of cloud accounting software</li>
+                    <li>Recordbooks accounting software</li>
+                    <li>Monthly bookkeeping (up to 50 postings)</li>
+                    <li>Monthly bank reconciliation</li>
+                    <li>Self Assessment</li>
+                    <li>Turnover threshold: £50,000</li>
                 </ul>
-                <button class="plan-button" onclick="openContactForm('Software Plan')">Contact Us</button>
+                <button class="plan-button" onclick="openContactForm('Micro Monthly Retainer')">Contact Us</button>
             </div>
 
             <!-- Monthly Retainer Plan -->
@@ -850,7 +853,7 @@
                     <label for="plan">Interested In</label>
                     <select id="plan" name="plan">
                         <option value="">Select a service or plan</option>
-                        <option value="software">Software Plan</option>
+                        <option value="software">Micro Monthly Retainer</option>
                         <option value="monthly-retainer">Monthly Retainer Plan</option>
                         <option value="yearly-retainer">Yearly Retainer Plan</option>
                     </select>
@@ -986,7 +989,7 @@
             
             // Set plan based on button clicked
             setTimeout(() => {
-                if (planName.includes('Software')) {
+                if (planName.includes('Micro Monthly Retainer')) {
                     planSelect.value = 'software';
                 } else if (planName.includes('Monthly Retainer')) {
                     planSelect.value = 'monthly-retainer';
@@ -1002,9 +1005,9 @@
             const priceElement = document.getElementById('software-price');
             
             if (addon.checked) {
-                priceElement.textContent = '£37.50';
+                priceElement.textContent = '£70';
             } else {
-                priceElement.textContent = '£30';
+                priceElement.textContent = '£50';
             }
         }
 
