@@ -747,12 +747,16 @@
             <!-- Micro Monthly Retainer -->
             <div class="pricing-card scroll-reveal">
                 <div class="plan-name">Micro Monthly Retainer</div>
-                <div class="plan-price" id="software-price">£50</div>
+                <div class="plan-price" id="software-price">£250</div>
                 <div class="plan-period">per month</div>
                 <div class="plan-addons">
                     <label class="addon-checkbox">
-                        <input type="checkbox" id="software-addon" onchange="updateSoftwarePrice()">
-                        <span>Xero software @ £20/month</span>
+                        <input type="checkbox" id="software-addon-small" onchange="updateSoftwarePrice()">
+                        <span>Small Company: Annual accounts and tax @ £350/year (turnover up to £500,000)</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="software-addon-medium" onchange="updateSoftwarePrice()">
+                        <span>Medium size: Annual accounts and tax @ £550/year (turnover above £500,000)</span>
                     </label>
                 </div>
                 <ul class="plan-features">
@@ -796,7 +800,7 @@
                     <li>Weekly bank reconciliation</li>
                     <li>Monthly management reports</li>
                     <li>Priority phone &amp; email support</li>
-                    <li>Cloud accounting software access</li>
+                    <li>Recordbooks/Xero software</li>
                 </ul>
                 <button class="plan-button" onclick="openContactForm('Monthly Retainer Plan')">Contact Us</button>
             </div>
@@ -913,7 +917,7 @@
             <div class="footer-section">
                 <h3>Contact Information</h3>
                 <ul>
-                    <li>📧 Email: info@uktaxaccounting.co.uk</li>
+                    <li>📧 Email: info@recordbooks.co.uk</li>
                     <li>📞 Phone: 07768486427</li>
                     <li>📍 Address: 61 Bridge Kingston London</li>
                     <li>🕐 Hours: Mon-Fri, 9am-6pm</li>
@@ -997,13 +1001,27 @@
 
         // Pricing calculation functions
         function updateSoftwarePrice() {
-            const addon = document.getElementById('software-addon');
+            const addonSmall = document.getElementById('software-addon-small');
+            const addonMedium = document.getElementById('software-addon-medium');
             const priceElement = document.getElementById('software-price');
             
-            if (addon.checked) {
-                priceElement.textContent = '£70';
+            // Ensure only one addon can be selected at a time
+            if (addonSmall.checked && addonMedium.checked) {
+                // If both are checked, uncheck the one that wasn't just clicked
+                if (event.target === addonSmall) {
+                    addonMedium.checked = false;
+                } else {
+                    addonSmall.checked = false;
+                }
+            }
+            
+            // Update price based on selection (replace base price, don't add)
+            if (addonSmall.checked) {
+                priceElement.textContent = '£350';
+            } else if (addonMedium.checked) {
+                priceElement.textContent = '£550';
             } else {
-                priceElement.textContent = '£50';
+                priceElement.textContent = '£250';
             }
         }
 
@@ -1129,4 +1147,4 @@
         console.log('All features operational - Client-side only');
     </script>
 </body>
-    </html>
+                        </html>
