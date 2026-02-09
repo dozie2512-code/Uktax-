@@ -761,6 +761,8 @@
                     <li>Monthly bank reconciliation</li>
                     <li>Self Assessment</li>
                     <li>Turnover threshold: £50,000</li>
+                    <li>Completion of year end account</li>
+                    <li>Company Returns</li>
                 </ul>
                 <button class="plan-button" onclick="openContactForm('Micro Monthly Retainer')">Contact Us</button>
             </div>
@@ -802,12 +804,12 @@
             <!-- Yearly Retainer Plan -->
             <div class="pricing-card scroll-reveal">
                 <div class="plan-name">Yearly Retainer Plan</div>
-                <div class="plan-price" id="yearly-price">£450</div>
+                <div class="plan-price" id="yearly-price">£350</div>
                 <div class="plan-period">per year</div>
                 <div class="plan-addons">
                     <label class="addon-checkbox">
                         <input type="checkbox" id="yearly-addon" onchange="updateYearlyPrice()">
-                        <span>Annual Account plus Corporate tax return @ £1000/year</span>
+                        <span>Annual Account plus Corporate tax return @ £550/year</span>
                     </label>
                 </div>
                 <ul class="plan-features">
@@ -864,18 +866,12 @@
                     <textarea id="message" name="message" required placeholder="Tell us about your accounting needs..."></textarea>
                 </div>
 
-                <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
-                    <input type="checkbox" id="terms" name="terms" required style="margin-top: 5px; width: auto;">
-                    <label for="terms" style="font-size: 0.95rem;">I agree to the Terms of Service. *</label>
-                </div>
-
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem; text-align: center;">
-                    By submitting this form, you agree to our Terms of Service. Your information will be sent to info@recordbooks.co.uk.
-                </p>
-
                 <button type="submit" class="submit-button" id="submitBtn">Send Message</button>
             </form>
         </div>
+        <p>
+            Email: info@recordbooks.co.uk
+        </p>
     </section>
 
     <!-- Footer -->
@@ -918,7 +914,7 @@
                 <h3>Contact Information</h3>
                 <ul>
                     <li>📧 Email: info@uktaxaccounting.co.uk</li>
-                    <li>📞 Phone: 07887988735</li>
+                    <li>📞 Phone: 07768486427</li>
                     <li>📍 Address: 61 Bridge Kingston London</li>
                     <li>🕐 Hours: Mon-Fri, 9am-6pm</li>
                 </ul>
@@ -1016,9 +1012,9 @@
             const priceElement = document.getElementById('yearly-price');
             
             if (addon.checked) {
-                priceElement.textContent = '£1000';
+                priceElement.textContent = '£900';
             } else {
-                priceElement.textContent = '£450';
+                priceElement.textContent = '£350';
             }
         }
 
