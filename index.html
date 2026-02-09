@@ -796,7 +796,7 @@
                     <li>Weekly bank reconciliation</li>
                     <li>Monthly management reports</li>
                     <li>Priority phone &amp; email support</li>
-                    <li>Cloud accounting software access</li>
+                    <li>Recordbooks/Xero software</li>
                 </ul>
                 <button class="plan-button" onclick="openContactForm('Monthly Retainer Plan')">Contact Us</button>
             </div>
@@ -804,12 +804,17 @@
             <!-- Yearly Retainer Plan -->
             <div class="pricing-card scroll-reveal">
                 <div class="plan-name">Yearly Retainer Plan</div>
-                <div class="plan-price" id="yearly-price">£350</div>
+                <div class="plan-price" id="yearly-price">£250</div>
                 <div class="plan-period">per year</div>
+                <div class="plan-description" style="margin-bottom: 15px; font-size: 0.9em; color: #666;">Micro entity/Sole Trader starting price</div>
                 <div class="plan-addons">
                     <label class="addon-checkbox">
-                        <input type="checkbox" id="yearly-addon" onchange="updateYearlyPrice()">
-                        <span>Annual Account plus Corporate tax return @ £550/year</span>
+                        <input type="checkbox" id="yearly-addon-small" onchange="updateYearlyPrice()">
+                        <span>Small Company: Annual accounts and tax @ £350/year (turnover up to £500,000)</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="yearly-addon-medium" onchange="updateYearlyPrice()">
+                        <span>Medium size: Annual accounts and tax @ £550/year</span>
                     </label>
                 </div>
                 <ul class="plan-features">
@@ -913,7 +918,7 @@
             <div class="footer-section">
                 <h3>Contact Information</h3>
                 <ul>
-                    <li>📧 Email: info@uktaxaccounting.co.uk</li>
+                    <li>📧 Email: info@recordbooks.co.uk</li>
                     <li>📞 Phone: 07768486427</li>
                     <li>📍 Address: 61 Bridge Kingston London</li>
                     <li>🕐 Hours: Mon-Fri, 9am-6pm</li>
@@ -1008,13 +1013,27 @@
         }
 
         function updateYearlyPrice() {
-            const addon = document.getElementById('yearly-addon');
+            const smallAddon = document.getElementById('yearly-addon-small');
+            const mediumAddon = document.getElementById('yearly-addon-medium');
             const priceElement = document.getElementById('yearly-price');
             
-            if (addon.checked) {
-                priceElement.textContent = '£900';
-            } else {
+            // Implement mutual exclusivity
+            if (smallAddon.checked && mediumAddon.checked) {
+                // If both are checked, uncheck the one that was not just clicked
+                if (event && event.target === smallAddon) {
+                    mediumAddon.checked = false;
+                } else if (event && event.target === mediumAddon) {
+                    smallAddon.checked = false;
+                }
+            }
+            
+            // Update price based on selection
+            if (smallAddon.checked) {
                 priceElement.textContent = '£350';
+            } else if (mediumAddon.checked) {
+                priceElement.textContent = '£550';
+            } else {
+                priceElement.textContent = '£250';
             }
         }
 
