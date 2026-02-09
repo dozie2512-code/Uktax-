@@ -808,12 +808,17 @@
             <!-- Yearly Retainer Plan -->
             <div class="pricing-card scroll-reveal">
                 <div class="plan-name">Yearly Retainer Plan</div>
-                <div class="plan-price" id="yearly-price">£350</div>
+                <div class="plan-price" id="yearly-price">£250</div>
                 <div class="plan-period">per year</div>
+                <div class="plan-description" style="margin-bottom: 15px; font-size: 0.9em; color: #666;">Micro entity/Sole Trader starting price</div>
                 <div class="plan-addons">
                     <label class="addon-checkbox">
-                        <input type="checkbox" id="yearly-addon" onchange="updateYearlyPrice()">
-                        <span>Annual Account plus Corporate tax return @ £550/year</span>
+                        <input type="checkbox" id="yearly-addon-small" onchange="updateYearlyPrice(event)">
+                        <span>Small Company: Annual accounts and tax @ £350/year (turnover up to £500,000)</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="yearly-addon-medium" onchange="updateYearlyPrice(event)">
+                        <span>Medium Company: Annual accounts and tax @ £550/year</span>
                     </label>
                 </div>
                 <ul class="plan-features">
@@ -1025,14 +1030,27 @@
             }
         }
 
-        function updateYearlyPrice() {
-            const addon = document.getElementById('yearly-addon');
+        function updateYearlyPrice(event) {
+            const smallAddon = document.getElementById('yearly-addon-small');
+            const mediumAddon = document.getElementById('yearly-addon-medium');
             const priceElement = document.getElementById('yearly-price');
             
-            if (addon.checked) {
-                priceElement.textContent = '£900';
-            } else {
+            // Implement mutual exclusivity
+            if (event && event.target) {
+                if (event.target === smallAddon && smallAddon.checked) {
+                    mediumAddon.checked = false;
+                } else if (event.target === mediumAddon && mediumAddon.checked) {
+                    smallAddon.checked = false;
+                }
+            }
+            
+            // Update price based on selection
+            if (smallAddon.checked) {
                 priceElement.textContent = '£350';
+            } else if (mediumAddon.checked) {
+                priceElement.textContent = '£550';
+            } else {
+                priceElement.textContent = '£250';
             }
         }
 
