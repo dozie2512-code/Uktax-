@@ -809,12 +809,12 @@
                 <div class="plan-description" style="margin-bottom: 15px; font-size: 0.9em; color: #666;">Micro entity/Sole Trader starting price</div>
                 <div class="plan-addons">
                     <label class="addon-checkbox">
-                        <input type="checkbox" id="yearly-addon-small" onchange="updateYearlyPrice()">
+                        <input type="checkbox" id="yearly-addon-small" onchange="updateYearlyPrice(event)">
                         <span>Small Company: Annual accounts and tax @ £350/year (turnover up to £500,000)</span>
                     </label>
                     <label class="addon-checkbox">
-                        <input type="checkbox" id="yearly-addon-medium" onchange="updateYearlyPrice()">
-                        <span>Medium size: Annual accounts and tax @ £550/year</span>
+                        <input type="checkbox" id="yearly-addon-medium" onchange="updateYearlyPrice(event)">
+                        <span>Medium Company: Annual accounts and tax @ £550/year</span>
                     </label>
                 </div>
                 <ul class="plan-features">
@@ -1012,17 +1012,16 @@
             }
         }
 
-        function updateYearlyPrice() {
+        function updateYearlyPrice(event) {
             const smallAddon = document.getElementById('yearly-addon-small');
             const mediumAddon = document.getElementById('yearly-addon-medium');
             const priceElement = document.getElementById('yearly-price');
             
             // Implement mutual exclusivity
-            if (smallAddon.checked && mediumAddon.checked) {
-                // If both are checked, uncheck the one that was not just clicked
-                if (event && event.target === smallAddon) {
+            if (event && event.target) {
+                if (event.target === smallAddon && smallAddon.checked) {
                     mediumAddon.checked = false;
-                } else if (event && event.target === mediumAddon) {
+                } else if (event.target === mediumAddon && mediumAddon.checked) {
                     smallAddon.checked = false;
                 }
             }
