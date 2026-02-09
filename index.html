@@ -747,16 +747,12 @@
             <!-- Micro Monthly Retainer -->
             <div class="pricing-card scroll-reveal">
                 <div class="plan-name">Micro Monthly Retainer</div>
-                <div class="plan-price" id="software-price">£250</div>
+                <div class="plan-price" id="software-price">£50</div>
                 <div class="plan-period">per month</div>
                 <div class="plan-addons">
                     <label class="addon-checkbox">
-                        <input type="checkbox" id="software-addon-small" onchange="updateSoftwarePrice()">
-                        <span>Small Company: Annual accounts and tax @ £350/year (turnover up to £500,000)</span>
-                    </label>
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="software-addon-medium" onchange="updateSoftwarePrice()">
-                        <span>Medium size: Annual accounts and tax @ £550/year (turnover above £500,000)</span>
+                        <input type="checkbox" id="software-addon" onchange="updateSoftwarePrice()">
+                        <span>Xero software @ £20/month</span>
                     </label>
                 </div>
                 <ul class="plan-features">
@@ -808,12 +804,17 @@
             <!-- Yearly Retainer Plan -->
             <div class="pricing-card scroll-reveal">
                 <div class="plan-name">Yearly Retainer Plan</div>
-                <div class="plan-price" id="yearly-price">£350</div>
+                <div class="plan-price" id="yearly-price">£250</div>
                 <div class="plan-period">per year</div>
+                <div class="plan-description" style="margin-bottom: 15px; font-size: 0.9em; color: #666;">Micro entity/Sole Trader starting price</div>
                 <div class="plan-addons">
                     <label class="addon-checkbox">
-                        <input type="checkbox" id="yearly-addon" onchange="updateYearlyPrice()">
-                        <span>Annual Account plus Corporate tax return @ £550/year</span>
+                        <input type="checkbox" id="yearly-addon-small" onchange="updateYearlyPrice()">
+                        <span>Small Company: Annual accounts and tax @ £350/year (turnover up to £500,000)</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="yearly-addon-medium" onchange="updateYearlyPrice()">
+                        <span>Medium size: Annual accounts and tax @ £550/year</span>
                     </label>
                 </div>
                 <ul class="plan-features">
@@ -1001,38 +1002,38 @@
 
         // Pricing calculation functions
         function updateSoftwarePrice() {
-            const addonSmall = document.getElementById('software-addon-small');
-            const addonMedium = document.getElementById('software-addon-medium');
+            const addon = document.getElementById('software-addon');
             const priceElement = document.getElementById('software-price');
             
-            // Ensure only one addon can be selected at a time
-            if (addonSmall.checked && addonMedium.checked) {
-                // If both are checked, uncheck the one that wasn't just clicked
-                if (event.target === addonSmall) {
-                    addonMedium.checked = false;
-                } else {
-                    addonSmall.checked = false;
-                }
-            }
-            
-            // Update price based on selection (replace base price, don't add)
-            if (addonSmall.checked) {
-                priceElement.textContent = '£350';
-            } else if (addonMedium.checked) {
-                priceElement.textContent = '£550';
+            if (addon.checked) {
+                priceElement.textContent = '£70';
             } else {
-                priceElement.textContent = '£250';
+                priceElement.textContent = '£50';
             }
         }
 
         function updateYearlyPrice() {
-            const addon = document.getElementById('yearly-addon');
+            const smallAddon = document.getElementById('yearly-addon-small');
+            const mediumAddon = document.getElementById('yearly-addon-medium');
             const priceElement = document.getElementById('yearly-price');
             
-            if (addon.checked) {
-                priceElement.textContent = '£900';
-            } else {
+            // Implement mutual exclusivity
+            if (smallAddon.checked && mediumAddon.checked) {
+                // If both are checked, uncheck the one that was not just clicked
+                if (event && event.target === smallAddon) {
+                    mediumAddon.checked = false;
+                } else if (event && event.target === mediumAddon) {
+                    smallAddon.checked = false;
+                }
+            }
+            
+            // Update price based on selection
+            if (smallAddon.checked) {
                 priceElement.textContent = '£350';
+            } else if (mediumAddon.checked) {
+                priceElement.textContent = '£550';
+            } else {
+                priceElement.textContent = '£250';
             }
         }
 
