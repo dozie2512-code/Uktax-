@@ -3,26 +3,1131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uktax Services</title>
+    <title>Recordbooks - Professional Bookkeeping & Tax Solutions</title>
+    <meta name="description" content="Professional UK accounting services offering bookkeeping, tax planning, and payroll services from £250. Expert support for businesses.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1e3a8a;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 100px 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            opacity: 1;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #1e3a8a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        section > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #555;
+        }
+
+        .service-features li:before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Pricing Section */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: #1e3a8a;
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(30, 58, 138, 0.2);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e3a8a;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            color: #555;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li:before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .plan-button {
+            width: 100%;
+            padding: 15px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .plan-button:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .plan-addons {
+            margin: 1.5rem 0;
+            text-align: left;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .addon-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .addon-checkbox:last-child {
+            margin-bottom: 0;
+        }
+
+        .addon-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .addon-checkbox span {
+            line-height: 1.4;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .form-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        /* Live Updates Section */
+        .updates-container {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+
+        .update-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+        .update-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .update-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-item h4 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-item p {
+            color: #555;
+        }
+
+        /* Privacy Section */
+        .privacy-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .privacy-box h3 {
+            color: #065f46;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .privacy-box ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .privacy-box li {
+            padding: 0.5rem 0;
+            color: #047857;
+        }
+
+        .privacy-box li:before {
+            content: "🔒 ";
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #3b82f6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #3b82f6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #334155;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #3b82f6;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-5px);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Scroll Reveal */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <h1>Micro Monthly Retainership</h1>
-    <p>Base Price: £50 per month</p>
-    <p>Xero software @ £20/month</p>
-    <h2>Features</h2>
-    <ul>
-        <li>Monthly bookkeeping (up to 50 transactions)</li>
-        <li>Monthly bank reconciliation</li>
-        <li>Self Assessment</li>
-        <li>Quarterly Income Tax MTD</li>
-        <li>Turnover threshold: Up to £60,000</li>
-    </ul>
+    <!-- Sticky Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">🇬🇧 Recordbooks</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Professional UK Accounting & Tax Services</h1>
+        <p>Expert bookkeeping, tax planning, and compliance solutions for your business</p>
+        <a href="#contact" class="cta-button">Get Started Today</a>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>Comprehensive accounting solutions tailored to UK businesses</p>
+
+        <div class="services-grid">
+            <div class="service-card scroll-reveal">
+                <div class="service-icon">📚</div>
+                <h3>Bookkeeping</h3>
+                <p>Accurate and timely bookkeeping services to keep your finances in order.</p>
+                <ul class="service-features">
+                    <li>Daily transaction recording</li>
+                    <li>Bank reconciliation</li>
+                    <li>Accounts payable & receivable</li>
+                    <li>Monthly management reports</li>
+                    <li>Cloud accounting setup (Xero, QuickBooks)</li>
+                </ul>
+            </div>
+
+            <div class="service-card scroll-reveal">
+                <div class="service-icon">⚖️</div>
+                <h3>Payroll Services</h3>
+                <p>Efficient payroll management ensuring compliance with UK employment law.</p>
+                <ul class="service-features">
+                    <li>Monthly payroll processing</li>
+                    <li>RTI submissions to HMRC</li>
+                    <li>P60 & P11D preparation</li>
+                    <li>Employee payslip generation</li>
+                </ul>
+            </div>
+
+            <div class="service-card scroll-reveal">
+                <div class="service-icon">💷</div>
+                <h3>Taxes</h3>
+                <p>Comprehensive tax services covering VAT, Corporation Tax, Self Assessment, and PAYE for your business.</p>
+                <ul class="service-features">
+                    <li>VAT return preparation & filing</li>
+                    <li>VAT registration & MTD compliance</li>
+                    <li>Self-Assessment tax returns</li>
+                    <li>Corporation tax returns (CT600)</li>
+                    <li>PAYE & payroll taxes</li>
+                    <li>Tax planning & optimization</li>
+                    <li>Capital gains tax advice</li>
+                    <li>R&D tax credit claims</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="privacy-box" style="margin-top: 4rem;">
+            <h3>💼 Why Choose Us?</h3>
+            <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <li>Experienced Accountant</li>
+                <li>Fixed transparent pricing</li>
+                <li>Fast turnaround times</li>
+                <li>Dedicated account manager</li>
+                <li>Cloud-based access 24/7</li>
+                <li>GDPR compliant processes</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Dynamic Pricing Section -->
+    <section id="pricing">
+        <h2>Transparent Pricing Plans</h2>
+        <p>Choose the perfect plan for your business needs</p>
+
+        <div class="pricing-container">
+            <!-- Software Plan -->
+            <div class="pricing-card scroll-reveal">
+                <div class="plan-name">Software Plan</div>
+                <div class="plan-price" id="software-price">£30</div>
+                <div class="plan-period">per month</div>
+                <div class="plan-addons">
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="software-addon" onchange="updateSoftwarePrice()">
+                        <span>Xero plus support @ £37.5/month</span>
+                    </label>
+                </div>
+                <ul class="plan-features">
+                    <li>Track income and expenses</li>
+                    <li>All features of cloud accounting software</li>
+                </ul>
+                <button class="plan-button" onclick="openContactForm('Software Plan')">Contact Us</button>
+            </div>
+
+            <!-- Monthly Retainer Plan -->
+            <div class="pricing-card featured scroll-reveal">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="plan-name">Monthly Retainer Plan</div>
+                <div class="plan-price" id="monthly-price">£150</div>
+                <div class="plan-period">per month</div>
+                <div class="plan-addons">
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="monthly-payroll" onchange="updateMonthlyPrice()">
+                        <span>Payroll @ £50/month (up to 3 staff)</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="monthly-vat" onchange="updateMonthlyPrice()">
+                        <span>Quarterly VAT returns @ £50/month</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="monthly-mtd" onchange="updateMonthlyPrice()">
+                        <span>Quarterly Income Tax MTD @ £50/month</span>
+                    </label>
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="monthly-discount" onchange="updateMonthlyPrice()">
+                        <span>Small company discount (50% off)</span>
+                    </label>
+                </div>
+                <ul class="plan-features">
+                    <li>Full bookkeeping (up to 150 transactions)</li>
+                    <li>Weekly bank reconciliation</li>
+                    <li>Monthly management reports</li>
+                    <li>Priority phone &amp; email support</li>
+                    <li>Cloud accounting software access</li>
+                </ul>
+                <button class="plan-button" onclick="openContactForm('Monthly Retainer Plan')">Contact Us</button>
+            </div>
+
+            <!-- Yearly Retainer Plan -->
+            <div class="pricing-card scroll-reveal">
+                <div class="plan-name">Yearly Retainer Plan</div>
+                <div class="plan-price" id="yearly-price">£450</div>
+                <div class="plan-period">per year</div>
+                <div class="plan-addons">
+                    <label class="addon-checkbox">
+                        <input type="checkbox" id="yearly-addon" onchange="updateYearlyPrice()">
+                        <span>Annual Account plus Corporate tax return @ £1000/year</span>
+                    </label>
+                </div>
+                <ul class="plan-features">
+                    <li>Annual Account preparation</li>
+                    <li>Self Assessment</li>
+                    <li>Corporate tax returns (as applicable)</li>
+                    <li>Tax Advisory</li>
+                </ul>
+                <button class="plan-button" onclick="openContactForm('Yearly Retainer Plan')">Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Get in touch to discuss your accounting needs</p>
+
+        <div class="contact-form">
+            <div id="formMessage"></div>
+            <form id="contactForm" action="mailto:info@recordbooks.co.uk" method="post" enctype="text/plain" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="John Smith">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="john.smith@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company" placeholder="Your Company Ltd (Optional)">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="07XXX XXXXXX (Optional)">
+                </div>
+
+                <div class="form-group">
+                    <label for="plan">Interested In</label>
+                    <select id="plan" name="plan">
+                        <option value="">Select a service or plan</option>
+                        <option value="software">Software Plan</option>
+                        <option value="monthly-retainer">Monthly Retainer Plan</option>
+                        <option value="yearly-retainer">Yearly Retainer Plan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required placeholder="Tell us about your accounting needs..."></textarea>
+                </div>
+
+                <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" id="terms" name="terms" required style="margin-top: 5px; width: auto;">
+                    <label for="terms" style="font-size: 0.95rem;">I agree to the Terms of Service. *</label>
+                </div>
+
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem; text-align: center;">
+                    By submitting this form, you agree to our Terms of Service. Your information will be sent to info@recordbooks.co.uk.
+                </p>
+
+                <button type="submit" class="submit-button" id="submitBtn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Recordbooks</h3>
+                <p style="color: #94a3b8; margin-bottom: 1rem;">
+                    Professional accounting and tax services for UK businesses. Helping you stay compliant and financially healthy.
+                </p>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook">📘</a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">🐦</a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">💼</a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">📷</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">Bookkeeping</a></li>
+                    <li><a href="#services">Payroll Services</a></li>
+                    <li><a href="#services">Taxes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#services">About Us</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li>📧 Email: info@uktaxaccounting.co.uk</li>
+                    <li>📞 Phone: 07887988735</li>
+                    <li>📍 Address: 61 Bridge Kingston London</li>
+                    <li>🕐 Hours: Mon-Fri, 9am-6pm</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Recordbooks. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <a href="#privacy" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a> | 
+                <a href="#terms" style="color: #94a3b8; text-decoration: none;">Terms of Service</a> | 
+                <a href="#cookies" style="color: #94a3b8; text-decoration: none;">Cookie Policy</a>
+            </p>
+        </div>
+    </footer>
+
     <script>
-        function updateSoftwarePrice() {
-            let basePrice = 50;
-            let xeroAddon = 20;
-            // Additional logic for price updates
+        // Sticky Navigation
+        const navbar = document.getElementById('navbar');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact Form Handling
+        function openContactForm(planName) {
+            const contactSection = document.getElementById('contact');
+            const planSelect = document.getElementById('plan');
+            
+            // Scroll to contact form
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Set plan based on button clicked
+            setTimeout(() => {
+                if (planName.includes('Software')) {
+                    planSelect.value = 'software';
+                } else if (planName.includes('Monthly Retainer')) {
+                    planSelect.value = 'monthly-retainer';
+                } else if (planName.includes('Yearly Retainer')) {
+                    planSelect.value = 'yearly-retainer';
+                }
+            }, 500);
         }
+
+        // Pricing calculation functions
+        function updateSoftwarePrice() {
+            const addon = document.getElementById('software-addon');
+            const priceElement = document.getElementById('software-price');
+            
+            if (addon.checked) {
+                priceElement.textContent = '£37.50';
+            } else {
+                priceElement.textContent = '£30';
+            }
+        }
+
+        function updateYearlyPrice() {
+            const addon = document.getElementById('yearly-addon');
+            const priceElement = document.getElementById('yearly-price');
+            
+            if (addon.checked) {
+                priceElement.textContent = '£1000';
+            } else {
+                priceElement.textContent = '£450';
+            }
+        }
+
+        function updateMonthlyPrice() {
+            const basePrice = 150;
+            const addonPrice = 50;
+            
+            const payroll = document.getElementById('monthly-payroll').checked;
+            const vat = document.getElementById('monthly-vat').checked;
+            const mtd = document.getElementById('monthly-mtd').checked;
+            const discount = document.getElementById('monthly-discount').checked;
+            
+            let totalPrice = basePrice;
+            
+            // Add addon prices
+            if (payroll) totalPrice += addonPrice;
+            if (vat) totalPrice += addonPrice;
+            if (mtd) totalPrice += addonPrice;
+            
+            // Apply discount
+            if (discount) {
+                totalPrice = totalPrice * 0.5;
+            }
+            
+            const priceElement = document.getElementById('monthly-price');
+            priceElement.textContent = '£' + totalPrice.toFixed(0);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            const form = document.getElementById('contactForm');
+            
+            // Disable button during submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                phone: document.getElementById('phone').value,
+                plan: document.getElementById('plan').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Simulate form submission (client-side only)
+            setTimeout(() => {
+                console.log('Form Data:', formData);
+                
+                // Show success message
+                formMessage.innerHTML = `
+                    <div class="form-message success">
+                        Thank you ${formData.name}! Your message has been received. 
+                        We'll get back to you at ${formData.email} within 24 hours.
+                    </div>
+                `;
+                
+                // Reset form
+                form.reset();
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                
+                // Store in local storage (for demo purposes)
+                const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+                submissions.push(formData);
+                localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+                
+                // Scroll to message
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Clear message after 5 seconds
+                setTimeout(() => {
+                    formMessage.innerHTML = '';
+                }, 5000);
+            }, 1500);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to buttons on hover
+        document.querySelectorAll('.cta-button, .plan-button, .submit-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Log page view (for analytics simulation)
+        console.log('Recordbooks Website Loaded');
+        console.log('Version: 1.0.0');
+        console.log('All features operational - Client-side only');
     </script>
 </body>
-</html>
+    </html>
