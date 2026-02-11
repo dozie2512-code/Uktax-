@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Tax & Accounting System - Professional Multi-Business Platform</title>
+    <meta name="description" content="Comprehensive multi-user, multi-business accounting system for UK tax compliance and financial management.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="spinner"></div>
+            <p>Loading UK Tax & Accounting System...</p>
+        </div>
+
+        <!-- Main Application Container -->
+        <div id="main-container" class="main-container" style="display: none;">
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <div class="nav-container">
+                    <div class="nav-left">
+                        <a href="#" class="logo">
+                            <span class="logo-icon">🇬🇧</span>
+                            <span class="logo-text">UK Accounting</span>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-center">
+                        <!-- Business Switcher -->
+                        <div class="business-switcher">
+                            <select id="businessSelect" class="business-select">
+                                <option value="">Select Business</option>
+                            </select>
+                            <button class="btn-icon" id="addBusinessBtn" title="Add New Business">+</button>
+                        </div>
+                        
+                        <!-- Taxpayer Type Selector -->
+                        <div class="taxpayer-selector">
+                            <select id="taxpayerTypeSelect" class="taxpayer-select">
+                                <option value="">Select Taxpayer Type</option>
+                                <option value="sole-trader">Sole Trader</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="limited-company">Limited Company</option>
+                                <option value="director">Director (Salary & Dividends)</option>
+                                <option value="employee">Employee (PAYE)</option>
+                                <option value="landlord">Landlord/Property</option>
+                                <option value="mixed">Mixed Income</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Tax Year Selector -->
+                        <div class="tax-year-selector">
+                            <select id="taxYearSelect" class="tax-year-select">
+                                <option value="2025-26">2025/26</option>
+                                <option value="2024-25">2024/25</option>
+                                <option value="2023-24">2023/24</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-right">
+                        <button class="btn-icon" id="notificationsBtn" title="Notifications">
+                            <span class="notification-badge">3</span>
+                            🔔
+                        </button>
+                        <div class="user-menu">
+                            <button class="btn-user" id="userMenuBtn">
+                                <span class="user-avatar">👤</span>
+                                <span class="user-name" id="userName">User</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-menu">
+                    <a href="#dashboard" class="menu-item active" data-view="dashboard">
+                        <span class="menu-icon">📊</span>
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                    
+                    <div class="menu-section">Accounting</div>
+                    <a href="#invoicing" class="menu-item" data-view="invoicing">
+                        <span class="menu-icon">📄</span>
+                        <span class="menu-text">Invoicing</span>
+                    </a>
+                    <a href="#cashbook" class="menu-item" data-view="cashbook">
+                        <span class="menu-icon">💰</span>
+                        <span class="menu-text">Cashbook</span>
+                    </a>
+                    <a href="#reconciliation" class="menu-item" data-view="reconciliation">
+                        <span class="menu-icon">🔄</span>
+                        <span class="menu-text">Bank Reconciliation</span>
+                    </a>
+                    <a href="#inventory" class="menu-item" data-view="inventory">
+                        <span class="menu-icon">📦</span>
+                        <span class="menu-text">Inventory</span>
+                    </a>
+                    
+                    <div class="menu-section">Tax & Compliance</div>
+                    <a href="#tax-allowances" class="menu-item" data-view="tax-allowances">
+                        <span class="menu-icon">📋</span>
+                        <span class="menu-text">Tax Allowances</span>
+                    </a>
+                    <a href="#tax-computation" class="menu-item" data-view="tax-computation">
+                        <span class="menu-icon">🧮</span>
+                        <span class="menu-text">Tax Computation</span>
+                    </a>
+                    <a href="#annual-accounts" class="menu-item" data-view="annual-accounts">
+                        <span class="menu-icon">📑</span>
+                        <span class="menu-text">Annual Accounts</span>
+                    </a>
+                    
+                    <div class="menu-section">Reports</div>
+                    <a href="#reports" class="menu-item" data-view="reports">
+                        <span class="menu-icon">📈</span>
+                        <span class="menu-text">Reports</span>
+                    </a>
+                    
+                    <div class="menu-section">Settings</div>
+                    <a href="#business-settings" class="menu-item" data-view="business-settings">
+                        <span class="menu-icon">⚙️</span>
+                        <span class="menu-text">Business Settings</span>
+                    </a>
+                    <a href="#users" class="menu-item" data-view="users">
+                        <span class="menu-icon">👥</span>
+                        <span class="menu-text">User Management</span>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content" id="mainContent">
+                <!-- Dynamic content loaded here -->
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modalContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/core/database.js"></script>
+    <script src="js/core/auth.js"></script>
+    <script src="js/core/business.js"></script>
+    <script src="js/modules/invoicing.js"></script>
+    <script src="js/modules/cashbook.js"></script>
+    <script src="js/modules/reconciliation.js"></script>
+    <script src="js/modules/inventory.js"></script>
+    <script src="js/modules/tax-allowances.js"></script>
+    <script src="js/modules/tax-computation.js"></script>
+    <script src="js/modules/annual-accounts.js"></script>
+    <script src="js/modules/dashboard.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
