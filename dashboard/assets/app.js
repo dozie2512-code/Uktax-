@@ -428,10 +428,11 @@
     if (copy && output) {
       copy.addEventListener('click', async function () {
         const text = output.value;
+        if (!navigator.clipboard || !navigator.clipboard.writeText) {
+          showBanner('Copy is unavailable here. You can still copy the link manually.', 'info');
+          return;
+        }
         try {
-          if (!navigator.clipboard || !navigator.clipboard.writeText) {
-            throw new Error('Clipboard API unavailable');
-          }
           await navigator.clipboard.writeText(text);
           showBanner('Referral link copied to your clipboard.', 'success');
         } catch (error) {
