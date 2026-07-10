@@ -214,17 +214,23 @@
             <td>${statusBadge(item.status)}</td>
             <td>${item.sold}</td>
             <td>
-              <button onclick="removeItem('${item.id}')" class="btn btn-danger btn-sm" type="button" aria-label="Remove ${item.name}">Remove</button>
+              <button data-remove-item="${item.id}" class="btn btn-danger btn-sm" type="button" aria-label="Remove ${item.name}">Remove</button>
             </td>
           </tr>`).join('');
       }
 
-      window.removeItem = function (id) {
+      function removeItem(id) {
         inventory = inventory.filter(i => i.id !== id);
         renderInventory();
         calcMetrics();
         showToast('Listing removed', 'warn');
-      };
+      }
+
+      // Event delegation for remove buttons in inventory table
+      document.getElementById('inventoryBody').addEventListener('click', function (e) {
+        const btn = e.target.closest('[data-remove-item]');
+        if (btn) removeItem(btn.dataset.removeItem);
+      });
 
       function calcMetrics() {
         const revenue = DEMO.vendorOrders.filter(o => o.status === 'completed')

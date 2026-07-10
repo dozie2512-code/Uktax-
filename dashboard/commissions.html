@@ -110,7 +110,7 @@
               aria-label="General referral link"
               style="flex:1;min-width:180px;background:#faf5e8;"
             />
-            <button class="btn btn-primary btn-sm" onclick="copyLink('refLinkGeneral')" type="button" aria-label="Copy general referral link">
+            <button class="btn btn-primary btn-sm" data-copy-link="refLinkGeneral" type="button" aria-label="Copy general referral link">
               📋 Copy
             </button>
           </div>
@@ -129,7 +129,7 @@
               aria-label="Vendor sign-up referral link"
               style="flex:1;min-width:180px;background:#faf5e8;"
             />
-            <button class="btn btn-primary btn-sm" onclick="copyLink('refLinkVendor')" type="button" aria-label="Copy vendor sign-up referral link">
+            <button class="btn btn-primary btn-sm" data-copy-link="refLinkVendor" type="button" aria-label="Copy vendor sign-up referral link">
               📋 Copy
             </button>
           </div>
@@ -213,10 +213,14 @@
       document.getElementById('refLinkGeneral').value = 'https://nightbuy.app/join?ref=' + refCode;
       document.getElementById('refLinkVendor').value = 'https://nightbuy.app/vendor/join?ref=' + refCode;
 
-      window.copyLink = function (inputId) {
-        const val = document.getElementById(inputId).value;
-        copyToClipboard(val, 'Referral link copied!');
-      };
+      // Event delegation for copy buttons
+      document.querySelector('.main').addEventListener('click', function (e) {
+        const btn = e.target.closest('[data-copy-link]');
+        if (btn) {
+          const val = document.getElementById(btn.dataset.copyLink).value;
+          copyToClipboard(val, 'Referral link copied!');
+        }
+      });
 
       // Ledger
       const tbody = document.getElementById('commLedger');

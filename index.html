@@ -415,8 +415,9 @@
     function submitForm(e) {
       e.preventDefault();
       const msg = document.getElementById('formMsg');
-      msg.textContent = "Thanks! Redirecting you to login…";
-      setTimeout(() => { window.location.href = 'login.html'; }, 1200);
+      msg.textContent = "Thanks! Your signup has been received. Redirecting to login…";
+      e.target.reset();
+      setTimeout(() => { window.location.href = 'login.html'; }, 1800);
     }
   </script>
 </body>

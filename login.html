@@ -346,8 +346,7 @@
           if (remember) {
             localStorage.setItem(SESSION_KEY, JSON.stringify(session));
           } else {
-            // Use sessionStorage-like approach: still localStorage but no "remember me" flag
-            localStorage.setItem(SESSION_KEY, JSON.stringify({ ...session, sessionOnly: true }));
+            localStorage.setItem(SESSION_KEY, JSON.stringify(session));
           }
 
           showAlert('Login successful! Redirecting…', 'success');
