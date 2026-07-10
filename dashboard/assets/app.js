@@ -160,7 +160,7 @@
   }
 
   function validateEmail(value) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
   }
 
   function setFieldState(field, state, message) {
@@ -429,12 +429,10 @@
       copy.addEventListener('click', async function () {
         const text = output.value;
         try {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            await navigator.clipboard.writeText(text);
-          } else {
-            output.select();
-            document.execCommand('copy');
+          if (!navigator.clipboard || !navigator.clipboard.writeText) {
+            throw new Error('Clipboard API unavailable');
           }
+          await navigator.clipboard.writeText(text);
           showBanner('Referral link copied to your clipboard.', 'success');
         } catch (error) {
           showBanner('Copy is unavailable here. You can still copy the link manually.', 'info');
