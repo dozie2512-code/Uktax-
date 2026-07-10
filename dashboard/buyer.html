@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy | Buyer</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="buyer-page" data-required-role="buyer">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-badge">NB</span>Night Buy</div>
+      <ul class="side-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="buyer.html" aria-current="page">Buyer</a></li>
+        <li><a href="vendor.html">Vendor</a></li>
+        <li><a href="commissions.html">Commissions</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <button class="btn link" type="button" data-action="logout">Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="btn alt menu-toggle" type="button" data-action="toggle-menu" aria-label="Toggle menu">☰ Menu</button>
+        <span class="badge neutral" data-user-chip></span>
+      </header>
+
+      <p id="page-notice" role="status" aria-live="polite"></p>
+
+      <section class="grid cols-3">
+        <article class="glass card">
+          <h3>Cart items</h3>
+          <p class="metric-value" id="cart-count">0</p>
+        </article>
+        <article class="glass card">
+          <h3>Cart total</h3>
+          <p class="metric-value" id="cart-total">£0.00</p>
+        </article>
+        <article class="glass card">
+          <h3>Modes</h3>
+          <p><span class="badge warning">Flash Auctions</span> <span class="badge neutral">Mystery Bundles</span></p>
+        </article>
+      </section>
+
+      <section class="glass card" style="margin-top: .8rem;">
+        <div class="section-head"><h2>Find tonight's deals</h2></div>
+        <div class="grid cols-2">
+          <div class="field">
+            <label for="deal-category">Category</label>
+            <select id="deal-category">
+              <option>All</option>
+              <option>Bakery</option>
+              <option>Groceries</option>
+              <option>Seafood</option>
+              <option>Prepared Meals</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="deal-search">Search</label>
+            <input class="input" id="deal-search" type="search" placeholder="Search by name, category, mode" />
+          </div>
+        </div>
+        <div id="deal-list" class="deal-list" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

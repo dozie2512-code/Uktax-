@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy | Login</title>
+  <link rel="stylesheet" href="dashboard/assets/styles.css" />
+</head>
+<body class="login-page">
+  <main class="auth-shell" aria-labelledby="login-heading">
+    <section class="glass auth-card">
+      <header class="auth-head">
+        <h1 id="login-heading">Welcome back to Night Buy</h1>
+        <p>Use the demo login to enter your role-specific dashboard.</p>
+      </header>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input class="input" id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input class="input" id="password" name="password" type="password" autocomplete="current-password" required />
+        </div>
+
+        <div class="field">
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="">Select role</option>
+            <option value="buyer">Buyer</option>
+            <option value="vendor">Vendor</option>
+            <option value="partner">Partner/Affiliate</option>
+          </select>
+        </div>
+
+        <div class="field inline">
+          <input id="rememberMe" name="rememberMe" type="checkbox" />
+          <label for="rememberMe">Remember me</label>
+        </div>
+
+        <button class="btn" type="submit">Login</button>
+        <p id="login-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="auth-actions">
+        <a class="btn alt" href="index.html">Back to landing page</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="dashboard/assets/app.js"></script>
+</body>
+</html>
