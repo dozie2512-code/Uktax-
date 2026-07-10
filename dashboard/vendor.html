@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor Panel — Night Buy</title>
+  <meta name="description" content="Manage your Night Buy vendor inventory, listings and orders." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:25;backdrop-filter:blur(2px);"></div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="sidebar-logo" href="../index.html">
+        <span class="logo-badge">NB</span>Night Buy
+      </a>
+      <div class="sidebar-user">
+        <div class="user-name" id="sidebarName">Loading…</div>
+        <span class="user-role" id="sidebarRole">Member</span>
+      </div>
+
+      <span class="nav-section">Overview</span>
+      <a class="nav-item" href="index.html"><span class="nav-icon" aria-hidden="true">🏠</span>Dashboard</a>
+
+      <span class="nav-section">Shop</span>
+      <a class="nav-item" href="buyer.html"><span class="nav-icon" aria-hidden="true">🛍️</span>Buy Deals</a>
+      <a class="nav-item active" href="vendor.html"><span class="nav-icon" aria-hidden="true">🏪</span>Vendor Panel</a>
+      <a class="nav-item" href="commissions.html"><span class="nav-icon" aria-hidden="true">💰</span>Commissions</a>
+
+      <span class="nav-section">Account</span>
+      <a class="nav-item" href="settings.html"><span class="nav-icon" aria-hidden="true">⚙️</span>Settings</a>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer">
+        <div style="font-size:.78rem;color:#9a886a;margin-bottom:.4rem">© 2026 Night Buy</div>
+        <button class="logout-btn js-logout" type="button" aria-label="Log out">
+          <span aria-hidden="true">🚪</span> Log Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰</button>
+        <span class="topbar-title">Vendor Panel</span>
+      </div>
+      <div class="topbar-right">
+        <button class="btn btn-primary btn-sm" data-open-modal="addListingModal" type="button" id="addListingBtn">
+          ➕ Add Listing
+        </button>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main">
+      <div class="page-header">
+        <h1>Vendor Panel</h1>
+        <p>Monitor your inventory, orders and today's performance.</p>
+      </div>
+
+      <!-- Metrics -->
+      <div class="metrics-grid" id="vendorMetrics">
+        <div class="metric-card">
+          <div class="metric-label">Revenue Today</div>
+          <div class="metric-value" id="mRevenue">£0</div>
+          <div class="metric-sub">From completed orders</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Items Sold</div>
+          <div class="metric-value" id="mSold">0</div>
+          <div class="metric-sub">Tonight so far</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Pending Pickup</div>
+          <div class="metric-value" id="mPending">1</div>
+          <div class="metric-sub">Awaiting collection</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Waste Avoided</div>
+          <div class="metric-value" id="mWaste">0 kg</div>
+          <div class="metric-sub">Est. CO₂ saved</div>
+        </div>
+      </div>
+
+      <!-- Inventory -->
+      <div class="section-title" id="inventory">
+        Inventory
+        <button class="btn btn-secondary btn-sm" data-open-modal="addListingModal" type="button" aria-label="Add new listing">
+          ➕ Add Listing
+        </button>
+      </div>
+      <div class="table-wrap mb-3">
+        <table aria-label="Inventory table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Item</th>
+              <th>Qty Left</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Sold Tonight</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Orders / Recent Sales -->
+      <div class="section-title" id="orders">
+        Recent Orders
+        <span>Tonight's sales activity</span>
+      </div>
+      <div class="table-wrap">
+        <table aria-label="Recent orders table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Item</th>
+              <th>Buyer</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Listing Modal -->
+  <div class="modal-overlay" id="addListingModal" role="dialog" aria-modal="true" aria-labelledby="addListingTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="addListingTitle">➕ Add New Listing</span>
+        <button class="modal-close" data-close-modal="addListingModal" type="button" aria-label="Close">✕</button>
+      </div>
+      <form id="addListingForm" novalidate>
+        <div class="form-group">
+          <label for="listingName">Item Name <span aria-hidden="true">*</span></label>
+          <input class="form-control" id="listingName" type="text" placeholder="e.g. Artisan Sourdough Loaf" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="listingQty">Quantity <span aria-hidden="true">*</span></label>
+            <input class="form-control" id="listingQty" type="number" min="1" placeholder="12" required />
+          </div>
+          <div class="form-group">
+            <label for="listingPrice">Sale Price (£) <span aria-hidden="true">*</span></label>
+            <input class="form-control" id="listingPrice" type="number" min="0.01" step="0.01" placeholder="1.50" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="listingOriginal">Original Price (£)</label>
+            <input class="form-control" id="listingOriginal" type="number" min="0.01" step="0.01" placeholder="5.00" />
+          </div>
+          <div class="form-group">
+            <label for="listingMode">Listing Type</label>
+            <select class="form-control" id="listingMode">
+              <option value="standard">Standard</option>
+              <option value="flash">Flash Auction</option>
+              <option value="bundle">Mystery Bundle</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="listingDesc">Description</label>
+          <input class="form-control" id="listingDesc" type="text" placeholder="Brief description…" />
+        </div>
+        <div id="listingAlert" class="hidden"></div>
+        <div style="display:flex;gap:.7rem;margin-top:.5rem">
+          <button class="btn btn-primary" type="submit" style="flex:1">Post Listing</button>
+          <button class="btn btn-secondary" type="button" data-close-modal="addListingModal" style="flex:1">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      const session = NB.requireAuth('Vendor');
+      if (!session) return;
+
+      NB.populateSidebar(session);
+
+      // Mobile sidebar — handled by app.js
+
+      // Build inventory list (mutable copy)
+      let inventory = [...DEMO.vendorInventory];
+
+      function statusBadge(status) {
+        const map = {
+          active: '<span class="badge badge-green">Active</span>',
+          sold_out: '<span class="badge badge-red">Sold Out</span>',
+          low_stock: '<span class="badge badge-gold">Low Stock</span>',
+        };
+        return map[status] || '<span class="badge badge-muted">' + status + '</span>';
+      }
+
+      function renderInventory() {
+        const tbody = document.getElementById('inventoryBody');
+        tbody.innerHTML = inventory.map(item => `
+          <tr>
+            <td><span style="font-family:monospace;font-size:.8rem;color:var(--muted)">${item.id}</span></td>
+            <td><span style="font-weight:600">${item.name}</span></td>
+            <td>${item.qty}</td>
+            <td>${item.price}</td>
+            <td>${statusBadge(item.status)}</td>
+            <td>${item.sold}</td>
+            <td>
+              <button data-remove-item="${item.id}" class="btn btn-danger btn-sm" type="button" aria-label="Remove ${item.name}">Remove</button>
+            </td>
+          </tr>`).join('');
+      }
+
+      function removeItem(id) {
+        inventory = inventory.filter(i => i.id !== id);
+        renderInventory();
+        calcMetrics();
+        showToast('Listing removed', 'warn');
+      }
+
+      // Event delegation for remove buttons in inventory table
+      document.getElementById('inventoryBody').addEventListener('click', function (e) {
+        const btn = e.target.closest('[data-remove-item]');
+        if (btn) removeItem(btn.dataset.removeItem);
+      });
+
+      function calcMetrics() {
+        const revenue = DEMO.vendorOrders.filter(o => o.status === 'completed')
+          .reduce((s, o) => s + parseFloat(o.amount.replace('£', '')), 0);
+        document.getElementById('mRevenue').textContent = '£' + revenue.toFixed(2);
+        const sold = inventory.reduce((s, i) => s + i.sold, 0);
+        document.getElementById('mSold').textContent = sold;
+        document.getElementById('mPending').textContent = DEMO.vendorOrders.filter(o => o.status === 'pending').length;
+        document.getElementById('mWaste').textContent = (sold * 0.42).toFixed(1) + ' kg';
+      }
+
+      // Orders table
+      function renderOrders() {
+        const tbody = document.getElementById('ordersBody');
+        tbody.innerHTML = DEMO.vendorOrders.map(o => {
+          const statusBadge = o.status === 'completed'
+            ? '<span class="badge badge-green">Completed</span>'
+            : '<span class="badge badge-gold">Pending</span>';
+          return `
+            <tr>
+              <td><span style="font-family:monospace;font-size:.82rem">${o.id}</span></td>
+              <td>${o.item}</td>
+              <td>${o.buyer}</td>
+              <td style="font-weight:700;color:var(--gold-deep)">${o.amount}</td>
+              <td>${statusBadge}</td>
+              <td style="color:var(--muted);font-size:.82rem">${o.time}</td>
+            </tr>`;
+        }).join('');
+      }
+
+      renderInventory();
+      renderOrders();
+      calcMetrics();
+
+      // Add Listing form
+      document.getElementById('addListingForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('listingName').value.trim();
+        const qty = parseInt(document.getElementById('listingQty').value, 10);
+        const price = parseFloat(document.getElementById('listingPrice').value);
+        const alertEl = document.getElementById('listingAlert');
+
+        if (!name || isNaN(qty) || qty < 1 || isNaN(price) || price <= 0) {
+          alertEl.className = 'alert alert-error';
+          alertEl.textContent = 'Please fill in all required fields correctly.';
+          return;
+        }
+
+        const newItem = {
+          id: 'V' + String(inventory.length + 100).padStart(3, '0'),
+          name,
+          qty,
+          price: '£' + price.toFixed(2),
+          status: 'active',
+          sold: 0,
+        };
+        inventory.unshift(newItem);
+        renderInventory();
+        calcMetrics();
+        closeModal('addListingModal');
+        this.reset();
+        showToast(name + ' listed successfully!', 'success');
+      });
+    })();
+  </script>
+</body>
+</html>

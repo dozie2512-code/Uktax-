@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commissions — Night Buy</title>
+  <meta name="description" content="Track your Night Buy affiliate commissions and request payouts." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:25;backdrop-filter:blur(2px);"></div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="sidebar-logo" href="../index.html">
+        <span class="logo-badge">NB</span>Night Buy
+      </a>
+      <div class="sidebar-user">
+        <div class="user-name" id="sidebarName">Loading…</div>
+        <span class="user-role" id="sidebarRole">Member</span>
+      </div>
+
+      <span class="nav-section">Overview</span>
+      <a class="nav-item" href="index.html"><span class="nav-icon" aria-hidden="true">🏠</span>Dashboard</a>
+
+      <span class="nav-section">Shop</span>
+      <a class="nav-item" href="buyer.html"><span class="nav-icon" aria-hidden="true">🛍️</span>Buy Deals</a>
+      <a class="nav-item" href="vendor.html"><span class="nav-icon" aria-hidden="true">🏪</span>Vendor Panel</a>
+      <a class="nav-item active" href="commissions.html"><span class="nav-icon" aria-hidden="true">💰</span>Commissions</a>
+
+      <span class="nav-section">Account</span>
+      <a class="nav-item" href="settings.html"><span class="nav-icon" aria-hidden="true">⚙️</span>Settings</a>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer">
+        <div style="font-size:.78rem;color:#9a886a;margin-bottom:.4rem">© 2026 Night Buy</div>
+        <button class="logout-btn js-logout" type="button" aria-label="Log out">
+          <span aria-hidden="true">🚪</span> Log Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰</button>
+        <span class="topbar-title">Commissions</span>
+      </div>
+      <div class="topbar-right">
+        <button class="btn btn-primary btn-sm" id="payoutBtn" type="button">
+          💸 Request Payout
+        </button>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main">
+      <div class="page-header">
+        <h1>Commission Centre</h1>
+        <p>Track your referral earnings, conversion rates and payout history.</p>
+      </div>
+
+      <!-- Payout success banner -->
+      <div id="payoutBanner" class="alert alert-success hidden" role="alert" aria-live="polite">
+        🎉 Payout request submitted! Funds will be transferred within 2–3 business days.
+      </div>
+
+      <!-- Metrics -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Total Commissions</div>
+          <div class="metric-value">£13.90</div>
+          <div class="metric-sub">All time</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Pending Payout</div>
+          <div class="metric-value" id="pendingPayout">£5.60</div>
+          <div class="metric-sub">Awaiting approval</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Paid to Date</div>
+          <div class="metric-value">£8.30</div>
+          <div class="metric-sub">Paid out so far</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Conversion Rate</div>
+          <div class="metric-value">12.4%</div>
+          <div class="metric-sub">Link clicks → purchases</div>
+        </div>
+      </div>
+
+      <!-- Referral Links -->
+      <div class="section-title" id="ledger">Referral Links</div>
+      <div class="card mb-3">
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">
+          Share your unique link to earn commissions on every new sign-up or purchase you drive to Night Buy.
+        </p>
+
+        <div style="margin-bottom:1rem">
+          <label style="font-weight:700;font-size:.85rem;color:#3d3421;display:block;margin-bottom:.4rem">
+            Your Referral Link — General
+          </label>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <input
+              class="form-control"
+              id="refLinkGeneral"
+              type="text"
+              readonly
+              aria-label="General referral link"
+              style="flex:1;min-width:180px;background:#faf5e8;"
+            />
+            <button class="btn btn-primary btn-sm" data-copy-link="refLinkGeneral" type="button" aria-label="Copy general referral link">
+              📋 Copy
+            </button>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem">
+          <label style="font-weight:700;font-size:.85rem;color:#3d3421;display:block;margin-bottom:.4rem">
+            Vendor Sign-up Link
+          </label>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <input
+              class="form-control"
+              id="refLinkVendor"
+              type="text"
+              readonly
+              aria-label="Vendor sign-up referral link"
+              style="flex:1;min-width:180px;background:#faf5e8;"
+            />
+            <button class="btn btn-primary btn-sm" data-copy-link="refLinkVendor" type="button" aria-label="Copy vendor sign-up referral link">
+              📋 Copy
+            </button>
+          </div>
+        </div>
+
+        <div style="font-size:.82rem;color:var(--muted)">
+          💡 Earn <strong style="color:var(--gold-deep)">£1.80</strong> per buyer referral and <strong style="color:var(--gold-deep)">£5.00</strong> per vendor sign-up.
+        </div>
+      </div>
+
+      <!-- Commission performance bar -->
+      <div class="section-title">This Month's Progress</div>
+      <div class="card mb-3">
+        <div style="display:flex;justify-content:space-between;margin-bottom:.5rem">
+          <span style="font-weight:700;font-size:.9rem">Monthly goal: £25.00</span>
+          <span style="font-weight:800;color:var(--gold-deep)">£13.90 / £25.00</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" style="width:55.6%"></div>
+        </div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:.4rem">55.6% of monthly target reached</div>
+      </div>
+
+      <!-- Commission Ledger -->
+      <div class="section-title" id="payout">
+        Commission Ledger
+        <span>Full transaction history</span>
+      </div>
+      <div class="table-wrap">
+        <table aria-label="Commission ledger">
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>Type</th>
+              <th>Referred</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="commLedger"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Payout Confirmation Modal -->
+  <div class="modal-overlay" id="payoutModal" role="dialog" aria-modal="true" aria-labelledby="payoutModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="payoutModalTitle">💸 Request Payout</span>
+        <button class="modal-close" data-close-modal="payoutModal" type="button" aria-label="Close">✕</button>
+      </div>
+      <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.2rem">
+        You have <strong id="payoutAmount" style="color:var(--gold-deep)">£5.60</strong> available for payout.
+        Funds will be sent to your registered bank account within 2–3 business days.
+      </p>
+      <div class="form-group">
+        <label for="payoutNote">Note (optional)</label>
+        <input class="form-control" id="payoutNote" type="text" placeholder="e.g. July earnings" />
+      </div>
+      <div style="display:flex;gap:.7rem;margin-top:.5rem">
+        <button class="btn btn-primary" id="confirmPayoutBtn" type="button" style="flex:1">Confirm Request</button>
+        <button class="btn btn-secondary" data-close-modal="payoutModal" type="button" style="flex:1">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      const session = NB.requireAuth('Partner/Affiliate');
+      if (!session) return;
+
+      NB.populateSidebar(session);
+
+      // Mobile sidebar — handled by app.js
+
+      // Generate referral links
+      const refCode = 'NB-' + (session.email.replace(/[^a-z0-9]/gi, '').toUpperCase().slice(0, 6));
+      document.getElementById('refLinkGeneral').value = 'https://nightbuy.app/join?ref=' + refCode;
+      document.getElementById('refLinkVendor').value = 'https://nightbuy.app/vendor/join?ref=' + refCode;
+
+      // Event delegation for copy buttons
+      document.querySelector('.main').addEventListener('click', function (e) {
+        const btn = e.target.closest('[data-copy-link]');
+        if (btn) {
+          const val = document.getElementById(btn.dataset.copyLink).value;
+          copyToClipboard(val, 'Referral link copied!');
+        }
+      });
+
+      // Ledger
+      const tbody = document.getElementById('commLedger');
+      tbody.innerHTML = DEMO.commissions.map(c => {
+        const statusBadge = c.status === 'paid'
+          ? '<span class="badge badge-green">Paid</span>'
+          : '<span class="badge badge-gold">Pending</span>';
+        return `
+          <tr>
+            <td><span style="font-family:monospace;font-size:.82rem">${c.id}</span></td>
+            <td>${c.type}</td>
+            <td>${c.buyer}</td>
+            <td style="font-weight:700;color:var(--gold-deep)">${c.amount}</td>
+            <td>${statusBadge}</td>
+            <td style="font-size:.82rem;color:var(--muted)">${c.date}</td>
+          </tr>`;
+      }).join('');
+
+      // Payout flow
+      document.getElementById('payoutBtn').addEventListener('click', () => openModal('payoutModal'));
+
+      document.getElementById('confirmPayoutBtn').addEventListener('click', () => {
+        closeModal('payoutModal');
+        document.getElementById('payoutBanner').classList.remove('hidden');
+        document.getElementById('pendingPayout').textContent = '£0.00';
+        document.getElementById('payoutBtn').disabled = true;
+        document.getElementById('payoutBtn').textContent = '✓ Payout Requested';
+        setTimeout(() => {
+          document.getElementById('payoutBanner').classList.add('hidden');
+        }, 6000);
+      });
+    })();
+  </script>
+</body>
+</html>

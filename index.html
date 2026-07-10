@@ -230,8 +230,9 @@
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
-      <a class="btn hide-mobile" href="#contact">Sign Up</a>
+      <a class="btn hide-mobile" href="login.html">Login</a>
     </div>
   </nav>
 
@@ -245,7 +246,7 @@
           Vendors recover revenue, buyers unlock premium local deals, and communities reduce waste together.
         </p>
         <div class="hero-actions">
-          <a class="btn" href="#contact">Create Account</a>
+          <a class="btn" href="login.html">Create Account</a>
           <a class="btn alt" href="#vendors">Become a Vendor</a>
         </div>
       </div>
@@ -318,7 +319,7 @@
       <div class="cta reveal">
         <h2>Vision: The World’s Largest Zero-Waste Night Marketplace</h2>
         <p>Match unsold inventory to nearby buyers in real-time, every night, in every city.</p>
-        <a class="btn" href="#contact">Sign Up Now</a>
+        <a class="btn" href="login.html">Sign Up Now</a>
       </div>
     </div>
   </section>
@@ -414,8 +415,9 @@
     function submitForm(e) {
       e.preventDefault();
       const msg = document.getElementById('formMsg');
-      msg.textContent = "Thanks! Your signup has been received.";
+      msg.textContent = "Thanks! Your signup has been received. Redirecting to login…";
       e.target.reset();
+      setTimeout(() => { window.location.href = 'login.html'; }, 1800);
     }
   </script>
 </body>

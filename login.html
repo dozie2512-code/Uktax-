@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Night Buy</title>
+  <meta name="description" content="Sign in to your Night Buy account." />
+  <style>
+    :root {
+      --bg: #f8f6f1;
+      --bg-2: #f2ecdf;
+      --paper: #ffffff;
+      --line: rgba(150, 115, 28, .18);
+      --line-strong: rgba(150, 115, 28, .32);
+      --text: #17140f;
+      --muted: #5b5243;
+      --gold: #c9a227;
+      --gold-deep: #9c7a1d;
+      --gold-soft: #e8cf87;
+      --danger: #c0392b;
+      --success: #2d7a44;
+      --radius: 18px;
+      --radius-sm: 12px;
+      --shadow-md: 0 20px 48px rgba(72, 55, 12, .12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 0% -8%, #fff7df 0%, transparent 58%),
+        radial-gradient(900px 520px at 100% 0%, #f6e8be 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      line-height: 1.65;
+    }
+
+    .glow {
+      position: fixed; width: 340px; height: 340px; border-radius: 50%;
+      filter: blur(72px); pointer-events: none; z-index: -1; opacity: .28;
+    }
+    .glow.one { background: #f2dc9b; top: 5%; left: -100px; }
+    .glow.two { background: #d4b04b; bottom: 8%; right: -100px; }
+
+    /* Card */
+    .login-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 2rem 2.2rem;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex; align-items: center; gap: .6rem;
+      font-weight: 800; font-size: 1.05rem; text-decoration: none; color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .logo-badge {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: linear-gradient(140deg, #f6e7b8, #c9a227);
+      color: #3f2f09; font-weight: 800; font-size: .82rem;
+      display: grid; place-items: center;
+      box-shadow: 0 10px 26px rgba(201, 162, 39, .34);
+      flex-shrink: 0;
+    }
+
+    h1 { font-size: 1.45rem; font-weight: 800; margin-bottom: .3rem; }
+    .subtitle { color: var(--muted); font-size: .9rem; margin-bottom: 1.5rem; }
+
+    /* Form */
+    .form-group { margin-bottom: 1rem; }
+    label {
+      display: block; font-weight: 600; font-size: .88rem;
+      margin-bottom: .38rem; color: #3d3421;
+    }
+    input, select {
+      width: 100%; font: inherit; font-size: .9rem; color: var(--text);
+      background: #fff; border: 1px solid rgba(150, 115, 28, .28);
+      border-radius: 10px; padding: .68rem .88rem;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    input:focus, select:focus {
+      outline: none; border-color: rgba(156, 122, 29, .72);
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, .18);
+    }
+    input.error, select.error {
+      border-color: rgba(192, 57, 43, .7);
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, .1);
+    }
+    input::placeholder { color: #9a886a; }
+
+    .check-row {
+      display: flex; align-items: center; gap: .6rem;
+      margin-bottom: 1.25rem; font-size: .88rem;
+    }
+    .check-row input[type="checkbox"] {
+      width: 17px; height: 17px; padding: 0;
+      accent-color: var(--gold); cursor: pointer;
+    }
+    .check-row label { margin: 0; font-weight: 500; color: var(--muted); cursor: pointer; }
+
+    /* Alert */
+    .alert {
+      padding: .75rem 1rem; border-radius: var(--radius-sm);
+      font-size: .88rem; font-weight: 600; margin-bottom: 1rem;
+      display: flex; align-items: flex-start; gap: .6rem;
+    }
+    .alert-error { background: rgba(192, 57, 43, .09); color: var(--danger); border: 1px solid rgba(192, 57, 43, .22); }
+    .alert-success { background: rgba(45, 122, 68, .09); color: var(--success); border: 1px solid rgba(45, 122, 68, .22); }
+
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      width: 100%; padding: .74rem; border-radius: 11px; border: none; cursor: pointer;
+      font: inherit; font-weight: 800; font-size: .95rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      color: #fff; box-shadow: 0 8px 24px rgba(156, 122, 29, .28);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(156, 122, 29, .36); }
+    .btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .back-link {
+      text-align: center; margin-top: 1.1rem;
+      font-size: .88rem; color: var(--muted);
+    }
+    .back-link a { color: var(--gold-deep); font-weight: 700; text-decoration: none; }
+    .back-link a:hover { text-decoration: underline; }
+
+    .divider {
+      display: flex; align-items: center; gap: .8rem;
+      margin: 1.2rem 0; color: #9a886a; font-size: .8rem;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; border-top: 1px solid var(--line);
+    }
+
+    /* Role pills */
+    .role-pills { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .role-pill {
+      flex: 1; min-width: 90px;
+      padding: .55rem .4rem; border: 1px solid var(--line-strong);
+      border-radius: 10px; cursor: pointer; background: #fff;
+      font: inherit; font-size: .82rem; font-weight: 700; color: #4a3e25;
+      text-align: center; transition: background .2s, border-color .2s, color .2s;
+    }
+    .role-pill:hover { background: rgba(201, 162, 39, .1); }
+    .role-pill.selected {
+      background: linear-gradient(135deg, rgba(201, 162, 39, .2), rgba(156, 122, 29, .12));
+      border-color: var(--gold);
+      color: var(--gold-deep);
+    }
+    .role-pill .pill-icon { display: block; font-size: 1.3rem; margin-bottom: .2rem; }
+
+    .field-error { font-size: .78rem; color: var(--danger); margin-top: .28rem; display: none; }
+    .field-error.show { display: block; }
+  </style>
+</head>
+<body>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="login-card">
+    <a class="logo" href="index.html">
+      <span class="logo-badge">NB</span>Night Buy
+    </a>
+
+    <h1>Welcome back</h1>
+    <p class="subtitle">Sign in to your Night Buy account</p>
+
+    <div id="alertBox" class="alert alert-error hidden" role="alert" aria-live="polite"></div>
+
+    <form id="loginForm" novalidate>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input
+          id="email"
+          type="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          aria-required="true"
+          aria-describedby="emailErr"
+        />
+        <span id="emailErr" class="field-error" role="alert">Please enter a valid email address.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Enter your password"
+          aria-required="true"
+          aria-describedby="passErr"
+        />
+        <span id="passErr" class="field-error" role="alert">Password must be at least 6 characters.</span>
+      </div>
+
+      <div class="form-group">
+        <label>Sign in as</label>
+        <div class="role-pills" role="radiogroup" aria-label="Select your role">
+          <button type="button" class="role-pill selected" data-role="Buyer" aria-pressed="true">
+            <span class="pill-icon" aria-hidden="true">🛍️</span>Buyer
+          </button>
+          <button type="button" class="role-pill" data-role="Vendor" aria-pressed="false">
+            <span class="pill-icon" aria-hidden="true">🏪</span>Vendor
+          </button>
+          <button type="button" class="role-pill" data-role="Partner/Affiliate" aria-pressed="false">
+            <span class="pill-icon" aria-hidden="true">🤝</span>Partner
+          </button>
+        </div>
+        <input type="hidden" id="selectedRole" value="Buyer" />
+        <span id="roleErr" class="field-error" role="alert">Please select a role.</span>
+      </div>
+
+      <div class="check-row">
+        <input type="checkbox" id="rememberMe" />
+        <label for="rememberMe">Remember me on this device</label>
+      </div>
+
+      <button class="btn" id="submitBtn" type="submit">
+        <span id="btnText">Sign In</span>
+      </button>
+    </form>
+
+    <p class="back-link">
+      Don't have an account? <a href="index.html#contact">Create Account</a>
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      const SESSION_KEY = 'nb_session';
+
+      function getSession() {
+        try { return JSON.parse(localStorage.getItem(SESSION_KEY)); } catch (_) { return null; }
+      }
+
+      function roleHome(role) {
+        const map = { Buyer: 'dashboard/buyer.html', Vendor: 'dashboard/vendor.html', 'Partner/Affiliate': 'dashboard/commissions.html' };
+        return map[role] || 'dashboard/index.html';
+      }
+
+      // If already logged in, redirect immediately
+      const existing = getSession();
+      if (existing && existing.email) {
+        window.location.replace(roleHome(existing.role));
+        // Prevent rest of script from running while redirect happens
+      }
+
+      // Role pill selection
+      const rolePills = document.querySelectorAll('.role-pill');
+      const selectedRoleInput = document.getElementById('selectedRole');
+
+      rolePills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          rolePills.forEach(p => { p.classList.remove('selected'); p.setAttribute('aria-pressed', 'false'); });
+          pill.classList.add('selected');
+          pill.setAttribute('aria-pressed', 'true');
+          selectedRoleInput.value = pill.dataset.role;
+        });
+      });
+
+      // Validation helpers
+      function isValidEmail(val) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val); }
+      function setFieldError(fieldId, errId, show) {
+        const field = document.getElementById(fieldId);
+        const err = document.getElementById(errId);
+        if (show) { field.classList.add('error'); err.classList.add('show'); }
+        else { field.classList.remove('error'); err.classList.remove('show'); }
+      }
+      function showAlert(msg, type) {
+        const box = document.getElementById('alertBox');
+        box.textContent = msg;
+        box.className = 'alert alert-' + type;
+      }
+      function hideAlert() {
+        const box = document.getElementById('alertBox');
+        box.className = 'alert alert-error hidden';
+      }
+
+      // Form submit
+      document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        hideAlert();
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const role = selectedRoleInput.value;
+        const remember = document.getElementById('rememberMe').checked;
+        const btn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+
+        let valid = true;
+
+        if (!isValidEmail(email)) {
+          setFieldError('email', 'emailErr', true);
+          valid = false;
+        } else {
+          setFieldError('email', 'emailErr', false);
+        }
+
+        if (password.length < 6) {
+          setFieldError('password', 'passErr', true);
+          valid = false;
+        } else {
+          setFieldError('password', 'passErr', false);
+        }
+
+        if (!role) {
+          document.getElementById('roleErr').classList.add('show');
+          valid = false;
+        } else {
+          document.getElementById('roleErr').classList.remove('show');
+        }
+
+        if (!valid) return;
+
+        // Simulate async auth
+        btn.disabled = true;
+        btnText.textContent = 'Signing in…';
+
+        setTimeout(() => {
+          btn.disabled = false;
+          btnText.textContent = 'Sign In';
+
+          // Demo: any valid email/password combination works
+          const session = {
+            email: email,
+            name: email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+            role: role,
+            loggedInAt: Date.now(),
+          };
+
+          if (remember) {
+            localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+          } else {
+            localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+          }
+
+          showAlert('Login successful! Redirecting…', 'success');
+          setTimeout(() => { window.location.replace(roleHome(role)); }, 700);
+        }, 800);
+      });
+
+      // Live validation on blur
+      document.getElementById('email').addEventListener('blur', function () {
+        if (this.value) setFieldError('email', 'emailErr', !isValidEmail(this.value.trim()));
+      });
+      document.getElementById('password').addEventListener('blur', function () {
+        if (this.value) setFieldError('password', 'passErr', this.value.length < 6);
+      });
+    })();
+  </script>
+</body>
+</html>

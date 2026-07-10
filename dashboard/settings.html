@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — Night Buy</title>
+  <meta name="description" content="Manage your Night Buy profile, payout details and notification preferences." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:25;backdrop-filter:blur(2px);"></div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="sidebar-logo" href="../index.html">
+        <span class="logo-badge">NB</span>Night Buy
+      </a>
+      <div class="sidebar-user">
+        <div class="user-name" id="sidebarName">Loading…</div>
+        <span class="user-role" id="sidebarRole">Member</span>
+      </div>
+
+      <span class="nav-section">Overview</span>
+      <a class="nav-item" href="index.html"><span class="nav-icon" aria-hidden="true">🏠</span>Dashboard</a>
+
+      <span class="nav-section">Shop</span>
+      <a class="nav-item" href="buyer.html"><span class="nav-icon" aria-hidden="true">🛍️</span>Buy Deals</a>
+      <a class="nav-item" href="vendor.html"><span class="nav-icon" aria-hidden="true">🏪</span>Vendor Panel</a>
+      <a class="nav-item" href="commissions.html"><span class="nav-icon" aria-hidden="true">💰</span>Commissions</a>
+
+      <span class="nav-section">Account</span>
+      <a class="nav-item active" href="settings.html"><span class="nav-icon" aria-hidden="true">⚙️</span>Settings</a>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer">
+        <div style="font-size:.78rem;color:#9a886a;margin-bottom:.4rem">© 2026 Night Buy</div>
+        <button class="logout-btn js-logout" type="button" aria-label="Log out">
+          <span aria-hidden="true">🚪</span> Log Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰</button>
+        <span class="topbar-title">Settings</span>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main">
+      <div class="page-header">
+        <h1>Account Settings</h1>
+        <p>Manage your profile, payout details and preferences.</p>
+      </div>
+
+      <!-- Success alert (hidden by default) -->
+      <div id="saveAlert" class="alert alert-success hidden" role="alert" aria-live="polite">
+        ✅ Settings saved successfully!
+      </div>
+
+      <!-- Profile section -->
+      <div class="card mb-3">
+        <h2 style="font-size:1rem;font-weight:800;margin-bottom:1rem">👤 Profile Information</h2>
+        <form id="profileForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="profileFirstName">First Name</label>
+              <input class="form-control" id="profileFirstName" type="text" placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label for="profileLastName">Last Name</label>
+              <input class="form-control" id="profileLastName" type="text" placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="profileEmail">Email Address</label>
+            <input class="form-control" id="profileEmail" type="email" placeholder="jane@example.com" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="profilePhone">Phone Number</label>
+              <input class="form-control" id="profilePhone" type="tel" placeholder="+44 7700 900 000" />
+            </div>
+            <div class="form-group">
+              <label for="profileCity">City</label>
+              <input class="form-control" id="profileCity" type="text" placeholder="London" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="profileRole">Account Role</label>
+            <input class="form-control" id="profileRole" type="text" readonly style="background:#faf5e8;cursor:default" aria-readonly="true" />
+          </div>
+          <button class="btn btn-primary" type="submit" style="margin-top:.3rem">Save Profile</button>
+        </form>
+      </div>
+
+      <!-- Payout / Bank Details -->
+      <div class="card mb-3">
+        <h2 style="font-size:1rem;font-weight:800;margin-bottom:1rem">💳 Payout Details</h2>
+        <form id="payoutForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bankName">Bank / Provider</label>
+              <select class="form-control" id="bankName">
+                <option value="">Select…</option>
+                <option>Barclays</option>
+                <option>HSBC</option>
+                <option>NatWest</option>
+                <option>Monzo</option>
+                <option>Starling Bank</option>
+                <option>Lloyds</option>
+                <option>PayPal</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="accountName">Account Name</label>
+              <input class="form-control" id="accountName" type="text" placeholder="Jane Doe" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sortCode">Sort Code</label>
+              <input class="form-control" id="sortCode" type="text" placeholder="00-00-00" maxlength="8" />
+            </div>
+            <div class="form-group">
+              <label for="accountNumber">Account Number</label>
+              <input class="form-control" id="accountNumber" type="text" placeholder="12345678" maxlength="8" />
+            </div>
+          </div>
+          <div style="font-size:.82rem;color:var(--muted);margin-bottom:1rem">
+            🔒 Your bank details are stored securely and only used for payouts. This is a demo — no real data is transmitted.
+          </div>
+          <button class="btn btn-primary" type="submit">Save Payout Details</button>
+        </form>
+      </div>
+
+      <!-- Notification Preferences -->
+      <div class="card mb-3">
+        <h2 style="font-size:1rem;font-weight:800;margin-bottom:.8rem">🔔 Notification Preferences</h2>
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem">Choose what you'd like to be notified about.</p>
+
+        <div>
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label">Flash Auction Alerts</div>
+              <div class="toggle-sub">Get notified when a flash auction starts near you</div>
+            </div>
+            <label class="switch" aria-label="Flash Auction Alerts toggle">
+              <input type="checkbox" id="notifFlash" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label">New Deals in Your Area</div>
+              <div class="toggle-sub">Daily digest of available deals</div>
+            </div>
+            <label class="switch" aria-label="New Deals in Your Area toggle">
+              <input type="checkbox" id="notifDeals" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label">Order Confirmations</div>
+              <div class="toggle-sub">Email confirmation when an order is placed</div>
+            </div>
+            <label class="switch" aria-label="Order Confirmations toggle">
+              <input type="checkbox" id="notifOrders" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label">Commission Updates</div>
+              <div class="toggle-sub">Notify me when I earn a commission</div>
+            </div>
+            <label class="switch" aria-label="Commission Updates toggle">
+              <input type="checkbox" id="notifComms" />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label">Marketing & Promotions</div>
+              <div class="toggle-sub">Night Buy news and special campaigns</div>
+            </div>
+            <label class="switch" aria-label="Marketing and Promotions toggle">
+              <input type="checkbox" id="notifMarketing" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary" id="saveNotifBtn" type="button" style="margin-top:1rem">
+          Save Preferences
+        </button>
+      </div>
+
+      <!-- Danger zone -->
+      <div class="card" style="border-color:rgba(192,57,43,.25)">
+        <h2 style="font-size:1rem;font-weight:800;margin-bottom:.5rem;color:var(--danger)">⚠️ Account Actions</h2>
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem">These actions are irreversible in a production environment.</p>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+          <button class="btn btn-danger btn-sm js-logout" type="button">🚪 Log Out</button>
+          <button class="btn btn-danger btn-sm" id="deleteAccountBtn" type="button">🗑️ Delete Account (Demo)</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      const session = NB.requireAuth(null);
+      if (!session) return;
+
+      NB.populateSidebar(session);
+
+      // Mobile sidebar — handled by app.js
+
+      // Pre-fill profile from session
+      const nameParts = (session.name || '').split(' ');
+      document.getElementById('profileFirstName').value = nameParts[0] || '';
+      document.getElementById('profileLastName').value = nameParts.slice(1).join(' ') || '';
+      document.getElementById('profileEmail').value = session.email || '';
+      document.getElementById('profileRole').value = session.role || '';
+
+      function showSaveAlert() {
+        const el = document.getElementById('saveAlert');
+        el.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => el.classList.add('hidden'), 3500);
+      }
+
+      // Profile form save
+      document.getElementById('profileForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = document.getElementById('profileEmail').value.trim();
+        if (email) {
+          const updated = { ...session, email, name: [document.getElementById('profileFirstName').value, document.getElementById('profileLastName').value].join(' ').trim() || session.name };
+          NB.setSession(updated);
+          NB.populateSidebar(updated);
+        }
+        showSaveAlert();
+      });
+
+      // Payout form save
+      document.getElementById('payoutForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        showSaveAlert();
+      });
+
+      // Notification save
+      document.getElementById('saveNotifBtn').addEventListener('click', function () {
+        showSaveAlert();
+      });
+
+      // Delete account (demo only)
+      document.getElementById('deleteAccountBtn').addEventListener('click', function () {
+        if (confirm('Demo: This would delete your account. Logging you out instead.')) {
+          NB.logout();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
