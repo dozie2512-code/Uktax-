@@ -1,9 +1,9 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Night Buy</title>
+  <title>NightFlip – AI-Powered Smart Clearance</title>
   <style>
     :root {
       --brand: #c58b13;
@@ -18,6 +18,8 @@
       --err: #b3261e;
       --shadow: 0 10px 24px rgba(58, 43, 17, 0.1);
       --radius: 14px;
+      --green: #10b981;
+      --green-light: rgba(16, 185, 129, 0.1);
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; font-family: Inter, "Segoe UI", Arial, sans-serif; color: var(--ink); background: linear-gradient(180deg, #fff6e3 0%, #fffdf7 35%); }
@@ -36,6 +38,7 @@
     .btn-primary { background: linear-gradient(135deg, #d79e27, #b67b0e); color: #fff; box-shadow: var(--shadow); }
     .btn-outline { border: 1px solid var(--line-strong); background: #fff; color: var(--ink); }
     .btn-danger { background: #b3261e; color: #fff; }
+    .btn-success { background: var(--green); color: #fff; }
 
     #view-home { padding-bottom: 3rem; }
     .hero { padding: 3.2rem 0 2.4rem; display: grid; grid-template-columns: 1.1fr .9fr; gap: 1.2rem; align-items: center; }
@@ -82,7 +85,7 @@
     .btn-logout { border: 1px solid var(--line-strong); border-radius: 9px; background: #fff; padding: .46rem .6rem; font-weight: 700; cursor: pointer; }
 
     .dash-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-    .topbar { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--line); background: rgba(255, 251, 242, .96); min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: .9rem; padding: .72rem 1rem; }
+    .topbar { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--line); background: rgba(255, 251, 242, .96); min-height: 62px; display: flex; align-items: center; justify-content: space-between; padding: 0 .95rem; }
     #sidebar-toggle { display: none; }
     .topbar-user { display: inline-flex; align-items: center; gap: .5rem; }
     .user-badge { width: 24px; height: 24px; border-radius: 999px; display: inline-grid; place-items: center; font-size: .72rem; color: #fff; background: #8e620e; }
@@ -96,16 +99,23 @@
     .cart-bar { justify-content: space-between; }
     .cart-count { display: inline-block; min-width: 26px; text-align: center; background: rgba(197, 139, 19, .12); border-radius: 20px; padding: .14rem .4rem; }
     .products-grid { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-    .product-card { border: 1px solid var(--line); border-radius: 12px; background: #fff; overflow: hidden; display: flex; flex-direction: column; }
+    .product-card { border: 1px solid var(--line); border-radius: 12px; background: #fff; overflow: hidden; display: flex; flex-direction: column; position: relative; }
     .product-card-img { height: 110px; display: grid; place-items: center; font-size: 2rem; background: linear-gradient(135deg, #ffe7b5, #f6d48d); }
     .product-card-body { padding: .68rem; flex: 1; }
     .product-card-body h4 { margin: .3rem 0 .35rem; font-size: .92rem; }
-    .product-card-tag { display: inline-flex; font-size: .68rem; font-weight: 700; background: rgba(197, 139, 19, .12); color: #7a530a; border: 1px solid rgba(197, 139, 19, .2); border-radius: 999px; padding: .18rem .5rem; }
+    .product-card-tag { display: inline-flex; font-size: .68rem; font-weight: 700; background: rgba(197, 139, 19, .12); color: #7a530a; border: 1px solid rgba(197, 139, 19, .2); border-radius: 999px; padding: .2rem .45rem; margin-bottom: .4rem; }
     .product-price { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; }
     .price-now { font-weight: 800; }
     .price-was { font-size: .75rem; color: var(--muted); text-decoration: line-through; }
     .price-disc { font-size: .72rem; font-weight: 800; color: #2e7d32; }
     .product-card-actions { padding: .65rem; border-top: 1px solid var(--line); }
+    .ai-badge { position: absolute; top: .4rem; right: .4rem; background: rgba(16, 185, 129, 0.9); color: #fff; font-size: .65rem; padding: .2rem .35rem; border-radius: 4px; font-weight: 700; }
+    .countdown { font-size: .7rem; color: #d97706; font-weight: 700; }
+    .price-update-anim { animation: pulse .6s ease; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+    .progress-bar { width: 100%; height: 6px; background: #e5e7eb; border-radius: 999px; overflow: hidden; margin: .3rem 0; }
+    .progress-fill { height: 100%; background: var(--green); border-radius: 999px; transition: width .3s ease; }
 
     .data-table { width: 100%; border-collapse: collapse; min-width: 600px; }
     .data-table th, .data-table td { text-align: left; padding: .56rem; border-bottom: 1px solid var(--line); font-size: .82rem; }
@@ -137,6 +147,12 @@
 
     .route-notice { margin-bottom: .5rem; }
 
+    .green-score { background: var(--green-light); border: 1px solid var(--green); color: var(--green); padding: .5rem .7rem; border-radius: 10px; font-size: .82rem; font-weight: 700; margin: .5rem 0; }
+    .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin: .8rem 0; }
+    .analytics-card { background: #f9fafb; border: 1px solid var(--line); border-radius: 10px; padding: .7rem; font-size: .82rem; }
+    .analytics-label { color: var(--muted); font-weight: 700; }
+    .analytics-value { font-size: 1.15rem; font-weight: 800; color: var(--brand); margin: .3rem 0; }
+
     @media (max-width: 980px) {
       .hero, .stats-grid, .settings-grid { grid-template-columns: 1fr; }
       .sidebar { position: fixed; z-index: 30; left: -260px; top: 0; bottom: 0; transition: .2s; }
@@ -150,7 +166,7 @@
 <body>
   <header id="landing-nav" class="landing-nav" role="banner" style="display:none">
     <div class="landing-nav-inner container">
-      <a class="brand" href="#home"><span class="badge" aria-hidden="true">NB</span><span>Night Buy</span></a>
+      <a class="brand" href="#home"><span class="badge" aria-hidden="true">NF</span><span>NightFlip</span></a>
       <button id="menuBtn" class="btn-sm btn-outline" type="button" aria-label="Toggle menu">Menu</button>
       <nav id="navLinks" class="nav-links" aria-label="Primary navigation">
         <a href="#home">Home</a>
@@ -161,42 +177,43 @@
   </header>
 
   <main>
-    <section id="view-home" style="display:none" aria-label="Night Buy home">
+    <section id="view-home" style="display:none" aria-label="NightFlip home">
       <div class="container">
         <section class="hero reveal">
           <article class="hero-card">
-            <h1>Save food. Save money. Shop smarter at night.</h1>
-            <p>Night Buy connects buyers with discounted surplus food from local vendors in a fast, role-based marketplace.</p>
+            <h1>🤖 AI-Powered Smart Clearance. Save food. Save money. Save the planet.</h1>
+            <p>NightFlip uses AI to predict unsold inventory and automatically create the best deals. Shop rescued food from local vendors at up to 80% off. Every purchase prevents waste.</p>
             <div class="hero-cta">
               <a href="#login" class="btn btn-primary">Get Started</a>
               <a href="#login" class="btn btn-outline">Sign In</a>
             </div>
           </article>
           <article class="hero-card">
-            <h3 style="margin-top:0">How it works</h3>
+            <h3 style="margin-top:0">How NightFlip Works</h3>
             <ol style="padding-left:1.1rem;margin:.3rem 0 0;line-height:1.55;color:var(--muted)">
-              <li>Choose your role: Buyer, Vendor, or Partner/Affiliate.</li>
-              <li>Explore role-specific tools and dashboards.</li>
-              <li>Track deals, sales, and commissions in one place.</li>
+              <li><strong>AI Predicts.</strong> Our system identifies unsold inventory before closing.</li>
+              <li><strong>Auto-Discounts.</strong> Dynamic pricing adjusts to maximize vendor revenue + waste prevention.</li>
+              <li><strong>Smart Deals.</strong> Buyers get flash auctions, mystery boxes & group buying perks.</li>
+              <li><strong>Track Impact.</strong> Earn Green Points, vendors earn Waste-Prevention Scores.</li>
             </ol>
           </article>
         </section>
 
         <section class="stats-grid reveal" aria-label="Platform snapshot">
-          <article class="metric-card"><div class="metric-label">Deals Tonight</div><div class="metric-value count" data-target="142">0</div><div class="metric-sub">Live and updating</div></article>
-          <article class="metric-card"><div class="metric-label">Active Vendors</div><div class="metric-value count" data-target="38">0</div><div class="metric-sub">Across the city</div></article>
-          <article class="metric-card"><div class="metric-label">Orders Fulfilled</div><div class="metric-value count" data-target="945">0</div><div class="metric-sub">This week</div></article>
-          <article class="metric-card"><div class="metric-label">Waste Avoided (kg)</div><div class="metric-value count" data-target="2100">0</div><div class="metric-sub">Community impact</div></article>
+          <article class="metric-card"><div class="metric-label">AI Clearances Tonight</div><div class="metric-value count" data-target="142">0</div><div class="metric-sub">Auto-priced in real-time</div></article>
+          <article class="metric-card"><div class="metric-label">Active Vendors</div><div class="metric-value count" data-target="38">0</div><div class="metric-sub">Using NightFlip AI</div></article>
+          <article class="metric-card"><div class="metric-label">Waste Prevented (kg)</div><div class="metric-value count" data-target="2100">0</div><div class="metric-sub">This week 🌍</div></article>
+          <article class="metric-card"><div class="metric-label">Green Points Given</div><div class="metric-value count" data-target="945">0</div><div class="metric-sub">To eco-conscious buyers</div></article>
         </section>
 
         <section class="panel reveal">
-          <h3 style="margin-top:0">Need help getting started?</h3>
+          <h3 style="margin-top:0">Ready to join the smart clearance revolution?</h3>
           <form id="contact-form" class="dash-form" novalidate>
             <div class="form-row">
               <div class="form-group"><label for="c-name">Name *</label><input id="c-name" type="text" required /></div>
               <div class="form-group"><label for="c-email">Email *</label><input id="c-email" type="email" required /></div>
             </div>
-            <div class="form-group"><label for="c-role">Interested role *</label><select id="c-role" required><option value="">Select</option><option value="Buyer">Buyer</option><option value="Vendor">Vendor</option><option value="Partner/Affiliate">Partner/Affiliate</option></select></div>
+            <div class="form-group"><label for="c-role">Your role *</label><select id="c-role" required><option value="">Select</option><option value="Buyer">Buyer (Find Deals)</option><option value="Vendor">Vendor (Use AI Pricing)</option><option value="Partner">Partner/Affiliate (Earn Commissions)</option></select></div>
             <button class="btn-sm btn-primary" type="submit">Send</button>
             <p id="c-form-msg" class="login-sub" role="status"></p>
           </form>
@@ -223,7 +240,7 @@
   </main>
 
   <footer id="main-footer" class="main-footer" style="display:none">
-    <div class="container">© <span id="year"></span> Night Buy. Built for a sustainable food ecosystem.</div>
+    <div class="container">© <span id="year"></span> NightFlip. AI-powered smart clearance for a sustainable future. 🌍</div>
   </footer>
 
   <script>
@@ -241,52 +258,52 @@
 
     var NAV_ITEMS = [
       { route: 'dashboard', icon: '🏠', label: 'Overview' },
-      { route: 'buyer', icon: '🛒', label: 'Buy Deals' },
-      { route: 'vendor', icon: '📦', label: 'Vendor' },
+      { route: 'buyer', icon: '🛒', label: 'Smart Deals' },
+      { route: 'vendor', icon: '🤖', label: 'AI Pricing' },
       { route: 'commissions', icon: '💰', label: 'Commissions' },
       { route: 'settings', icon: '⚙️', label: 'Settings' }
     ];
 
     var PAGE_TITLES = {
       dashboard: 'Dashboard Overview',
-      buyer: 'Browse Deals',
-      vendor: 'Vendor Dashboard',
+      buyer: 'AI-Powered Smart Deals',
+      vendor: 'AI Pricing Dashboard',
       commissions: 'Commissions & Referrals',
       settings: 'Account Settings'
     };
 
     var PRODUCTS = [
-      { id:1, name:'Artisan Bread Bundle', cat:'Bakery', price:5.99, orig:14.50, disc:59, tag:'Flash Auction', emoji:'🍞' },
-      { id:2, name:'Organic Salad Mix', cat:'Produce', price:3.49, orig:7.99, disc:56, tag:'Deal', emoji:'🥗' },
-      { id:3, name:"Butcher's Box", cat:'Meat', price:12.99, orig:34.00, disc:62, tag:'Deal', emoji:'🥩' },
-      { id:4, name:'Sushi Surplus Pack', cat:'Asian', price:8.49, orig:26.99, disc:69, tag:'Flash Auction', emoji:'🍱' },
-      { id:5, name:'Mystery Veg Bundle', cat:'Produce', price:4.49, orig:9.80, disc:54, tag:'Mystery Bundle', emoji:'🎁' },
-      { id:6, name:'Bakery Pastry Box', cat:'Bakery', price:6.99, orig:18.00, disc:61, tag:'Deal', emoji:'🥐' },
-      { id:7, name:'Deli Cheese Selection', cat:'Deli', price:9.49, orig:22.50, disc:58, tag:'Deal', emoji:'🧀' },
-      { id:8, name:'Seafood Night Box', cat:'Seafood', price:14.99, orig:38.00, disc:61, tag:'Flash Auction', emoji:'🦞' },
-      { id:9, name:'Mystery Bakery Surprise', cat:'Bakery', price:3.99, orig:12.00, disc:67, tag:'Mystery Bundle', emoji:'🎁' },
-      { id:10, name:'Farm Fresh Eggs (30)', cat:'Dairy', price:5.49, orig:9.99, disc:45, tag:'Deal', emoji:'🥚' },
-      { id:11, name:'Smoked Salmon Ends', cat:'Seafood', price:7.49, orig:16.00, disc:53, tag:'Deal', emoji:'🐟' },
-      { id:12, name:'Asian Noodle Boxes', cat:'Asian', price:4.99, orig:13.50, disc:63, tag:'Flash Auction', emoji:'🍜' }
+      { id:1, name:'Artisan Bread Bundle', cat:'Bakery', price:5.99, orig:14.50, disc:59, tag:'Flash Auction', emoji:'🍞', aiScore:92 },
+      { id:2, name:'Organic Salad Mix', cat:'Produce', price:3.49, orig:7.99, disc:56, tag:'Deal', emoji:'🥗', aiScore:85 },
+      { id:3, name:"Butcher's Box", cat:'Meat', price:12.99, orig:34.00, disc:62, tag:'Deal', emoji:'🥩', aiScore:88 },
+      { id:4, name:'Sushi Surplus Pack', cat:'Asian', price:8.49, orig:26.99, disc:69, tag:'Flash Auction', emoji:'🍱', aiScore:95 },
+      { id:5, name:'Mystery Veg Bundle', cat:'Produce', price:4.49, orig:9.80, disc:54, tag:'Mystery Bundle', emoji:'🎁', aiScore:78 },
+      { id:6, name:'Bakery Pastry Box', cat:'Bakery', price:6.99, orig:18.00, disc:61, tag:'Deal', emoji:'🥐', aiScore:89 },
+      { id:7, name:'Deli Cheese Selection', cat:'Deli', price:9.49, orig:22.50, disc:58, tag:'Deal', emoji:'🧀', aiScore:82 },
+      { id:8, name:'Seafood Night Box', cat:'Seafood', price:14.99, orig:38.00, disc:61, tag:'Flash Auction', emoji:'🦞', aiScore:91 },
+      { id:9, name:'Mystery Bakery Surprise', cat:'Bakery', price:3.99, orig:12.00, disc:67, tag:'Mystery Bundle', emoji:'🎁', aiScore:76 },
+      { id:10, name:'Farm Fresh Eggs (30)', cat:'Dairy', price:5.49, orig:9.99, disc:45, tag:'Deal', emoji:'🥚', aiScore:80 },
+      { id:11, name:'Smoked Salmon Ends', cat:'Seafood', price:7.49, orig:16.00, disc:53, tag:'Deal', emoji:'🐟', aiScore:84 },
+      { id:12, name:'Asian Noodle Boxes', cat:'Asian', price:4.99, orig:13.50, disc:63, tag:'Flash Auction', emoji:'🍜', aiScore:93 }
     ];
 
     var INVENTORY = [
-      { id:1, name:'Croissants (12-pack)', cat:'Bakery', status:'active', qty:24, price:8.99 },
-      { id:2, name:'Organic Sourdough Loaves', cat:'Bakery', status:'active', qty:12, price:5.99 },
-      { id:3, name:'Mixed Pastry Box', cat:'Bakery', status:'pending', qty:6, price:6.49 },
-      { id:4, name:'Smoked Salmon Trims', cat:'Seafood', status:'active', qty:18, price:9.49 },
-      { id:5, name:'Herb-Roast Chicken', cat:'Meat', status:'sold', qty:0, price:11.99 },
-      { id:6, name:'Cheese & Chutney Gift', cat:'Deli', status:'draft', qty:4, price:14.99 },
-      { id:7, name:'Greek Salad Kit', cat:'Produce', status:'active', qty:20, price:4.49 },
-      { id:8, name:'Sushi Platter (12pc)', cat:'Asian', status:'expired', qty:0, price:12.99 }
+      { id:1, name:'Croissants (12-pack)', cat:'Bakery', status:'active', qty:24, price:8.99, wasteScore:24 },
+      { id:2, name:'Organic Sourdough Loaves', cat:'Bakery', status:'active', qty:12, price:5.99, wasteScore:18 },
+      { id:3, name:'Mixed Pastry Box', cat:'Bakery', status:'pending', qty:6, price:6.49, wasteScore:12 },
+      { id:4, name:'Smoked Salmon Trims', cat:'Seafood', status:'active', qty:18, price:9.49, wasteScore:22 },
+      { id:5, name:'Herb-Roast Chicken', cat:'Meat', status:'sold', qty:0, price:11.99, wasteScore:0 },
+      { id:6, name:'Cheese & Chutney Gift', cat:'Deli', status:'draft', qty:4, price:14.99, wasteScore:8 },
+      { id:7, name:'Greek Salad Kit', cat:'Produce', status:'active', qty:20, price:4.49, wasteScore:30 },
+      { id:8, name:'Sushi Platter (12pc)', cat:'Asian', status:'expired', qty:0, price:12.99, wasteScore:0 }
     ];
 
     var ORDERS = [
-      { id:'ORD-1041', item:'Croissants (12-pack)', buyer:'sarah.m', total:'£17.98', status:'processing', date:'Today 21:14' },
-      { id:'ORD-1040', item:'Organic Sourdough Loaves', buyer:'tom.k', total:'£11.98', status:'processing', date:'Today 20:58' },
-      { id:'ORD-1039', item:'Smoked Salmon Trims', buyer:'lisa.j', total:'£9.49', status:'paid', date:'Today 20:12' },
-      { id:'ORD-1038', item:'Greek Salad Kit', buyer:'alex.b', total:'£8.98', status:'paid', date:'Today 19:45' },
-      { id:'ORD-1037', item:'Herb-Roast Chicken', buyer:'mike.o', total:'£23.98', status:'paid', date:'Today 18:30' }
+      { id:'ORD-1041', item:'Croissants (12-pack)', buyer:'sarah.m', total:'£17.98', status:'processing', date:'Today 21:14', greenPoints:6 },
+      { id:'ORD-1040', item:'Organic Sourdough Loaves', buyer:'tom.k', total:'£11.98', status:'processing', date:'Today 20:58', greenPoints:4 },
+      { id:'ORD-1039', item:'Smoked Salmon Trims', buyer:'lisa.j', total:'£9.49', status:'paid', date:'Today 20:12', greenPoints:5 },
+      { id:'ORD-1038', item:'Greek Salad Kit', buyer:'alex.b', total:'£8.98', status:'paid', date:'Today 19:45', greenPoints:7 },
+      { id:'ORD-1037', item:'Herb-Roast Chicken', buyer:'mike.o', total:'£23.98', status:'paid', date:'Today 18:30', greenPoints:8 }
     ];
 
     var LEDGER = [
@@ -300,6 +317,8 @@
     ];
 
     var cart = {};
+    var greenPoints = 47;
+    var flashAuctionCountdowns = {};
 
     function getSession() {
       try { return JSON.parse(localStorage.getItem(AUTH_KEY)); } catch (e) { return null; }
@@ -330,6 +349,11 @@
       clearSession();
       setFlash('You have been signed out successfully.');
       navigate('login');
+    }
+
+    function getAIPricedPrice(p) {
+      var timeDecay = Math.random() * 0.15;
+      return Math.max(p.orig * 0.2, p.price - (p.price * timeDecay));
     }
 
     window.NB = { navigate: navigate, logout: logout };
@@ -391,19 +415,19 @@
       document.getElementById('view-login').innerHTML =
         '<div class="login-page">' +
           '<div class="login-card">' +
-            '<a href="#home" class="login-logo"><span class="login-logo-badge">NB</span>Night Buy</a>' +
+            '<a href="#home" class="login-logo"><span class="login-logo-badge">NF</span>NightFlip</a>' +
             '<h2 style="margin:.25rem 0">Welcome back</h2>' +
-            '<p class="login-sub">Sign in to your Night Buy account</p>' +
+            '<p class="login-sub">Sign in to your NightFlip account</p>' +
             '<form class="login-form" id="login-form" novalidate>' +
               '<div class="form-group"><label for="login-email">Email address</label><input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email" /></div>' +
               '<div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" name="password" placeholder="min 4 characters" autocomplete="current-password" /></div>' +
-              '<div class="form-group"><label for="login-role">Sign in as</label><select id="login-role" name="role"><option value="">Select your role</option><option value="buyer">Buyer</option><option value="vendor">Vendor</option><option value="affiliate">Partner / Affiliate</option></select></div>' +
+              '<div class="form-group"><label for="login-role">Sign in as</label><select id="login-role" name="role"><option value="">Select your role</option><option value="buyer">Buyer (Find Deals)</option><option value="vendor">Vendor (AI Pricing)</option><option value="affiliate">Affiliate Partner</option></select></div>' +
               '<label class="login-remember"><input type="checkbox" id="login-remember" />Remember me</label>' +
               '<div id="login-error" style="display:none" role="alert"></div>' +
               '<div id="login-success" style="display:none" role="status"></div>' +
               '<button type="submit" class="login-submit">Sign In</button>' +
             '</form>' +
-            '<a href="#home" class="login-back">← Back to Night Buy</a>' +
+            '<a href="#home" class="login-back">← Back to NightFlip</a>' +
           '</div>' +
         '</div>';
 
@@ -476,7 +500,7 @@
 
       var sidebar = document.getElementById('sidebar');
       sidebar.innerHTML =
-        '<div class="sidebar-header"><a href="#home" class="sidebar-logo"><span class="sidebar-logo-badge">NB</span>Night Buy</a></div>' +
+        '<div class="sidebar-header"><a href="#home" class="sidebar-logo"><span class="sidebar-logo-badge">NF</span>NightFlip</a></div>' +
         '<nav class="sidebar-nav" aria-label="Dashboard navigation">' + navHtml + '</nav>' +
         '<div class="sidebar-footer"><div class="sidebar-user-email" title="' + esc(session.email) + '">' + esc(session.email) + '</div><button class="btn-logout" onclick="NB.logout()">Sign Out</button></div>';
 
@@ -543,24 +567,24 @@
     function getDashboardHtml(session) {
       var role = (session.role || '').toLowerCase();
       var ctaMap = {
-        buyer: '<a href="#buyer" class="btn-sm btn-primary">Browse Deals →</a>',
-        vendor: '<a href="#vendor" class="btn-sm btn-primary">My Inventory →</a>',
+        buyer: '<a href="#buyer" class="btn-sm btn-primary">Browse Smart Deals →</a>',
+        vendor: '<a href="#vendor" class="btn-sm btn-primary">AI Pricing Dashboard →</a>',
         affiliate: '<a href="#commissions" class="btn-sm btn-primary">My Commissions →</a>',
         partner: '<a href="#commissions" class="btn-sm btn-primary">My Commissions →</a>'
       };
-      var cta = ctaMap[role] || '<a href="#buyer" class="btn-sm btn-primary">Explore Deals →</a>';
+      var cta = ctaMap[role] || '<a href="#buyer" class="btn-sm btn-primary">Explore Smart Deals →</a>';
 
       return '<div class="stats-grid">' +
-          metricCard('Today\'s Deals', '142', '↑ 12 new this hour') +
-          metricCard('Active Vendors', '38', '3 online now') +
+          metricCard('AI Clearances', '142', '↑ 12 new this hour') +
+          metricCard('Active Vendors', '38', 'Using AI Pricing') +
           metricCard('Live Auctions', '7', 'Ending soon') +
-          metricCard('Waste Saved', '2.1 t', 'This week 🌍') +
+          metricCard('Waste Prevented', '2.1 t', 'This week 🌍') +
         '</div>' +
         '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.8rem">' +
-          '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Welcome back, ' + esc(session.name || 'there') + '! 👋</h3><p style="font-size:.88rem;color:var(--muted);margin:.2rem 0 .8rem">You\'re signed in as <strong>' + esc(session.role) + '</strong>.</p>' + cta + '</div>' +
-          '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Quick Links</h3><div style="display:flex;gap:.45rem;flex-wrap:wrap"><a href="#settings" class="btn-sm btn-outline">Account Settings</a><a href="#dashboard" class="btn-sm btn-outline">Overview</a><a href="#home" class="btn-sm btn-outline">Landing</a></div></div>' +
+          '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Welcome back, ' + esc(session.name || 'there') + '! 👋</h3><p style="font-size:.88rem;color:var(--muted);margin:.2rem 0 .8rem">You\'re ' + esc(role) + ' on NightFlip. ' + (role === 'buyer' ? 'Your Green Points: ' + greenPoints : 'AI is optimizing your prices in real-time.') + '</p>' + cta + '</div>' +
+          '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Quick Links</h3><div style="display:flex;gap:.45rem;flex-wrap:wrap"><a href="#settings" class="btn-sm btn-outline">Account Settings</a><a href="#login" class="btn-sm btn-outline">Help & Support</a></div></div>' +
         '</div>' +
-        '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Recent Platform Activity</h3><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Time</th><th>Event</th><th>Category</th><th>Value</th></tr></thead><tbody><tr><td>2 min ago</td><td>Flash auction started</td><td>Bakery</td><td>£4.99</td></tr><tr><td>8 min ago</td><td>Mystery bundle claimed</td><td>Deli</td><td>£11.99</td></tr><tr><td>15 min ago</td><td>New vendor listing</td><td>Produce</td><td>£3.49</td></tr><tr><td>24 min ago</td><td>Group buy completed</td><td>Seafood</td><td>£24.00</td></tr></tbody></table></div></div>';
+        '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Platform Activity</h3><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Event</th><th>Details</th><th>Impact</th><th>Time</th></tr></thead><tbody><tr><td>AI Price Update</td><td>Sushi Surplus Pack</td><td><span class="badge badge-active">Live</span></td><td>21:45</td></tr><tr><td>Flash Auction Starting</td><td>Seafood Night Box (7 min left)</td><td><span class="badge badge-pending">Active</span></td><td>21:40</td></tr><tr><td>Waste Score Generated</td><td>Bakery Hub: 45 kg prevented</td><td><span class="badge badge-active">Complete</span></td><td>20:30</td></tr></tbody></table></div></div>';
     }
 
     function metricCard(label, value, sub) {
@@ -572,22 +596,23 @@
       var catOpts = cats.map(function (c) { return '<option value="' + c + '">' + c + '</option>'; }).join('');
       var allCards = PRODUCTS.map(function (p) { return productCardHtml(p); }).join('');
       var flashCards = PRODUCTS.filter(function (p) { return p.tag === 'Flash Auction'; }).map(function (p) {
-        return '<div class="product-card"><div class="product-card-img">' + p.emoji + '</div><div class="product-card-body"><span class="product-card-tag">⏱ Flash Auction</span><h4>' + esc(p.name) + '</h4><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-was">£' + p.orig.toFixed(2) + '</span><span class="price-disc">–' + p.disc + '%</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '">Add to Cart</button></div></div>';
+        return '<div class="product-card"><div class="product-card-img">' + p.emoji + '</div><span class="ai-badge">AI: ' + p.aiScore + '%</span><div class="product-card-body"><span class="product-card-tag">⏱ Flash Auction</span><h4>' + esc(p.name) + '</h4><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-was">£' + p.orig.toFixed(2) + '</span><span class="price-disc">' + p.disc + '% off</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '" style="width:100%">Add to Cart</button></div></div>';
       }).join('');
       var mysteryCards = PRODUCTS.filter(function (p) { return p.tag === 'Mystery Bundle'; }).map(function (p) {
-        return '<div class="product-card"><div class="product-card-img" style="background:linear-gradient(135deg,#e8d5f5,#c9a4e8)">' + p.emoji + '</div><div class="product-card-body"><span class="product-card-tag" style="background:rgba(147,51,234,.1);color:#6b21a8;border-color:rgba(147,51,234,.28)">🎁 Mystery Bundle</span><h4>' + esc(p.name) + '</h4><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-was">£' + p.orig.toFixed(2) + '</span><span class="price-disc">–' + p.disc + '%</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '">Claim Bundle</button></div></div>';
+        var boxValue = (p.orig * 1.2).toFixed(2);
+        return '<div class="product-card"><div class="product-card-img" style="background:linear-gradient(135deg,#e8d5f5,#c9a4e8)">' + p.emoji + '</div><span class="ai-badge">Mystery 🎁</span><div class="product-card-body"><span class="product-card-tag">📦 Mystery Bundle</span><h4>' + esc(p.name) + '</h4><p style="font-size:.76rem;color:var(--muted);margin:.3rem 0">Typical value: £' + boxValue + '</p><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-disc">Save ' + p.disc + '%</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '" style="width:100%">Unlock Mystery</button></div></div>';
       }).join('');
 
-      return '<div class="cart-bar"><span>🛒 Cart: <span id="cart-count" class="cart-count">0</span> items</span><span>Total: <strong id="cart-total">£0.00</strong></span><button class="btn-sm btn-primary" id="checkout-btn" disabled style="opacity:.5;cursor:not-allowed">Checkout</button></div>' +
-        '<div class="filter-bar"><input type="search" id="search-input" placeholder="Search deals…" aria-label="Search deals" style="flex:1;min-width:150px" /><select id="cat-filter" aria-label="Filter by category">' + catOpts + '</select><select id="tag-filter" aria-label="Filter by type"><option value="All">All types</option><option value="Deal">Deals</option><option value="Flash Auction">Flash Auctions</option><option value="Mystery Bundle">Mystery Bundles</option></select></div>' +
+      return '<div class="cart-bar"><span>🛒 Cart: <span id="cart-count" class="cart-count">0</span> items</span><span>💚 Green Points: <strong id="green-pts">' + greenPoints + '</strong></span><span>Total: <strong id="cart-total">£0.00</strong></span><button id="checkout-btn" class="btn-sm btn-success">Checkout</button></div>' +
+        '<div class="filter-bar"><input type="search" id="search-input" placeholder="Search AI deals…" aria-label="Search deals" style="flex:1;min-width:150px" /><select id="cat-filter" aria-label="Filter by category" style="min-width:120px"><option value="All">All Categories</option>' + catOpts + '</select><select id="tag-filter" aria-label="Filter by type" style="min-width:120px"><option value="All">All Types</option><option value="Deal">Regular Deal</option><option value="Flash Auction">Flash Auction</option><option value="Mystery Bundle">Mystery Bundle</option></select></div>' +
         '<div id="products-grid" class="products-grid">' + allCards + '</div>' +
-        '<p id="no-results" style="display:none;color:var(--muted);text-align:center;padding:1.2rem;font-weight:600">No deals match your search.</p>' +
+        '<p id="no-results" style="display:none;color:var(--muted);text-align:center;padding:1.2rem;font-weight:600">No deals match your search. Check back soon!</p>' +
         '<div class="section-header" style="margin-top:1.1rem"><h2>⏱ Flash Auctions — Ending Soon</h2></div><div class="products-grid">' + flashCards + '</div>' +
-        '<div class="section-header" style="margin-top:.5rem"><h2>🎁 Mystery Bundles</h2></div><div class="products-grid">' + mysteryCards + '</div>';
+        '<div class="section-header" style="margin-top:.5rem"><h2>🎁 Mystery Bundles — AI-Selected</h2></div><div class="products-grid">' + mysteryCards + '</div>';
     }
 
     function productCardHtml(p) {
-      return '<div class="product-card" data-id="' + p.id + '" data-cat="' + p.cat + '" data-tag="' + p.tag + '" data-name="' + p.name.toLowerCase() + '"><div class="product-card-img">' + p.emoji + '</div><div class="product-card-body"><span class="product-card-tag">' + p.tag + '</span><h4>' + esc(p.name) + '</h4><p style="font-size:.74rem;color:var(--muted);margin-bottom:.32rem">' + p.cat + '</p><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-was">£' + p.orig.toFixed(2) + '</span><span class="price-disc">–' + p.disc + '%</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '">Add to Cart</button></div></div>';
+      return '<div class="product-card" data-id="' + p.id + '" data-cat="' + p.cat + '" data-tag="' + p.tag + '" data-name="' + p.name.toLowerCase() + '"><div class="product-card-img">' + p.emoji + '</div><span class="ai-badge">AI: ' + p.aiScore + '%</span><div class="product-card-body"><span class="product-card-tag">' + esc(p.tag) + '</span><h4>' + esc(p.name) + '</h4><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-was">£' + p.orig.toFixed(2) + '</span><span class="price-disc">' + p.disc + '% off</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '" style="width:100%">Add to Cart</button></div></div>';
     }
 
     function initBuyer() {
@@ -642,7 +667,9 @@
           var count = Object.values(cart).reduce(function (a, b) { return a + b; }, 0);
           if (!count) return;
           var total = document.getElementById('cart-total').textContent;
-          alert('Demo: Order placed for ' + count + ' item(s)!\nTotal: ' + total);
+          var pts = Math.floor(count * 2.5);
+          greenPoints += pts;
+          alert('✅ Order placed for ' + count + ' item(s)!\nTotal: ' + total + '\n💚 +' + pts + ' Green Points earned!');
           cart = {};
           updateCartUI();
         });
@@ -657,9 +684,11 @@
       }
       var countEl = document.getElementById('cart-count');
       var totalEl = document.getElementById('cart-total');
+      var ptsEl = document.getElementById('green-pts');
       var checkoutBtn = document.getElementById('checkout-btn');
       if (countEl) countEl.textContent = count;
       if (totalEl) totalEl.textContent = '£' + total.toFixed(2);
+      if (ptsEl) ptsEl.textContent = greenPoints;
       if (checkoutBtn) {
         checkoutBtn.disabled = count === 0;
         checkoutBtn.style.opacity = count === 0 ? '.5' : '1';
@@ -669,25 +698,28 @@
 
     function invRowHtml(item) {
       var cap = item.status.charAt(0).toUpperCase() + item.status.slice(1);
-      return '<tr><td><strong>' + esc(item.name) + '</strong></td><td>' + esc(item.cat) + '</td><td>' + item.qty + '</td><td>£' + item.price.toFixed(2) + '</td><td><span class="badge badge-' + item.status + '">' + cap + '</span></td><td><button class="btn-sm btn-outline" onclick="alert(\'Demo: Edit listing #' + item.id + '\')">Edit</button></td></tr>';
+      return '<tr><td><strong>' + esc(item.name) + '</strong></td><td>' + esc(item.cat) + '</td><td>' + item.qty + '</td><td>£' + item.price.toFixed(2) + '</td><td><span class="badge badge-' + item.status + '">' + cap + '</span></td><td>' + item.wasteScore + ' kg</td></tr>';
     }
 
     function getVendorHtml() {
+      var totalWasteScore = INVENTORY.reduce(function (a, b) { return a + (b.wasteScore || 0); }, 0);
       var invRows = INVENTORY.map(invRowHtml).join('');
       var orderRows = ORDERS.map(function (o) {
         var cap = o.status.charAt(0).toUpperCase() + o.status.slice(1);
-        return '<tr><td><strong>' + esc(o.id) + '</strong></td><td>' + esc(o.item) + '</td><td>' + esc(o.buyer) + '</td><td><strong>' + esc(o.total) + '</strong></td><td><span class="badge badge-' + o.status + '">' + cap + '</span></td><td>' + esc(o.date) + '</td></tr>';
+        return '<tr><td><strong>' + esc(o.id) + '</strong></td><td>' + esc(o.item) + '</td><td>' + esc(o.buyer) + '</td><td><strong>' + esc(o.total) + '</strong></td><td><span class="badge badge-' + o.status + '">' + cap + '</span></td><td>' + o.date + '</td></tr>';
       }).join('');
 
       return '<div class="stats-grid">' +
-          metricCard('Revenue Today', '£214', '↑ 18% vs yesterday') +
-          metricCard('Items Sold', '47', '↑ 8 vs yesterday') +
-          metricCard('Pending Pickup', '5', 'Next: 21:30') +
-          metricCard('Waste Avoided', '12 kg', 'Great work! 🌍') +
+          metricCard('Revenue (AI-Priced)', '£214', '↑ 18% vs yesterday') +
+          metricCard('Items Sold', '47', '↑ 8 via AI deals') +
+          metricCard('Waste Prevented Score', totalWasteScore + ' kg', '↑ Great work! 🌍') +
+          metricCard('AI Pricing Saves', '£42', 'Avg per product') +
         '</div>' +
-        '<div class="panel"><div class="section-header"><h3>My Inventory</h3><button class="btn-sm btn-primary" id="add-listing-btn">+ Add Listing</button></div><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Item</th><th>Category</th><th>Qty</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead><tbody id="inventory-tbody">' + invRows + '</tbody></table></div></div>' +
+        '<div class="green-score">🌍 <strong>Waste Prevention Score: ' + totalWasteScore + ' kg</strong> — Your AI pricing prevented this much waste this week!</div>' +
+        '<div class="panel"><div class="section-header"><h3>📊 AI Insights</h3></div><div class="analytics-grid"><div class="analytics-card"><div class="analytics-label">Most Unsold Category</div><div class="analytics-value">Bakery</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">↑ 3 items left daily. Consider AI auto-discount.</p></div><div class="analytics-card"><div class="analytics-label">Peak Sales Time</div><div class="analytics-value">20:00–21:30</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">Launch flash auctions in this window.</p></div><div class="analytics-card"><div class="analytics-label">Suggested Markdown %</div><div class="analytics-value">45–55%</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">Max revenue recovery before closing.</p></div></div></div>' +
+        '<div class="panel"><div class="section-header"><h3>My Inventory</h3><button class="btn-sm btn-primary" id="add-listing-btn">+ Add Listing</button></div><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Item</th><th>Category</th><th>Qty</th><th>Price</th><th>Status</th><th>Waste Prevented (kg)</th></tr></thead><tbody id="inventory-tbody">' + invRows + '</tbody></table></div></div>' +
         '<div class="panel"><h3>Recent Orders</h3><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Order</th><th>Item</th><th>Buyer</th><th>Total</th><th>Status</th><th>Date</th></tr></thead><tbody>' + orderRows + '</tbody></table></div></div>' +
-        '<div id="add-listing-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="add-modal-title"><div class="modal-box"><div class="modal-header"><h3 id="add-modal-title" style="margin:.1rem 0">Add New Listing</h3><button class="modal-close" id="modal-close-btn" aria-label="Close modal">✕</button></div><form class="dash-form" id="add-listing-form"><div class="form-group"><label for="listing-name">Item Name *</label><input type="text" id="listing-name" required /></div><div class="form-row"><div class="form-group"><label for="listing-cat">Category</label><select id="listing-cat"><option>Bakery</option><option>Produce</option><option>Meat</option><option>Seafood</option><option>Deli</option><option>Dairy</option><option>Asian</option></select></div><div class="form-group"><label for="listing-qty">Quantity *</label><input type="number" id="listing-qty" min="1" value="1" /></div></div><div class="form-group"><label for="listing-price">Price (£) *</label><input type="number" id="listing-price" min="0.01" step="0.01" /></div><div id="listing-msg" style="display:none"></div><button type="submit" class="btn-sm btn-primary" style="width:100%;padding:.7rem;font-size:.9rem;border-radius:10px;margin-top:.25rem">Add Listing</button></form></div></div>';
+        '<div id="add-listing-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="add-modal-title"><div class="modal-box"><div class="modal-header"><h3 id="add-modal-title" style="margin:0">+ Add Inventory Item</h3><button id="modal-close-btn" class="modal-close" type="button" aria-label="Close modal">✕</button></div><form id="add-listing-form" class="dash-form" novalidate style="margin-top:.8rem"><div class="form-group"><label for="listing-name">Item Name *</label><input id="listing-name" type="text" placeholder="e.g., Artisan Sourdough" required /></div><div class="form-group"><label for="listing-cat">Category *</label><select id="listing-cat" required><option value="">Select</option><option value="Bakery">Bakery</option><option value="Produce">Produce</option><option value="Meat">Meat</option><option value="Seafood">Seafood</option><option value="Deli">Deli</option><option value="Asian">Asian</option></select></div><div class="form-row"><div class="form-group"><label for="listing-qty">Qty *</label><input id="listing-qty" type="number" min="1" placeholder="0" required /></div><div class="form-group"><label for="listing-price">Base Price £ *</label><input id="listing-price" type="number" step=".01" min="0" placeholder="0.00" required /></div></div><div class="form-group"><label for="listing-img">Photo (simulate upload)</label><input id="listing-img" type="file" accept="image/*" /><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">📸 AI will auto-detect items & suggest pricing when this feature is live.</p></div><div id="listing-msg" style="display:none;margin:.8rem 0"></div><button type="submit" class="btn-sm btn-primary" style="width:100%">Add Item</button></form></div></div>';
     }
 
     function initVendor() {
@@ -715,13 +747,15 @@
             return;
           }
 
+          var wasteEst = Math.round(parseInt(qty, 10) * 0.85);
           var newItem = {
             id: INVENTORY.length + 1,
             name: name,
             cat: document.getElementById('listing-cat').value,
             status: 'active',
             qty: parseInt(qty, 10),
-            price: parseFloat(price)
+            price: parseFloat(price),
+            wasteScore: wasteEst
           };
           INVENTORY.push(newItem);
 
@@ -729,7 +763,7 @@
           if (tbody) tbody.insertAdjacentHTML('beforeend', invRowHtml(newItem));
 
           msgEl.className = 'form-msg-success';
-          msgEl.textContent = '✓ "' + name + '" added successfully!';
+          msgEl.textContent = '✓ "' + name + '" added! AI suggests: £' + (parseFloat(price) * 0.6).toFixed(2) + ' markdown for ' + wasteEst + ' kg waste prevention.';
           msgEl.style.display = '';
           form.reset();
           setTimeout(function () {
@@ -737,14 +771,14 @@
               modal.style.display = 'none';
               msgEl.style.display = 'none';
             }
-          }, 1300);
+          }, 2000);
         });
       }
     }
 
     function getCommissionsHtml(session) {
       var refCode = (session.name || 'user').replace(/[^a-z0-9]/gi, '').toLowerCase() || 'user';
-      var refLink = 'https://nightbuy.app/join?ref=' + refCode;
+      var refLink = 'https://nightflip.app/join?ref=' + refCode;
       var ledgerRows = LEDGER.map(function (r) {
         var cap = r.status.charAt(0).toUpperCase() + r.status.slice(1);
         return '<tr><td>' + r.date + '</td><td>' + esc(r.desc) + '</td><td><strong>£' + r.amount.toFixed(2) + '</strong></td><td><span class="badge badge-' + r.status + '">' + cap + '</span></td></tr>';
@@ -756,7 +790,7 @@
           metricCard('Paid to Date', '£71.40', '5 completed') +
           metricCard('Conversion Rate', '14%', '↑ Above average') +
         '</div>' +
-        '<div class="panel"><h3 style="margin:.2rem 0 .6rem">Your Referral Link</h3><div class="referral-box"><span class="referral-link" id="ref-link-text">' + esc(refLink) + '</span><button class="btn-sm btn-primary" id="copy-ref-btn" aria-label="Copy referral link">Copy</button></div><p id="copy-msg" style="display:none;color:#2e7d32;font-size:.81rem;font-weight:700;margin-top:.45rem" role="status">✓ Copied to clipboard!</p></div>' +
+        '<div class="panel"><h3 style="margin:.2rem 0 .6rem">Your Referral Link</h3><div class="referral-box"><span class="referral-link" id="ref-link-text">' + esc(refLink) + '</span><button id="copy-ref-btn" class="btn-sm btn-outline">Copy</button><span id="copy-msg" style="display:none;font-size:.75rem;color:var(--ok);font-weight:700">✓ Copied!</span></div></div>' +
         '<div class="panel"><div class="section-header"><h3>Commission Ledger</h3><div id="payout-area"><button class="btn-sm btn-primary" id="payout-btn">Request Payout (£33.00)</button></div></div><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Date</th><th>Description</th><th>Amount</th><th>Status</th></tr></thead><tbody>' + ledgerRows + '</tbody></table></div></div>';
     }
 
@@ -789,7 +823,7 @@
       var payoutArea = document.getElementById('payout-area');
       if (payoutBtn && payoutArea) {
         payoutBtn.addEventListener('click', function () {
-          payoutArea.innerHTML = '<div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap"><span class="form-msg-success" style="margin:0">✓ Payout request of <strong>£33.00</strong> submitted!</span><span style="font-size:.78rem;color:var(--muted)">Processing 2–3 business days</span></div>';
+          payoutArea.innerHTML = '<div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap"><span class="form-msg-success" style="margin:0">✓ Payout request of <strong>£33.00</strong> submitted! Funds arrive in 2–3 business days.</span></div>';
         });
       }
     }
@@ -807,20 +841,21 @@
 
     function getSettingsHtml(session) {
       return '<div class="settings-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">' +
-          '<div><div class="panel"><h3 style="margin:.1rem 0 .6rem">Profile Information</h3><form class="dash-form" id="profile-form"><div class="form-group"><label for="s-name">Display Name</label><input type="text" id="s-name" value="' + esc(session.name || '') + '" /></div><div class="form-group"><label for="s-email">Email</label><input type="email" id="s-email" value="' + esc(session.email || '') + '" /></div><div class="form-group"><label for="s-phone">Phone</label><input type="tel" id="s-phone" placeholder="+44 7700 000000" /></div><div class="form-group"><label for="s-location">Location</label><input type="text" id="s-location" placeholder="City, Postcode" /></div><div id="profile-msg" style="display:none"></div><button type="submit" class="btn-sm btn-primary" style="width:100%;padding:.68rem;border-radius:10px;font-size:.9rem">Save Profile</button></form></div><div class="panel"><h3 style="margin:.1rem 0 .6rem">Payout Details</h3><form class="dash-form" id="payout-form"><div class="form-group"><label for="s-bank">Bank Name</label><input type="text" id="s-bank" /></div><div class="form-group"><label for="s-sort">Sort Code</label><input type="text" id="s-sort" placeholder="00-00-00" /></div><div class="form-group"><label for="s-account">Account Number</label><input type="text" id="s-account" /></div><div id="payout-detail-msg" style="display:none"></div><button type="submit" class="btn-sm btn-primary" style="width:100%;padding:.68rem;border-radius:10px;font-size:.9rem">Save Payout Details</button></form></div></div>' +
+          '<div><div class="panel"><h3 style="margin:.1rem 0 .6rem">Profile Information</h3><form class="dash-form" id="profile-form"><div class="form-group"><label for="s-name">Display Name</label><input id="s-name" type="text" value="' + esc(session.name || '') + '" /></div><div class="form-group"><label for="s-email">Email</label><input id="s-email" type="email" value="' + esc(session.email || '') + '" /></div><div id="profile-msg" style="display:none;margin:.8rem 0"></div><button type="submit" class="btn-sm btn-primary" style="width:100%">Save Profile</button></form></div></div>' +
           '<div><div class="panel"><h3 style="margin:.1rem 0 .6rem">Notification Preferences</h3>' +
-            notifToggle('notif-flash', 'Flash Auction Alerts', 'Notify me when flash auctions go live', true) +
-            notifToggle('notif-deals', 'New Deal Alerts', 'New deals in my area', true) +
-            notifToggle('notif-orders', 'Order Updates', 'Updates on my orders and pickups', true) +
-            notifToggle('notif-referrals', 'Referral Notifications', 'When someone uses my referral link', false) +
-            notifToggle('notif-platform', 'Platform News', 'Night Buy updates and tips', false) +
-            '<div id="notif-msg" style="display:none;margin-top:.75rem"></div><button class="btn-sm btn-primary" id="save-notif-btn" style="width:100%;padding:.68rem;border-radius:10px;font-size:.9rem;margin-top:1rem">Save Preferences</button></div>' +
-            '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Account</h3><p style="font-size:.86rem;color:var(--muted);margin-bottom:.9rem">Manage your Night Buy account access.</p><div style="display:flex;flex-direction:column;gap:.55rem"><button class="btn-sm btn-outline" style="width:100%;padding:.68rem;border-radius:10px;font-size:.88rem" onclick="alert(\'Demo: Password change flow would open here.\')">Change Password</button><button class="btn-sm btn-danger" style="width:100%;padding:.68rem;border-radius:10px;font-size:.88rem" onclick="NB.logout()">Sign Out</button></div></div></div>' +
+            notifToggle('notif-flash', 'Flash Auction Alerts', 'AI drops & time-sensitive deals', true) +
+            notifToggle('notif-deals', 'New Deal Alerts', 'Smart clearances in your area', true) +
+            notifToggle('notif-orders', 'Order Updates', 'Pickup & delivery status', true) +
+            notifToggle('notif-referrals', 'Referral Notifications', 'When someone uses your link', false) +
+            notifToggle('notif-platform', 'Platform News', 'NightFlip updates & tips', false) +
+            '<div id="notif-msg" style="display:none;margin-top:.75rem"></div><button class="btn-sm btn-primary" id="save-notif-btn" style="width:100%;padding:.68rem;border-radius:10px;font-size:.9rem;margin-top:.5rem">Save Preferences</button>' +
+            '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Account</h3><p style="font-size:.86rem;color:var(--muted);margin-bottom:.9rem">Manage your NightFlip account access.</p><div style="display:flex;gap:.5rem;flex-direction:column"><button class="btn-sm btn-outline" type="button">Change Password</button><button class="btn-sm btn-danger" type="button">Delete Account</button></div></div>' +
+        '</div>' +
         '</div>';
     }
 
     function notifToggle(id, label, desc, checked) {
-      return '<div class="toggle-row"><div><div class="toggle-label">' + label + '</div><div class="toggle-desc">' + desc + '</div></div><label class="toggle-switch" aria-label="' + esc(label) + '"><input type="checkbox" id="' + id + '" ' + (checked ? 'checked' : '') + ' /><span class="toggle-track"></span></label></div>';
+      return '<div class="toggle-row"><div><div class="toggle-label">' + label + '</div><div class="toggle-desc">' + desc + '</div></div><label class="toggle-switch" aria-label="' + esc(label) + '"><input type="checkbox" ' + (checked ? 'checked' : '') + ' /><span class="toggle-track"></span></label></div>';
     }
 
     function initSettings() {
@@ -841,18 +876,6 @@
           if (sess) { sess.name = name; sess.email = email; setSession(sess); }
           msg.className = 'form-msg-success';
           msg.textContent = '✓ Profile saved!';
-          msg.style.display = '';
-          setTimeout(function () { if (msg.isConnected) msg.style.display = 'none'; }, 2200);
-        });
-      }
-
-      var payoutForm = document.getElementById('payout-form');
-      if (payoutForm) {
-        payoutForm.addEventListener('submit', function (e) {
-          e.preventDefault();
-          var msg = document.getElementById('payout-detail-msg');
-          msg.className = 'form-msg-success';
-          msg.textContent = '✓ Payout details saved!';
           msg.style.display = '';
           setTimeout(function () { if (msg.isConnected) msg.style.display = 'none'; }, 2200);
         });
@@ -928,7 +951,7 @@
             msg.textContent = 'Please complete all required fields.';
             return;
           }
-          msg.textContent = 'Thanks ' + name + '! Your ' + role + ' account request has been received.';
+          msg.textContent = '✓ Thanks ' + name + '! Your ' + role + ' request has been received. We\'ll be in touch soon! 🚀';
         });
       }
     }
