@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Night Buy</title>
+  <meta name="description" content="Night Buy dashboard overview." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- Mobile sidebar overlay -->
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:25;backdrop-filter:blur(2px);" onclick="this.classList.remove('open');document.getElementById('sidebar').classList.remove('open')"></div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="sidebar-logo" href="../index.html">
+        <span class="logo-badge">NB</span>Night Buy
+      </a>
+      <div class="sidebar-user">
+        <div class="user-name" id="sidebarName">Loading…</div>
+        <span class="user-role" id="sidebarRole">Member</span>
+      </div>
+
+      <span class="nav-section">Overview</span>
+      <a class="nav-item active" href="index.html"><span class="nav-icon" aria-hidden="true">🏠</span>Dashboard</a>
+
+      <span class="nav-section">Shop</span>
+      <a class="nav-item" href="buyer.html"><span class="nav-icon" aria-hidden="true">🛍️</span>Buy Deals</a>
+      <a class="nav-item" href="vendor.html"><span class="nav-icon" aria-hidden="true">🏪</span>Vendor Panel</a>
+      <a class="nav-item" href="commissions.html"><span class="nav-icon" aria-hidden="true">💰</span>Commissions</a>
+
+      <span class="nav-section">Account</span>
+      <a class="nav-item" href="settings.html"><span class="nav-icon" aria-hidden="true">⚙️</span>Settings</a>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-footer">
+        <div style="font-size:.78rem;color:#9a886a;margin-bottom:.4rem">© 2026 Night Buy</div>
+        <button class="logout-btn js-logout" type="button" aria-label="Log out">
+          <span aria-hidden="true">🚪</span> Log Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰</button>
+        <span class="topbar-title">Dashboard</span>
+      </div>
+      <div class="topbar-right">
+        <span id="topbarRole" class="badge badge-gold"></span>
+        <span id="topbarName" style="font-size:.88rem;font-weight:600;color:var(--muted)"></span>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main" id="mainContent">
+      <div class="page-header">
+        <h1 id="welcomeTitle">Good evening 👋</h1>
+        <p>Here's what's happening on Night Buy tonight.</p>
+      </div>
+
+      <!-- Metrics -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Active Deals</div>
+          <div class="metric-value">24</div>
+          <div class="metric-sub">Near you tonight</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Savings Available</div>
+          <div class="metric-value">£128</div>
+          <div class="metric-sub">Across all categories</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Flash Auctions</div>
+          <div class="metric-value">5</div>
+          <div class="metric-sub">Ending within 1 hour</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Green Points</div>
+          <div class="metric-value" id="greenPts">0</div>
+          <div class="metric-sub">Your balance</div>
+        </div>
+      </div>
+
+      <!-- Quick links by role -->
+      <div class="section-title">Quick Actions <span id="roleSubtitle"></span></div>
+      <div id="quickLinks" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem"></div>
+
+      <!-- Tonight's deals preview -->
+      <div class="section-title">Tonight's Top Deals</div>
+      <div class="deals-grid" id="featuredDeals"></div>
+
+      <!-- Platform stats -->
+      <div class="section-title">Platform Stats</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem">
+        <div class="card">
+          <div style="font-size:1.8rem;margin-bottom:.4rem">🌍</div>
+          <div style="font-weight:800;font-size:1.15rem;color:var(--gold-deep)">3,240</div>
+          <div style="font-size:.82rem;color:var(--muted)">Items rescued tonight</div>
+        </div>
+        <div class="card">
+          <div style="font-size:1.8rem;margin-bottom:.4rem">💷</div>
+          <div style="font-weight:800;font-size:1.15rem;color:var(--gold-deep)">£42,800</div>
+          <div style="font-size:.82rem;color:var(--muted)">Revenue recovered</div>
+        </div>
+        <div class="card">
+          <div style="font-size:1.8rem;margin-bottom:.4rem">🏪</div>
+          <div style="font-weight:800;font-size:1.15rem;color:var(--gold-deep)">142</div>
+          <div style="font-size:.82rem;color:var(--muted)">Active vendors online</div>
+        </div>
+        <div class="card">
+          <div style="font-size:1.8rem;margin-bottom:.4rem">♻️</div>
+          <div style="font-weight:800;font-size:1.15rem;color:var(--gold-deep)">61%</div>
+          <div style="font-size:.82rem;color:var(--muted)">Avg sell-through rate</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      const session = NB.requireAuth(null);
+      if (!session) return;
+
+      NB.populateSidebar(session);
+
+      // Topbar
+      document.getElementById('topbarRole').textContent = session.role;
+      document.getElementById('topbarName').textContent = session.name || session.email;
+
+      // Welcome title
+      const hour = new Date().getHours();
+      const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+      document.getElementById('welcomeTitle').textContent = greeting + ' ' + (session.name || '').split(' ')[0] + ' 👋';
+
+      // Green points (demo)
+      document.getElementById('greenPts').textContent = (Math.floor(Math.random() * 400) + 50).toLocaleString();
+
+      // Role subtitle
+      const roleSubtitles = {
+        Buyer: 'as a Buyer',
+        Vendor: 'as a Vendor',
+        'Partner/Affiliate': 'as a Partner',
+      };
+      document.getElementById('roleSubtitle').textContent = roleSubtitles[session.role] || '';
+
+      // Quick links by role
+      const links = {
+        Buyer: [
+          { icon: '🛍️', label: 'Browse Deals', desc: 'Explore live discounts', href: 'buyer.html' },
+          { icon: '⏱️', label: 'Flash Auctions', desc: 'Ending soon', href: 'buyer.html#auctions' },
+          { icon: '🎁', label: 'Mystery Bundles', desc: 'Surprise savings', href: 'buyer.html#bundles' },
+          { icon: '⚙️', label: 'Settings', desc: 'Profile & notifications', href: 'settings.html' },
+        ],
+        Vendor: [
+          { icon: '📦', label: 'My Inventory', desc: 'Manage listings', href: 'vendor.html' },
+          { icon: '📊', label: 'Sales Report', desc: 'Today\'s revenue', href: 'vendor.html#orders' },
+          { icon: '➕', label: 'Add Listing', desc: 'Post new item', href: 'vendor.html#add' },
+          { icon: '⚙️', label: 'Settings', desc: 'Payout & profile', href: 'settings.html' },
+        ],
+        'Partner/Affiliate': [
+          { icon: '🔗', label: 'Referral Links', desc: 'Generate & share', href: 'commissions.html' },
+          { icon: '💰', label: 'Commission Ledger', desc: 'Track earnings', href: 'commissions.html#ledger' },
+          { icon: '💸', label: 'Request Payout', desc: 'Withdraw earnings', href: 'commissions.html#payout' },
+          { icon: '⚙️', label: 'Settings', desc: 'Bank & notifications', href: 'settings.html' },
+        ],
+      };
+
+      const ql = document.getElementById('quickLinks');
+      (links[session.role] || links.Buyer).forEach(l => {
+        ql.innerHTML += `
+          <a href="${l.href}" class="card card-hover" style="text-decoration:none;color:inherit;display:flex;align-items:flex-start;gap:.7rem">
+            <span style="font-size:1.5rem;margin-top:.1rem">${l.icon}</span>
+            <div>
+              <div style="font-weight:700;font-size:.92rem">${l.label}</div>
+              <div style="font-size:.8rem;color:var(--muted)">${l.desc}</div>
+            </div>
+          </a>`;
+      });
+
+      // Featured deals
+      const fd = document.getElementById('featuredDeals');
+      DEMO.deals.slice(0, 4).forEach(d => {
+        fd.innerHTML += `
+          <div class="deal-card">
+            <div class="deal-thumb">${d.emoji}</div>
+            <div class="deal-body">
+              <div class="deal-cat">${d.cat}</div>
+              <div class="deal-name">${d.name}</div>
+              <div class="deal-prices">
+                <span class="deal-price">£${d.price.toFixed(2)}</span>
+                <span class="deal-original">£${d.original.toFixed(2)}</span>
+                <span class="deal-discount">-${d.discount}%</span>
+              </div>
+              <div class="deal-footer">
+                <span style="font-size:.78rem;color:var(--muted)">${d.vendor}</span>
+                ${d.timer ? `<span class="deal-timer">⏱ ${d.timer}</span>` : ''}
+              </div>
+            </div>
+          </div>`;
+      });
+
+      // Mobile sidebar overlay
+      const overlay = document.getElementById('sidebarOverlay');
+      if (overlay) overlay.style.display = 'none'; // managed by app.js toggle
+    })();
+  </script>
+</body>
+</html>
