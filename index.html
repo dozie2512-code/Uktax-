@@ -3,159 +3,211 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NightFlip — AI-Powered Smart Clearance Marketplace</title>
-  <meta name="description" content="NightFlip helps vendors recover revenue and reduce waste with AI smart pricing, mystery boxes, flash auctions, and sustainability rewards." />
+  <title>Night Buy — Premium Smart Clearance Marketplace</title>
+  <meta name="description" content="Night Buy helps vendors recover revenue and reduce waste with AI smart pricing, flash auctions, mystery bundles, and real-time local demand." />
   <style>
     :root{
-      --bg:#04130a;
-      --bg-2:#072014;
-      --card:rgba(255,255,255,.08);
-      --card-strong:rgba(255,255,255,.12);
-      --border:rgba(255,255,255,.18);
-      --text:#eafff1;
-      --muted:#b7d8c2;
-      --primary:#22c55e;
-      --primary-dark:#16a34a;
-      --accent:#86efac;
-      --radius:16px;
-      --max:1150px;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --bg:#f8f6f1;
+      --bg-2:#f2ecdf;
+      --paper:#ffffff;
+      --paper-soft:rgba(255,255,255,.88);
+      --line:rgba(150,115,28,.18);
+      --line-strong:rgba(150,115,28,.32);
+      --text:#17140f;
+      --muted:#5b5243;
+      --gold:#c9a227;
+      --gold-deep:#9c7a1d;
+      --gold-soft:#e8cf87;
+      --radius:18px;
+      --radius-sm:12px;
+      --max:1160px;
+      --shadow-sm:0 10px 24px rgba(72,55,12,.08);
+      --shadow-md:0 20px 48px rgba(72,55,12,.12);
+      --shadow-lg:0 30px 70px rgba(72,55,12,.16);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      color:var(--text);
       font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(900px 500px at 0% -5%, #0b3a24 0%, transparent 55%),
-        radial-gradient(900px 500px at 100% 0%, #14532d 0%, transparent 58%),
+        radial-gradient(900px 520px at 0% -8%, #fff7df 0%, transparent 58%),
+        radial-gradient(900px 520px at 100% 0%, #f6e8be 0%, transparent 60%),
         linear-gradient(180deg,var(--bg),var(--bg-2));
+      line-height:1.68;
       min-height:100vh;
-      line-height:1.65;
       overflow-x:hidden;
+      letter-spacing:.01em;
     }
 
-    .container{max-width:var(--max);margin:0 auto;padding:0 1.15rem}
+    .container{max-width:var(--max);margin:0 auto;padding:0 1.2rem}
 
     .glow{
-      position:fixed; width:380px;height:380px;border-radius:50%;
-      filter:blur(70px); pointer-events:none; z-index:-1; opacity:.25;
-      animation:float 8s ease-in-out infinite;
+      position:fixed;width:420px;height:420px;border-radius:50%;
+      filter:blur(78px);pointer-events:none;z-index:-1;opacity:.33;
+      animation:drift 9s ease-in-out infinite;
     }
-    .glow.one{background:#22c55e;top:8%;left:-120px}
-    .glow.two{background:#16a34a;bottom:8%;right:-120px;animation-delay:2s}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+    .glow.one{background:#f2dc9b;top:6%;left:-140px}
+    .glow.two{background:#d4b04b;bottom:8%;right:-130px;animation-delay:1.7s}
+    @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
 
     .nav{
       position:sticky;top:0;z-index:40;
-      background:rgba(4,19,10,.55);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,.82);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(12px);
     }
-    .nav-wrap{
-      display:flex;align-items:center;justify-content:space-between;min-height:72px;
-    }
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;min-height:76px}
     .logo{
-      display:flex;align-items:center;gap:.55rem;
-      color:var(--text);text-decoration:none;font-weight:800;font-size:1.1rem;
+      display:flex;align-items:center;gap:.6rem;
+      font-weight:800;font-size:1.08rem;text-decoration:none;color:var(--text);
+      letter-spacing:.02em;
     }
     .logo-badge{
-      width:28px;height:28px;border-radius:8px;
-      background:linear-gradient(135deg,#22c55e,#16a34a);
-      display:grid;place-items:center;box-shadow:0 8px 24px rgba(34,197,94,.4);
+      width:30px;height:30px;border-radius:9px;
+      background:linear-gradient(140deg,#f6e7b8,#c9a227);
+      color:#3f2f09;font-weight:800;font-size:.8rem;
+      display:grid;place-items:center;
+      box-shadow:0 10px 26px rgba(201,162,39,.34);
     }
-    .links{list-style:none;display:flex;gap:1rem}
-    .links a{color:#d6f7df;text-decoration:none;font-weight:600;font-size:.93rem}
-    .links a:hover{color:#fff}
+
+    .links{list-style:none;display:flex;gap:1.05rem}
+    .links a{
+      color:#4e4638;text-decoration:none;font-weight:600;font-size:.93rem;
+      padding:.36rem .5rem;border-radius:8px;transition:.2s ease;
+    }
+    .links a:hover{color:#241d10;background:rgba(201,162,39,.1)}
 
     .menu-btn{
-      display:none;border:1px solid rgba(255,255,255,.25);
-      background:transparent;color:#fff;border-radius:8px;padding:.42rem .65rem;cursor:pointer;
+      display:none;cursor:pointer;
+      border:1px solid var(--line-strong);background:#fff;color:var(--text);
+      border-radius:10px;padding:.4rem .65rem;
     }
 
     .btn{
-      border:none;cursor:pointer;text-decoration:none;
-      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-      color:#04130a;font-weight:800;padding:.72rem 1.05rem;border-radius:10px;
+      text-decoration:none;border:none;cursor:pointer;
+      background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+      color:#fff;padding:.74rem 1.1rem;border-radius:11px;
+      font-weight:800;font-size:.92rem;letter-spacing:.01em;
       display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
-      transition:.25s ease;box-shadow:0 12px 30px rgba(34,197,94,.35);
+      box-shadow:0 14px 34px rgba(156,122,29,.28);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
-    .btn:hover{transform:translateY(-2px)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(156,122,29,.34)}
     .btn.alt{
-      background:rgba(255,255,255,.08);
-      color:#eafff1;border:1px solid rgba(255,255,255,.2);box-shadow:none;
+      background:#fff;color:#2d2414;border:1px solid var(--line-strong);
+      box-shadow:none;font-weight:700;
     }
     .hide-mobile{display:inline-flex}
 
-    .hero{padding:74px 0 52px}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;align-items:center}
+    .hero{padding:86px 0 62px}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:1.1rem;align-items:center}
     .pill{
-      display:inline-flex;padding:.36rem .72rem;border-radius:999px;
-      border:1px solid rgba(134,239,172,.4);background:rgba(34,197,94,.12);
-      color:#c9ffd9;font-weight:700;font-size:.8rem;margin-bottom:.9rem;
+      display:inline-flex;border-radius:999px;
+      padding:.37rem .78rem;font-size:.79rem;font-weight:700;
+      color:#5f4b1e;background:rgba(201,162,39,.14);
+      border:1px solid rgba(201,162,39,.4);margin-bottom:1rem;
     }
-    h1{font-size:clamp(2rem,4.8vw,3.4rem);line-height:1.08;margin-bottom:.9rem}
-    .hero p{color:var(--muted);max-width:60ch;margin-bottom:1.25rem}
-    .hero-actions{display:flex;gap:.7rem;flex-wrap:wrap}
+    h1{
+      font-size:clamp(2rem,4.85vw,3.5rem);
+      line-height:1.06;margin-bottom:1rem;
+      letter-spacing:-.015em;
+    }
+    .hero p{color:var(--muted);max-width:61ch;margin-bottom:1.35rem}
+    .hero-actions{display:flex;gap:.72rem;flex-wrap:wrap}
 
     .glass{
-      background:var(--card);border:1px solid var(--border);
-      backdrop-filter:blur(12px);border-radius:var(--radius);box-shadow:var(--shadow);
+      background:var(--paper-soft);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow-md);
     }
-    .hero-panel{padding:1rem}
-    .metrics{margin-top:.8rem;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .metric{
-      padding:.85rem;border-radius:12px;border:1px solid rgba(255,255,255,.2);
-      background:rgba(255,255,255,.06);
-    }
-    .metric h3{font-size:1.2rem;color:#bbf7d0}
-    .metric p{font-size:.82rem;color:#d3f5dd}
 
-    .section{padding:56px 0}
-    .title{font-size:clamp(1.4rem,2.3vw,2.05rem);margin-bottom:.5rem}
-    .subtitle{color:var(--muted);margin-bottom:1.2rem}
+    .hero-panel{padding:1.05rem}
+    .panel-title{
+      font-size:.93rem;font-weight:700;color:#6e5a2b;
+      letter-spacing:.04em;text-transform:uppercase;
+    }
+    .metrics{margin-top:.82rem;display:grid;grid-template-columns:1fr 1fr;gap:.72rem}
+    .metric{
+      background:var(--paper);border:1px solid var(--line);
+      border-radius:14px;padding:.88rem;
+      box-shadow:var(--shadow-sm);
+    }
+    .metric h3{font-size:1.17rem;color:#7b621d}
+    .metric p{font-size:.82rem;color:#5b4f36}
+
+    .section{padding:64px 0}
+    .title{
+      font-size:clamp(1.45rem,2.4vw,2.15rem);
+      letter-spacing:-.01em;margin-bottom:.5rem;
+    }
+    .subtitle{color:var(--muted);margin-bottom:1.25rem}
 
     .grid{display:grid;gap:1rem}
-    .cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .card{padding:1rem;transition:.28s ease}
-    .card:hover{transform:translateY(-4px);background:var(--card-strong)}
-    .icon{
-      width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
-      background:rgba(34,197,94,.18);border:1px solid rgba(134,239,172,.35);
-      margin-bottom:.65rem;font-size:1.15rem;
+    .cards{grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+    .card{
+      padding:1.02rem;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
-    .card h3{margin-bottom:.45rem;font-size:1.05rem}
-    .card p{color:#d0efd9;font-size:.95rem}
+    .card:hover{
+      transform:translateY(-5px);
+      box-shadow:var(--shadow-lg);
+      border-color:var(--line-strong);
+      background:#fff;
+    }
+
+    .icon{
+      width:42px;height:42px;border-radius:12px;
+      display:grid;place-items:center;font-size:1.14rem;
+      background:rgba(201,162,39,.14);
+      border:1px solid rgba(201,162,39,.35);
+      margin-bottom:.68rem;
+    }
+    .card h3{font-size:1.04rem;margin-bottom:.46rem}
+    .card p{font-size:.95rem;color:#4a4234}
 
     .split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 
     .cta{
-      text-align:center;padding:34px 16px;border-radius:18px;
-      background:linear-gradient(135deg, rgba(134,239,172,.2), rgba(34,197,94,.18));
-      border:1px solid rgba(134,239,172,.35);box-shadow:0 16px 45px rgba(0,0,0,.28);
+      text-align:center;padding:38px 16px;border-radius:20px;
+      border:1px solid rgba(201,162,39,.42);
+      background:linear-gradient(135deg, #fff7dc 0%, #f4e1aa 100%);
+      box-shadow:var(--shadow-lg);
     }
-    .cta p{color:#dcfce7;margin:.4rem 0 1rem}
+    .cta p{color:#5a4d31;margin:.45rem 0 1.05rem}
 
-    .form{max-width:680px;padding:1rem}
-    .form label{display:block;margin:.8rem 0 .35rem;font-weight:600}
+    .form{max-width:700px;padding:1.08rem}
+    .form label{display:block;margin:.82rem 0 .36rem;font-weight:600}
     .form input,.form select,.form textarea{
-      width:100%;padding:.72rem;border-radius:10px;border:1px solid rgba(255,255,255,.22);
-      background:rgba(255,255,255,.06);color:#fff;font:inherit;
+      width:100%;font:inherit;color:#201a10;background:#fff;
+      border:1px solid rgba(150,115,28,.28);
+      border-radius:11px;padding:.74rem;
+      transition:border-color .2s ease, box-shadow .2s ease;
     }
-    .form input::placeholder,.form textarea::placeholder{color:#cde7d6}
-    .form-msg{margin-top:.75rem;color:#bbf7d0;font-weight:600}
+    .form input:focus,.form select:focus,.form textarea:focus{
+      outline:none;border-color:rgba(156,122,29,.72);
+      box-shadow:0 0 0 3px rgba(201,162,39,.18);
+    }
+    .form input::placeholder,.form textarea::placeholder{color:#7d7053}
+    .form-msg{margin-top:.75rem;color:#7b621d;font-weight:600}
 
-    .footer{padding:24px 0 38px;text-align:center;color:#b9dcc4;font-size:.92rem}
+    .footer{
+      padding:26px 0 40px;text-align:center;
+      color:#5a503c;font-size:.92rem;
+    }
 
-    .reveal{opacity:0;transform:translateY(14px);transition:.55s ease}
+    .reveal{opacity:0;transform:translateY(14px);transition:.56s ease}
     .reveal.show{opacity:1;transform:none}
 
     @media (max-width: 860px){
       .hero-grid,.split{grid-template-columns:1fr}
       .links{
-        display:none;position:absolute;top:72px;left:0;right:0;
-        background:#07170e;padding:1rem;flex-direction:column;border-bottom:1px solid rgba(255,255,255,.12)
+        display:none;position:absolute;top:76px;left:0;right:0;
+        padding:1rem;background:#fffdf6;
+        flex-direction:column;border-bottom:1px solid var(--line);
       }
       .links.show{display:flex}
       .menu-btn{display:block}
@@ -169,7 +221,7 @@
 
   <nav class="nav">
     <div class="container nav-wrap">
-      <a class="logo" href="#home"><span class="logo-badge">🌙</span>NightFlip</a>
+      <a class="logo" href="#home"><span class="logo-badge">NB</span>Night Buy</a>
       <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">☰</button>
       <ul class="links" id="navLinks">
         <li><a href="#home">Home</a></li>
@@ -177,9 +229,9 @@
         <li><a href="#buyers">Buyers</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Sign Up</a></li>
       </ul>
-      <a class="btn hide-mobile" href="#contact">Download App</a>
+      <a class="btn hide-mobile" href="#contact">Sign Up</a>
     </div>
   </nav>
 
@@ -189,17 +241,17 @@
         <span class="pill">AI-Powered Smart Clearance Marketplace</span>
         <h1>Sell more before closing. Waste less by morning.</h1>
         <p>
-          NightFlip predicts unsold inventory and auto-launches dynamic discounts in real-time.
-          Vendors recover revenue, buyers unlock deep local deals, and communities reduce waste together.
+          Night Buy predicts unsold inventory and automatically launches dynamic discounts in real-time.
+          Vendors recover revenue, buyers unlock premium local deals, and communities reduce waste together.
         </p>
         <div class="hero-actions">
-          <a class="btn" href="#contact">📱 Download App</a>
-          <a class="btn alt" href="#vendors">🏪 Become a Vendor</a>
+          <a class="btn" href="#contact">Create Account</a>
+          <a class="btn alt" href="#vendors">Become a Vendor</a>
         </div>
       </div>
 
       <aside class="glass hero-panel reveal">
-        <h3>Tonight’s Live Impact</h3>
+        <p class="panel-title">Tonight’s Live Impact</p>
         <div class="metrics">
           <div class="metric"><h3 class="count" data-target="3240">0</h3><p>Items rescued</p></div>
           <div class="metric"><h3>£<span class="count" data-target="42800">0</span></h3><p>Recovered revenue</p></div>
@@ -216,7 +268,7 @@
       <p class="subtitle reveal">Built to solve problems traditional discount marketplaces ignore.</p>
       <div class="grid cards">
         <article class="glass card reveal"><div class="icon">🧠</div><h3>AI Smart Pricing</h3><p>Automatic markdown optimization based on demand, timing, weather, and local events.</p></article>
-        <article class="glass card reveal"><div class="icon">🎁</div><h3>Mystery Deal Boxes</h3><p>Surprise bundles at 60–80% off without manual item-by-item listing.</p></article>
+        <article class="glass card reveal"><div class="icon">🎁</div><h3>Mystery Deal Bundles</h3><p>Surprise bundles at 60–80% off without manual item-by-item listing.</p></article>
         <article class="glass card reveal"><div class="icon">⏱️</div><h3>Live Flash Auctions</h3><p>Price drops every few minutes in the final 30–60 minutes before closing.</p></article>
         <article class="glass card reveal"><div class="icon">🤝</div><h3>Neighborhood Group Buying</h3><p>Nearby buyers combine demand to unlock deeper discounts and delivery perks.</p></article>
         <article class="glass card reveal"><div class="icon">🌍</div><h3>Waste-to-Reward Score</h3><p>Vendors build sustainability credibility while buyers earn Green Points.</p></article>
@@ -240,7 +292,7 @@
         <h2 class="title">For Buyers</h2>
         <p class="subtitle">Save more and reduce waste in your neighborhood.</p>
         <p>• Deep discounts on local products</p>
-        <p>• Mystery boxes and flash auctions</p>
+        <p>• Mystery bundles and flash auctions</p>
         <p>• Group-buy savings</p>
         <p>• Green reward points for each rescue purchase</p>
       </article>
@@ -266,15 +318,15 @@
       <div class="cta reveal">
         <h2>Vision: The World’s Largest Zero-Waste Night Marketplace</h2>
         <p>Match unsold inventory to nearby buyers in real-time, every night, in every city.</p>
-        <a class="btn" href="#contact">Join Waitlist</a>
+        <a class="btn" href="#contact">Sign Up Now</a>
       </div>
     </div>
   </section>
 
   <section id="contact" class="section">
     <div class="container">
-      <h2 class="title reveal">Join NightFlip</h2>
-      <p class="subtitle reveal">Tell us if you're joining as a buyer, vendor, or partner.</p>
+      <h2 class="title reveal">Sign Up for Night Buy</h2>
+      <p class="subtitle reveal">Create your account as a buyer, vendor, or partner.</p>
 
       <form class="glass form reveal" onsubmit="submitForm(event)">
         <label for="name">Full Name</label>
@@ -283,7 +335,7 @@
         <label for="email">Email</label>
         <input id="email" required type="email" placeholder="jane@example.com" />
 
-        <label for="role">I am joining as</label>
+        <label for="role">I am signing up as</label>
         <select id="role" required>
           <option value="">Select one</option>
           <option>Buyer</option>
@@ -294,7 +346,7 @@
         <label for="message">Message</label>
         <textarea id="message" rows="4" placeholder="Tell us more..."></textarea>
 
-        <button class="btn" type="submit">Submit</button>
+        <button class="btn" type="submit">Create Account</button>
         <p id="formMsg" class="form-msg"></p>
       </form>
     </div>
@@ -302,8 +354,8 @@
 
   <footer class="footer">
     <div class="container">
-      <p><strong>NightFlip</strong> — Smart clearance powered by AI</p>
-      <p>© 2026 NightFlip. All rights reserved.</p>
+      <p><strong>Night Buy</strong> — Smart clearance powered by AI</p>
+      <p>© 2026 Night Buy. All rights reserved.</p>
     </div>
   </footer>
 
@@ -358,11 +410,11 @@
       counters.forEach(c => counterObserver.observe(c));
     }
 
-    // Contact form (frontend demo)
+    // Signup form (frontend demo)
     function submitForm(e) {
       e.preventDefault();
       const msg = document.getElementById('formMsg');
-      msg.textContent = "Thanks! You're on the NightFlip waitlist.";
+      msg.textContent = "Thanks! Your signup has been received.";
       e.target.reset();
     }
   </script>
