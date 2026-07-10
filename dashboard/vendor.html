@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy Vendor Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="dashboard-page" data-page="vendor" data-base="../" data-protected="true" data-role="vendor">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-top">
+        <a class="brand" href="index.html"><span class="brand-badge">NB</span>Night Buy</a>
+        <p>Track revenue recovery, active listings, and recent orders before closing time.</p>
+        <nav aria-label="Dashboard navigation">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Overview</a></li>
+            <li><a class="nav-link" href="buyer.html">Buyer</a></li>
+            <li><a class="nav-link is-active" href="vendor.html">Vendor</a></li>
+            <li><a class="nav-link" href="commissions.html">Commissions</a></li>
+            <li><a class="nav-link" href="settings.html">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <strong data-user-email></strong>
+        <small data-user-role></small>
+        <button class="btn ghost small" type="button" data-logout>Log out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <div class="glass topbar">
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" data-menu-toggle>☰</button>
+        <span class="user-chip"><strong data-user-role></strong> · <span data-user-email></span></span>
+      </div>
+
+      <div class="notice" data-banner aria-live="polite"></div>
+
+      <section class="page-head">
+        <div>
+          <span class="eyebrow">Vendor dashboard</span>
+          <h1>Manage tonight’s sell-through</h1>
+          <p>Review mock metrics, monitor listing status, and add fresh inventory without leaving the dashboard.</p>
+        </div>
+        <button class="btn" type="button" data-toggle-listing-form>Add listing</button>
+      </section>
+
+      <section class="metrics-grid">
+        <article class="stat-card"><span class="stat-value">£3,480</span><h2>Revenue today</h2><p>Recovered from discounted end-of-day inventory.</p></article>
+        <article class="stat-card"><span class="stat-value">126</span><h2>Items sold</h2><p>Orders placed across flash deals and bundles.</p></article>
+        <article class="stat-card"><span class="stat-value">18</span><h2>Pending pickup</h2><p>Orders waiting for local collection tonight.</p></article>
+        <article class="stat-card"><span class="stat-value">412 kg</span><h2>Waste avoided</h2><p>Stock diverted from spoilage this week.</p></article>
+      </section>
+
+      <section class="section-stack" style="margin-top: 1rem;">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Add a listing</h2>
+              <p>Inline demo form for vendors to stage a new rescue listing.</p>
+            </div>
+          </div>
+          <div class="notice hidden" data-listing-status aria-live="polite"></div>
+          <form class="inline-form hidden" data-listing-form>
+            <div class="field-group">
+              <label for="item">Item name</label>
+              <input id="item" name="item" type="text" placeholder="Prepared Salad Bundle" />
+            </div>
+            <div class="field-group">
+              <label for="categoryVendor">Category</label>
+              <select id="categoryVendor" name="category">
+                <option value="">Select one</option>
+                <option value="Bakery">Bakery</option>
+                <option value="Meal">Meal</option>
+                <option value="Produce">Produce</option>
+                <option value="Groceries">Groceries</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="stock">Units</label>
+              <input id="stock" name="stock" type="number" min="1" placeholder="12" />
+            </div>
+            <div class="field-group">
+              <label for="price">Price (£)</label>
+              <input id="price" name="price" type="number" step="0.01" min="0" placeholder="8.50" />
+            </div>
+            <button class="btn small" type="submit">Save draft</button>
+          </form>
+        </article>
+
+        <div class="dual-grid">
+          <article class="table-card">
+            <div class="panel-head">
+              <div>
+                <h2>Inventory status</h2>
+                <p>Active, pending, and draft items staged for tonight’s audience.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Listing</th><th>Stock</th><th>Price</th><th>Status</th></tr>
+                </thead>
+                <tbody data-inventory-body></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="table-card">
+            <div class="panel-head">
+              <div>
+                <h2>Recent sales</h2>
+                <p>Demo order activity from the latest buyer pickups.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Order</th><th>Buyer</th><th>Pickup</th><th>Total</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>#NB-2051</strong><br><small>Flash Taco Tray</small></td><td>Mary A.</td><td><span class="status-badge pending">8:45 PM</span></td><td>£18.00</td></tr>
+                  <tr><td><strong>#NB-2048</strong><br><small>Sourdough Rescue Box</small></td><td>Group order</td><td><span class="status-badge active">Collected</span></td><td>£31.50</td></tr>
+                  <tr><td><strong>#NB-2041</strong><br><small>Seasonal Fruit Tray</small></td><td>James O.</td><td><span class="status-badge review">9:10 PM</span></td><td>£9.20</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

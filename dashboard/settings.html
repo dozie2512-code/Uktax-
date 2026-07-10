@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy Settings</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="dashboard-page" data-page="settings" data-base="../" data-protected="true">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-top">
+        <a class="brand" href="index.html"><span class="brand-badge">NB</span>Night Buy</a>
+        <p>Update profile details, payout information, and notification preferences.</p>
+        <nav aria-label="Dashboard navigation">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Overview</a></li>
+            <li><a class="nav-link" href="buyer.html">Buyer</a></li>
+            <li><a class="nav-link" href="vendor.html">Vendor</a></li>
+            <li><a class="nav-link" href="commissions.html">Commissions</a></li>
+            <li><a class="nav-link is-active" href="settings.html">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <strong data-user-email></strong>
+        <small data-user-role></small>
+        <button class="btn ghost small" type="button" data-logout>Log out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <div class="glass topbar">
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" data-menu-toggle>☰</button>
+        <span class="user-chip"><strong data-user-role></strong> · <span data-user-email></span></span>
+      </div>
+
+      <div class="notice" data-banner aria-live="polite"></div>
+
+      <section class="page-head">
+        <div>
+          <span class="eyebrow">Settings</span>
+          <h1>Manage your Night Buy profile</h1>
+          <p>Everything here is client-side for the demo, including success feedback after save.</p>
+        </div>
+      </section>
+
+      <form class="section-stack" data-settings-form>
+        <div class="form-columns">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Profile information</h2>
+                <p>Basic identity and role details shown throughout the dashboard.</p>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="fullName">Full name</label>
+                <input id="fullName" name="fullName" type="text" placeholder="Jane Doe" />
+              </div>
+              <div class="field-group">
+                <label for="emailSettings">Email address</label>
+                <input id="emailSettings" name="email" type="email" placeholder="you@example.com" />
+              </div>
+              <div class="field-group">
+                <label for="roleSettings">Primary role</label>
+                <input id="roleSettings" name="role" type="text" readonly />
+              </div>
+              <div class="field-group">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" placeholder="+44 7000 000000" />
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Payout details</h2>
+                <p>Partner payout details and recovery-payment preferences.</p>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="bankName">Bank / provider</label>
+                <input id="bankName" name="bankName" type="text" placeholder="Monzo Business" />
+              </div>
+              <div class="field-group">
+                <label for="accountName">Account name</label>
+                <input id="accountName" name="accountName" type="text" placeholder="Night Buy Partner" />
+              </div>
+              <div class="field-group">
+                <label for="accountNumber">Account / wallet</label>
+                <input id="accountNumber" name="accountNumber" type="text" placeholder="•••• •••• •••• 2481" />
+              </div>
+              <div class="field-group">
+                <label for="schedule">Payout schedule</label>
+                <select id="schedule" name="schedule">
+                  <option>Weekly</option>
+                  <option>Bi-weekly</option>
+                  <option>Monthly</option>
+                </select>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Notification preferences</h2>
+              <p>Choose which demo updates you want Night Buy to surface.</p>
+            </div>
+          </div>
+          <div class="form-columns">
+            <label class="toggle-item"><input type="checkbox" name="deals" checked /> <span>New deal alerts and flash auction countdowns</span></label>
+            <label class="toggle-item"><input type="checkbox" name="orders" checked /> <span>Vendor order and pickup updates</span></label>
+            <label class="toggle-item"><input type="checkbox" name="commissions" checked /> <span>Commission earned and payout reminders</span></label>
+            <label class="toggle-item"><input type="checkbox" name="productNews" /> <span>Product updates and new Night Buy feature releases</span></label>
+          </div>
+        </article>
+
+        <div class="action-row">
+          <button class="btn" type="submit">Save settings</button>
+          <div class="notice" data-settings-status aria-live="polite"></div>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

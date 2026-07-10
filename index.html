@@ -247,7 +247,7 @@
         </p>
         <div class="hero-actions">
           <a class="btn" href="login.html">Create Account</a>
-          <a class="btn alt" href="#vendors">Become a Vendor</a>
+          <a class="btn alt" href="login.html">Become a Vendor</a>
         </div>
       </div>
 
@@ -341,7 +341,7 @@
           <option value="">Select one</option>
           <option>Buyer</option>
           <option>Vendor</option>
-          <option>Partner</option>
+          <option>Partner/Affiliate</option>
         </select>
 
         <label for="message">Message</label>
@@ -420,7 +420,10 @@
         return;
       }
 
-      msg.textContent = `Thanks ${name}! Your ${role.toLowerCase()} account request has been received.`;
+      msg.textContent = `Thanks ${name}! Redirecting you to login to continue with the ${role} dashboard.`;
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 700);
     }
   </script>
 </body>

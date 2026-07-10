@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="dashboard-page" data-page="overview" data-base="../" data-protected="true">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-top">
+        <a class="brand" href="index.html"><span class="brand-badge">NB</span>Night Buy</a>
+        <p>Role-aware dashboard shortcuts for buyers, vendors, and affiliate partners.</p>
+        <nav aria-label="Dashboard navigation">
+          <ul class="nav-list">
+            <li><a class="nav-link is-active" href="index.html">Overview</a></li>
+            <li><a class="nav-link" href="buyer.html">Buyer</a></li>
+            <li><a class="nav-link" href="vendor.html">Vendor</a></li>
+            <li><a class="nav-link" href="commissions.html">Commissions</a></li>
+            <li><a class="nav-link" href="settings.html">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <strong data-user-email></strong>
+        <small data-user-role></small>
+        <button class="btn ghost small" type="button" data-logout>Log out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <div class="glass topbar">
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" data-menu-toggle>☰</button>
+        <span class="user-chip"><strong data-user-role></strong> · <span data-user-email></span></span>
+      </div>
+
+      <div class="notice" data-banner aria-live="polite"></div>
+
+      <section class="page-head">
+        <div>
+          <span class="eyebrow">Overview</span>
+          <h1>Night Buy command center</h1>
+          <p data-role-summary>Use the quick links below to jump into tonight’s workflow.</p>
+        </div>
+        <div class="user-chip">Signed in as <span class="role-pill" data-user-role></span></div>
+      </section>
+
+      <section class="metrics-grid">
+        <article class="stat-card">
+          <span class="stat-value">£42.8k</span>
+          <h2>Recovered revenue</h2>
+          <p>Marketplace value preserved across active vendors tonight.</p>
+        </article>
+        <article class="stat-card">
+          <span class="stat-value">3,240</span>
+          <h2>Items rescued</h2>
+          <p>Clearance stock routed to local buyers instead of waste.</p>
+        </article>
+        <article class="stat-card">
+          <span class="stat-value">61%</span>
+          <h2>Sell-through rate</h2>
+          <p>Average conversion across flash auctions and bundles.</p>
+        </article>
+        <article class="stat-card">
+          <span class="stat-value">118</span>
+          <h2>Active partners</h2>
+          <p>Affiliates driving signups and repeat marketplace traffic.</p>
+        </article>
+      </section>
+
+      <section class="page-grid" style="margin-top: 1rem;">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Quick links by role</h2>
+              <p>Go directly to the experience that matches your selected demo role.</p>
+            </div>
+            <a class="btn small" href="buyer.html" data-role-home-link><span data-role-home-label>Role home</span></a>
+          </div>
+
+          <div class="quick-links">
+            <a class="quick-link" href="buyer.html" data-role-link="buyer"><div><strong>Buyer deal board</strong><span>Filter rescue deals, preview flash auctions, and add items to your cart.</span></div><span>Open →</span></a>
+            <a class="quick-link" href="vendor.html" data-role-link="vendor"><div><strong>Vendor operations</strong><span>Monitor revenue, inventory, orders, and add a new listing.</span></div><span>Open →</span></a>
+            <a class="quick-link" href="commissions.html" data-role-link="partner"><div><strong>Partner commissions</strong><span>Generate referral links, track ledger entries, and request payouts.</span></div><span>Open →</span></a>
+            <a class="quick-link" href="settings.html"><div><strong>Profile settings</strong><span>Update profile details, payout info, and notification preferences.</span></div><span>Open →</span></a>
+          </div>
+        </article>
+
+        <aside class="section-stack">
+          <article class="panel">
+            <h3>Tonight’s focus</h3>
+            <ul class="summary-list">
+              <li><strong>Flash auction window:</strong> 19 live listings close in the next 45 minutes.</li>
+              <li><strong>Mystery bundles:</strong> Highest conversion in bakery and meal categories.</li>
+              <li><strong>Payout cadence:</strong> Partner payout requests settle every Friday morning.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Recent activity</h3>
+            <ul class="timeline">
+              <li><strong>Golden Crust</strong><span>Added 8 bakery rescue boxes and sold through 75% in 22 minutes.</span></li>
+              <li><strong>Orchard Lane</strong><span>Activated a produce bundle with 1.9× higher average order value.</span></li>
+              <li><strong>Partner payout</strong><span>£1,260 paid out across 14 affiliate partners yesterday.</span></li>
+            </ul>
+          </article>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
