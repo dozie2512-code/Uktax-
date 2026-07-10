@@ -26,7 +26,8 @@
   }
 
   /* =================== Router ==================== */
-  var PROTECTED = ['dashboard', 'buyer', 'vendor', 'commissions', 'settings'];
+  var PROTECTED        = ['dashboard', 'buyer', 'vendor', 'commissions', 'settings'];
+  var LANDING_SECTIONS = ['vendors', 'buyers', 'pricing', 'about', 'innovations', 'contact'];
 
   function getRoute() {
     var h = location.hash.replace(/^#/, '').trim();
@@ -58,6 +59,16 @@
     // Protected route + no session → login
     if (PROTECTED.indexOf(route) !== -1 && !session) {
       navigate('login');
+      return;
+    }
+
+    // Landing section anchors (e.g. #vendors, #buyers, #pricing, #about)
+    if (LANDING_SECTIONS.indexOf(route) !== -1) {
+      renderView('home', session);
+      requestAnimationFrame(function () {
+        var el = document.getElementById(route);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
       return;
     }
 
@@ -131,8 +142,12 @@
       '<nav class="sidebar-nav" aria-label="Dashboard navigation">' + navHtml + '</nav>' +
       '<div class="sidebar-footer">' +
         '<div class="sidebar-user-email" title="' + esc(session.email) + '">' + esc(session.email) + '</div>' +
-        '<button class="btn-logout" onclick="NB.logout()">Sign Out</button>' +
+        '<button class="btn-logout" id="sidebar-logout-btn">Sign Out</button>' +
       '</div>';
+
+    // Attach logout listener after innerHTML is set
+    var sidebarLogoutBtn = sidebar.querySelector('#sidebar-logout-btn');
+    if (sidebarLogoutBtn) sidebarLogoutBtn.addEventListener('click', logout);
 
     document.getElementById('dash-page-title').textContent = PAGE_TITLES[route] || 'Dashboard';
 
