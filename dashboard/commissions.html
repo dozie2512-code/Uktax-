@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy Commissions Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="dashboard-page" data-page="commissions" data-base="../" data-protected="true" data-role="partner">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-top">
+        <a class="brand" href="index.html"><span class="brand-badge">NB</span>Night Buy</a>
+        <p>Track referred vendors, monitor conversions, and keep payout requests moving.</p>
+        <nav aria-label="Dashboard navigation">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Overview</a></li>
+            <li><a class="nav-link" href="buyer.html">Buyer</a></li>
+            <li><a class="nav-link" href="vendor.html">Vendor</a></li>
+            <li><a class="nav-link is-active" href="commissions.html">Commissions</a></li>
+            <li><a class="nav-link" href="settings.html">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <strong data-user-email></strong>
+        <small data-user-role></small>
+        <button class="btn ghost small" type="button" data-logout>Log out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <div class="glass topbar">
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" data-menu-toggle>☰</button>
+        <span class="user-chip"><strong data-user-role></strong> · <span data-user-email></span></span>
+      </div>
+
+      <div class="notice" data-banner aria-live="polite"></div>
+
+      <section class="page-head">
+        <div>
+          <span class="eyebrow">Partner & affiliate</span>
+          <h1>Grow commissions with local referrals</h1>
+          <p>Review your latest commission performance, create a fresh referral link, and request your next payout.</p>
+        </div>
+        <button class="btn" type="button" data-request-payout>Request payout</button>
+      </section>
+
+      <section class="metrics-grid">
+        <article class="stat-card"><span class="stat-value">£4,860</span><h2>Total commissions</h2><p>Lifetime earnings generated from referred vendors and campaigns.</p></article>
+        <article class="stat-card"><span class="stat-value">£740</span><h2>Pending payout</h2><p>Ready for the next settlement cycle once requested.</p></article>
+        <article class="stat-card"><span class="stat-value">£4,120</span><h2>Paid to date</h2><p>Completed payouts across previous weeks.</p></article>
+        <article class="stat-card"><span class="stat-value">12.8%</span><h2>Conversion rate</h2><p>Visitor-to-signup conversion from affiliate traffic.</p></article>
+      </section>
+
+      <section class="section-stack" style="margin-top: 1rem;">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Referral link generator</h2>
+              <p>Create or copy a client-side demo link for partner outreach.</p>
+            </div>
+          </div>
+          <div class="inline-form">
+            <div class="field-group">
+              <label for="referralLink">Referral link</label>
+              <input id="referralLink" data-referral-link type="text" readonly aria-readonly="true" />
+            </div>
+            <button class="btn small" type="button" data-generate-link>Generate new</button>
+            <button class="btn ghost small" type="button" data-copy-link>Copy link</button>
+          </div>
+          <div class="notice hidden" data-payout-status aria-live="polite"></div>
+        </article>
+
+        <article class="table-card">
+          <div class="panel-head">
+            <div>
+              <h2>Commission ledger</h2>
+              <p>Status-tracked commission entries for recent referrals and upgrades.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Date</th><th>Source</th><th>Commission</th><th>Status</th></tr>
+              </thead>
+              <tbody data-ledger-body></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

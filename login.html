@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy Login</title>
+  <meta name="description" content="Log in to Night Buy as a buyer, vendor, or partner to explore the demo dashboard experience." />
+  <link rel="stylesheet" href="dashboard/assets/styles.css" />
+</head>
+<body class="auth-page" data-page="login" data-base="./">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <main class="auth-shell">
+    <section class="glass auth-aside">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-badge">NB</span>Night Buy</a>
+        <div class="auth-hero">
+          <span class="eyebrow">Smart clearance, one sign-in</span>
+          <h1>Preview the Night Buy buyer, vendor, and partner journeys.</h1>
+          <p>Use demo credentials, pick a role, and jump into the lightweight dashboard experience built around Night Buy’s gold-and-cream marketplace style.</p>
+        </div>
+        <ul class="feature-list">
+          <li><strong>Buyer mode:</strong> Browse live deals, flash auctions, and mystery bundles with cart-style totals.</li>
+          <li><strong>Vendor mode:</strong> Review revenue metrics, inventory status, and add new listings in one place.</li>
+          <li><strong>Partner mode:</strong> Track referrals, generate new links, and request payouts with demo feedback.</li>
+        </ul>
+      </div>
+
+      <div class="auth-metrics" aria-label="Night Buy snapshot metrics">
+        <div class="metric"><strong>61%</strong><span>Average nightly sell-through</span></div>
+        <div class="metric"><strong>3.2k</strong><span>Items rescued this week</span></div>
+        <div class="metric"><strong>£42.8k</strong><span>Recovered vendor revenue</span></div>
+      </div>
+    </section>
+
+    <section class="glass auth-card" aria-labelledby="loginHeading">
+      <span class="eyebrow">Demo auth</span>
+      <h2 id="loginHeading">Log in to Night Buy</h2>
+      <p>Choose the role you want to test. Your session is stored in <code>localStorage</code> so protected routes can stay framework-free.</p>
+
+      <div class="notice" data-banner aria-live="polite"></div>
+
+      <form class="form-grid" data-login-form novalidate>
+        <div class="field-group" data-field="email">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          <div class="field-error"></div>
+        </div>
+
+        <div class="field-group" data-field="password">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Minimum 6 characters" required />
+          <div class="field-error"></div>
+        </div>
+
+        <div class="field-group" data-field="role">
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="">Select a role</option>
+            <option value="buyer">Buyer</option>
+            <option value="vendor">Vendor</option>
+            <option value="partner">Partner/Affiliate</option>
+          </select>
+          <div class="field-error"></div>
+        </div>
+
+        <fieldset class="checkbox-row">
+          <legend>Session preference</legend>
+          <label class="check-item" for="remember">
+            <input id="remember" name="remember" type="checkbox" />
+            <span>Remember me on this device</span>
+          </label>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="btn" type="submit">Log in</button>
+          <a class="btn ghost" href="index.html">Back to landing page</a>
+        </div>
+        <p class="help-text" data-form-status aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="dashboard/assets/app.js"></script>
+</body>
+</html>

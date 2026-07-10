@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy Buyer Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="dashboard-page" data-page="buyer" data-base="../" data-protected="true" data-role="buyer">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-top">
+        <a class="brand" href="index.html"><span class="brand-badge">NB</span>Night Buy</a>
+        <p>Browse local rescue deals, flash auctions, and surprise bundles before tonight’s close.</p>
+        <nav aria-label="Dashboard navigation">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Overview</a></li>
+            <li><a class="nav-link is-active" href="buyer.html">Buyer</a></li>
+            <li><a class="nav-link" href="vendor.html">Vendor</a></li>
+            <li><a class="nav-link" href="commissions.html">Commissions</a></li>
+            <li><a class="nav-link" href="settings.html">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <strong data-user-email></strong>
+        <small data-user-role></small>
+        <button class="btn ghost small" type="button" data-logout>Log out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <div class="glass topbar">
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" data-menu-toggle>☰</button>
+        <span class="user-chip"><strong data-user-role></strong> · <span data-user-email></span></span>
+      </div>
+
+      <div class="notice" data-banner aria-live="polite"></div>
+
+      <section class="page-head">
+        <div>
+          <span class="eyebrow">Buyer dashboard</span>
+          <h1>Discover tonight’s best rescue deals</h1>
+          <p>Search live inventory by category, mix in flash auctions, and watch your demo cart update instantly.</p>
+        </div>
+        <div class="cart-summary" aria-label="Cart summary">
+          <div class="summary-row"><span>Items added</span><strong data-cart-count>0</strong></div>
+          <div class="summary-row"><span>Total</span><strong data-cart-total>£0.00</strong></div>
+          <div class="summary-row"><span>You saved</span><strong data-cart-savings>£0.00</strong></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Deal filters</h2>
+            <p>Client-side filtering keeps the buyer preview quick and framework-free.</p>
+          </div>
+        </div>
+        <form class="filter-bar" data-deal-filter>
+          <div class="field-group">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option value="">All categories</option>
+              <option value="Bakery">Bakery</option>
+              <option value="Meal">Meal</option>
+              <option value="Produce">Produce</option>
+              <option value="Groceries">Groceries</option>
+              <option value="Lifestyle">Lifestyle</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="search">Search deals</label>
+            <input id="search" name="search" type="search" placeholder="Search title, vendor, or mode" />
+          </div>
+          <div class="action-row">
+            <button class="btn small" type="submit">Apply</button>
+            <button class="btn ghost small" type="button" data-reset-filters>Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section-stack" style="margin-top: 1rem;">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Tonight’s deal board</h2>
+              <p>Fresh rescue inventory with category and discount metadata.</p>
+            </div>
+          </div>
+          <div class="deals-grid" data-deals></div>
+        </article>
+
+        <div class="dual-grid">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Flash auction mode</h2>
+                <p>Countdown-style pricing that drops as closing time approaches.</p>
+              </div>
+            </div>
+            <div class="mode-grid">
+              <article class="mode-card"><span class="status-badge live">Live now</span><h3>Late-Night Sushi Set</h3><p>Starts at £18.00 and drops £1 every 6 minutes until sold.</p></article>
+              <article class="mode-card"><span class="status-badge pending">Next drop in 04:12</span><h3>Flash Taco Tray</h3><p>Kitchen surplus tray with a limited 15-minute pickup window.</p></article>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Mystery bundle mode</h2>
+                <p>High-value surprise bundles for buyers who love discovery.</p>
+              </div>
+            </div>
+            <div class="mode-grid">
+              <article class="mode-card"><span class="status-badge active">Top seller</span><h3>Artisan Pastry Rescue Box</h3><p>Mix of sweet and savory pastries with 64% off tonight.</p></article>
+              <article class="mode-card"><span class="status-badge active">New bundle</span><h3>Mystery Floral Stem Mix</h3><p>Designer-picked stems rescued from end-of-day arrangements.</p></article>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
