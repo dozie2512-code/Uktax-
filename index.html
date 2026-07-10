@@ -1,1151 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recordbooks - Professional Bookkeeping & Tax Solutions</title>
-    <meta name="description" content="Professional UK accounting services offering bookkeeping, tax planning, and payroll services from £250. Expert support for businesses.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            background: #ffffff;
-            min-height: 100vh;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Sticky Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1e3a8a;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #1e3a8a;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            transition: all 0.3s ease;
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 100px 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #ffffff;
-            opacity: 1;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: white;
-            color: #1e3a8a;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.4s both;
-            cursor: pointer;
-            border: none;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 80px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            color: #1e3a8a;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        section > p {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border-color: #3b82f6;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: #1e3a8a;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            color: #555;
-        }
-
-        .service-features li:before {
-            content: "✓ ";
-            color: #10b981;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        /* Pricing Section */
-        .pricing-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .pricing-card.featured {
-            border-color: #1e3a8a;
-            transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(30, 58, 138, 0.2);
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1e3a8a;
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-5px);
-        }
-
-        .plan-name {
-            font-size: 1.5rem;
-            color: #1e3a8a;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .plan-price {
-            font-size: 3rem;
-            color: #333;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .plan-period {
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .plan-features li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #f3f4f6;
-            color: #555;
-        }
-
-        .plan-features li:last-child {
-            border-bottom: none;
-        }
-
-        .plan-features li:before {
-            content: "✓ ";
-            color: #10b981;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .plan-button {
-            width: 100%;
-            padding: 15px;
-            background: #1e3a8a;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .plan-button:hover {
-            background: #1e40af;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
-        }
-
-        .plan-addons {
-            margin: 1.5rem 0;
-            text-align: left;
-            padding: 1rem;
-            background: #f9fafb;
-            border-radius: 8px;
-        }
-
-        .addon-checkbox {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            cursor: pointer;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .addon-checkbox:last-child {
-            margin-bottom: 0;
-        }
-
-        .addon-checkbox input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .addon-checkbox span {
-            line-height: 1.4;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            max-width: 600px;
-            margin: 3rem auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .submit-button {
-            width: 100%;
-            padding: 15px;
-            background: #1e3a8a;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-button:hover {
-            background: #1e40af;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
-        }
-
-        .submit-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .form-message {
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .form-message.success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #10b981;
-        }
-
-        .form-message.error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #ef4444;
-        }
-
-        /* Live Updates Section */
-        .updates-container {
-            background: #f8fafc;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 3rem;
-        }
-
-        .update-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border-left: 4px solid #3b82f6;
-            transition: all 0.3s ease;
-        }
-
-        .update-item:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transform: translateX(5px);
-        }
-
-        .update-date {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .update-item h4 {
-            color: #1e3a8a;
-            margin-bottom: 0.5rem;
-        }
-
-        .update-item p {
-            color: #555;
-        }
-
-        /* Privacy Section */
-        .privacy-box {
-            background: #f0fdf4;
-            border: 2px solid #10b981;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .privacy-box h3 {
-            color: #065f46;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .privacy-box ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .privacy-box li {
-            padding: 0.5rem 0;
-            color: #047857;
-        }
-
-        .privacy-box li:before {
-            content: "🔒 ";
-            margin-right: 8px;
-        }
-
-        /* Footer */
-        footer {
-            background: #1e293b;
-            color: white;
-            padding: 3rem 2rem 1rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #3b82f6;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #3b82f6;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: #334155;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: #3b82f6;
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 1s ease;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-
-            .pricing-card.featured:hover {
-                transform: translateY(-5px);
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        /* Scroll Reveal */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NightFlip — AI-Powered Smart Clearance Marketplace</title>
+  <meta name="description" content="NightFlip helps vendors recover revenue and reduce waste with AI smart pricing, mystery boxes, flash auctions, and sustainability rewards." />
+  <style>
+    :root{
+      --bg:#04130a;
+      --bg-2:#072014;
+      --card:rgba(255,255,255,.08);
+      --card-strong:rgba(255,255,255,.12);
+      --border:rgba(255,255,255,.18);
+      --text:#eafff1;
+      --muted:#b7d8c2;
+      --primary:#22c55e;
+      --primary-dark:#16a34a;
+      --accent:#86efac;
+      --radius:16px;
+      --max:1150px;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      color:var(--text);
+      font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(900px 500px at 0% -5%, #0b3a24 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #14532d 0%, transparent 58%),
+        linear-gradient(180deg,var(--bg),var(--bg-2));
+      min-height:100vh;
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+
+    .container{max-width:var(--max);margin:0 auto;padding:0 1.15rem}
+
+    .glow{
+      position:fixed; width:380px;height:380px;border-radius:50%;
+      filter:blur(70px); pointer-events:none; z-index:-1; opacity:.25;
+      animation:float 8s ease-in-out infinite;
+    }
+    .glow.one{background:#22c55e;top:8%;left:-120px}
+    .glow.two{background:#16a34a;bottom:8%;right:-120px;animation-delay:2s}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+
+    .nav{
+      position:sticky;top:0;z-index:40;
+      background:rgba(4,19,10,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(10px);
+    }
+    .nav-wrap{
+      display:flex;align-items:center;justify-content:space-between;min-height:72px;
+    }
+    .logo{
+      display:flex;align-items:center;gap:.55rem;
+      color:var(--text);text-decoration:none;font-weight:800;font-size:1.1rem;
+    }
+    .logo-badge{
+      width:28px;height:28px;border-radius:8px;
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      display:grid;place-items:center;box-shadow:0 8px 24px rgba(34,197,94,.4);
+    }
+    .links{list-style:none;display:flex;gap:1rem}
+    .links a{color:#d6f7df;text-decoration:none;font-weight:600;font-size:.93rem}
+    .links a:hover{color:#fff}
+
+    .menu-btn{
+      display:none;border:1px solid rgba(255,255,255,.25);
+      background:transparent;color:#fff;border-radius:8px;padding:.42rem .65rem;cursor:pointer;
+    }
+
+    .btn{
+      border:none;cursor:pointer;text-decoration:none;
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:#04130a;font-weight:800;padding:.72rem 1.05rem;border-radius:10px;
+      display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
+      transition:.25s ease;box-shadow:0 12px 30px rgba(34,197,94,.35);
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.alt{
+      background:rgba(255,255,255,.08);
+      color:#eafff1;border:1px solid rgba(255,255,255,.2);box-shadow:none;
+    }
+    .hide-mobile{display:inline-flex}
+
+    .hero{padding:74px 0 52px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;align-items:center}
+    .pill{
+      display:inline-flex;padding:.36rem .72rem;border-radius:999px;
+      border:1px solid rgba(134,239,172,.4);background:rgba(34,197,94,.12);
+      color:#c9ffd9;font-weight:700;font-size:.8rem;margin-bottom:.9rem;
+    }
+    h1{font-size:clamp(2rem,4.8vw,3.4rem);line-height:1.08;margin-bottom:.9rem}
+    .hero p{color:var(--muted);max-width:60ch;margin-bottom:1.25rem}
+    .hero-actions{display:flex;gap:.7rem;flex-wrap:wrap}
+
+    .glass{
+      background:var(--card);border:1px solid var(--border);
+      backdrop-filter:blur(12px);border-radius:var(--radius);box-shadow:var(--shadow);
+    }
+    .hero-panel{padding:1rem}
+    .metrics{margin-top:.8rem;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .metric{
+      padding:.85rem;border-radius:12px;border:1px solid rgba(255,255,255,.2);
+      background:rgba(255,255,255,.06);
+    }
+    .metric h3{font-size:1.2rem;color:#bbf7d0}
+    .metric p{font-size:.82rem;color:#d3f5dd}
+
+    .section{padding:56px 0}
+    .title{font-size:clamp(1.4rem,2.3vw,2.05rem);margin-bottom:.5rem}
+    .subtitle{color:var(--muted);margin-bottom:1.2rem}
+
+    .grid{display:grid;gap:1rem}
+    .cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{padding:1rem;transition:.28s ease}
+    .card:hover{transform:translateY(-4px);background:var(--card-strong)}
+    .icon{
+      width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+      background:rgba(34,197,94,.18);border:1px solid rgba(134,239,172,.35);
+      margin-bottom:.65rem;font-size:1.15rem;
+    }
+    .card h3{margin-bottom:.45rem;font-size:1.05rem}
+    .card p{color:#d0efd9;font-size:.95rem}
+
+    .split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+
+    .cta{
+      text-align:center;padding:34px 16px;border-radius:18px;
+      background:linear-gradient(135deg, rgba(134,239,172,.2), rgba(34,197,94,.18));
+      border:1px solid rgba(134,239,172,.35);box-shadow:0 16px 45px rgba(0,0,0,.28);
+    }
+    .cta p{color:#dcfce7;margin:.4rem 0 1rem}
+
+    .form{max-width:680px;padding:1rem}
+    .form label{display:block;margin:.8rem 0 .35rem;font-weight:600}
+    .form input,.form select,.form textarea{
+      width:100%;padding:.72rem;border-radius:10px;border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.06);color:#fff;font:inherit;
+    }
+    .form input::placeholder,.form textarea::placeholder{color:#cde7d6}
+    .form-msg{margin-top:.75rem;color:#bbf7d0;font-weight:600}
+
+    .footer{padding:24px 0 38px;text-align:center;color:#b9dcc4;font-size:.92rem}
+
+    .reveal{opacity:0;transform:translateY(14px);transition:.55s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    @media (max-width: 860px){
+      .hero-grid,.split{grid-template-columns:1fr}
+      .links{
+        display:none;position:absolute;top:72px;left:0;right:0;
+        background:#07170e;padding:1rem;flex-direction:column;border-bottom:1px solid rgba(255,255,255,.12)
+      }
+      .links.show{display:flex}
+      .menu-btn{display:block}
+      .hide-mobile{display:none}
+    }
+  </style>
 </head>
 <body>
-    <!-- Sticky Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">🇬🇧 Recordbooks</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu" id="mobileMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <h1>Professional UK Accounting & Tax Services</h1>
-        <p>Expert bookkeeping, tax planning, and compliance solutions for your business</p>
-        <a href="#contact" class="cta-button">Get Started Today</a>
-    </section>
+  <nav class="nav">
+    <div class="container nav-wrap">
+      <a class="logo" href="#home"><span class="logo-badge">🌙</span>NightFlip</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">☰</button>
+      <ul class="links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#vendors">Vendors</a></li>
+        <li><a href="#buyers">Buyers</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn hide-mobile" href="#contact">Download App</a>
+    </div>
+  </nav>
 
-    <!-- Services Overview Section -->
-    <section id="services">
-        <h2>Our Services</h2>
-        <p>Comprehensive accounting solutions tailored to UK businesses</p>
-
-        <div class="services-grid">
-            <div class="service-card scroll-reveal">
-                <div class="service-icon">📚</div>
-                <h3>Bookkeeping</h3>
-                <p>Accurate and timely bookkeeping services to keep your finances in order.</p>
-                <ul class="service-features">
-                    <li>Daily transaction recording</li>
-                    <li>Bank reconciliation</li>
-                    <li>Accounts payable & receivable</li>
-                    <li>Monthly management reports</li>
-                    <li>Cloud accounting setup (Xero, QuickBooks)</li>
-                </ul>
-            </div>
-
-            <div class="service-card scroll-reveal">
-                <div class="service-icon">⚖️</div>
-                <h3>Payroll Services</h3>
-                <p>Efficient payroll management ensuring compliance with UK employment law.</p>
-                <ul class="service-features">
-                    <li>Monthly payroll processing</li>
-                    <li>RTI submissions to HMRC</li>
-                    <li>P60 & P11D preparation</li>
-                    <li>Employee payslip generation</li>
-                </ul>
-            </div>
-
-            <div class="service-card scroll-reveal">
-                <div class="service-icon">💷</div>
-                <h3>Taxes</h3>
-                <p>Comprehensive tax services covering VAT, Corporation Tax, Self Assessment, and PAYE for your business.</p>
-                <ul class="service-features">
-                    <li>VAT return preparation & filing</li>
-                    <li>VAT registration & MTD compliance</li>
-                    <li>Self-Assessment tax returns</li>
-                    <li>Corporation tax returns (CT600)</li>
-                    <li>PAYE & payroll taxes</li>
-                    <li>Tax planning & optimization</li>
-                    <li>Capital gains tax advice</li>
-                    <li>R&D tax credit claims</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Benefits Section -->
-        <div class="privacy-box" style="margin-top: 4rem;">
-            <h3>💼 Why Choose Us?</h3>
-            <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                <li>Experienced Accountant</li>
-                <li>Fixed transparent pricing</li>
-                <li>Fast turnaround times</li>
-                <li>Dedicated account manager</li>
-                <li>Cloud-based access 24/7</li>
-                <li>GDPR compliant processes</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Dynamic Pricing Section -->
-    <section id="pricing">
-        <h2>Transparent Pricing Plans</h2>
-        <p>Choose the perfect plan for your business needs</p>
-
-        <div class="pricing-container">
-            <!-- Micro Monthly Retainer -->
-            <div class="pricing-card scroll-reveal">
-                <div class="plan-name">Micro Monthly Retainer</div>
-                <div class="plan-price" id="software-price">£50</div>
-                <div class="plan-period">per month</div>
-                <div class="plan-addons">
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="software-addon" onchange="updateSoftwarePrice()">
-                        <span>Xero software @ £20/month</span>
-                    </label>
-                </div>
-                <ul class="plan-features">
-                    <li>Recordbooks accounting software</li>
-                    <li>Monthly bookkeeping (up to 50 postings)</li>
-                    <li>Monthly bank reconciliation</li>
-                    <li>Self Assessment</li>
-                    <li>Turnover threshold: £50,000</li>
-                    <li>Completion of year end account</li>
-                    <li>Company Returns</li>
-                </ul>
-                <button class="plan-button" onclick="openContactForm('Micro Monthly Retainer')">Contact Us</button>
-            </div>
-
-            <!-- Monthly Retainer Plan -->
-            <div class="pricing-card featured scroll-reveal">
-                <div class="pricing-badge">Most Popular</div>
-                <div class="plan-name">Monthly Retainer Plan</div>
-                <div class="plan-price" id="monthly-price">£150</div>
-                <div class="plan-period">per month</div>
-                <div class="plan-addons">
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="monthly-payroll" onchange="updateMonthlyPrice()">
-                        <span>Payroll @ £50/month (up to 3 staff)</span>
-                    </label>
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="monthly-vat" onchange="updateMonthlyPrice()">
-                        <span>Quarterly VAT returns @ £50/month</span>
-                    </label>
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="monthly-mtd" onchange="updateMonthlyPrice()">
-                        <span>Quarterly Income Tax MTD @ £50/month</span>
-                    </label>
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="monthly-discount" onchange="updateMonthlyPrice()">
-                        <span>Small company discount (50% off)</span>
-                    </label>
-                </div>
-                <ul class="plan-features">
-                    <li>Full bookkeeping (up to 150 transactions)</li>
-                    <li>Weekly bank reconciliation</li>
-                    <li>Monthly management reports</li>
-                    <li>Priority phone &amp; email support</li>
-                    <li>Recordbooks/Xero software</li>
-                </ul>
-                <button class="plan-button" onclick="openContactForm('Monthly Retainer Plan')">Contact Us</button>
-            </div>
-
-            <!-- Yearly Retainer Plan -->
-            <div class="pricing-card scroll-reveal">
-                <div class="plan-name">Yearly Retainer Plan</div>
-                <div class="plan-price" id="yearly-price">£250</div>
-                <div class="plan-period">per year</div>
-                <div class="plan-description" style="margin-bottom: 15px; font-size: 0.9em; color: #666;">Micro entity/Sole Trader starting price</div>
-                <div class="plan-addons">
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="yearly-addon-small" onchange="updateYearlyPrice()">
-                        <span>Small Company: Annual accounts and tax @ £350/year (turnover up to £500,000)</span>
-                    </label>
-                    <label class="addon-checkbox">
-                        <input type="checkbox" id="yearly-addon-medium" onchange="updateYearlyPrice()">
-                        <span>Medium size: Annual accounts and tax @ £550/year</span>
-                    </label>
-                </div>
-                <ul class="plan-features">
-                    <li>Annual Account preparation</li>
-                    <li>Self Assessment</li>
-                    <li>Corporate tax returns (as applicable)</li>
-                    <li>Tax Advisory</li>
-                </ul>
-                <button class="plan-button" onclick="openContactForm('Yearly Retainer Plan')">Contact Us</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Get in touch to discuss your accounting needs</p>
-
-        <div class="contact-form">
-            <div id="formMessage"></div>
-            <form id="contactForm" action="mailto:info@recordbooks.co.uk" method="post" enctype="text/plain" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="John Smith">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required placeholder="john.smith@example.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="company">Company Name</label>
-                    <input type="text" id="company" name="company" placeholder="Your Company Ltd (Optional)">
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="07XXX XXXXXX (Optional)">
-                </div>
-
-                <div class="form-group">
-                    <label for="plan">Interested In</label>
-                    <select id="plan" name="plan">
-                        <option value="">Select a service or plan</option>
-                        <option value="software">Micro Monthly Retainer</option>
-                        <option value="monthly-retainer">Monthly Retainer Plan</option>
-                        <option value="yearly-retainer">Yearly Retainer Plan</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" name="message" required placeholder="Tell us about your accounting needs..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-button" id="submitBtn">Send Message</button>
-            </form>
-        </div>
+  <header id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="pill">AI-Powered Smart Clearance Marketplace</span>
+        <h1>Sell more before closing. Waste less by morning.</h1>
         <p>
-            Email: info@recordbooks.co.uk
+          NightFlip predicts unsold inventory and auto-launches dynamic discounts in real-time.
+          Vendors recover revenue, buyers unlock deep local deals, and communities reduce waste together.
         </p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Recordbooks</h3>
-                <p style="color: #94a3b8; margin-bottom: 1rem;">
-                    Professional accounting and tax services for UK businesses. Helping you stay compliant and financially healthy.
-                </p>
-                <div class="social-links">
-                    <a href="https://facebook.com" target="_blank" aria-label="Facebook">📘</a>
-                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">🐦</a>
-                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">💼</a>
-                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">📷</a>
-                </div>
-            </div>
-
-            <div class="footer-section">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="#services">Bookkeeping</a></li>
-                    <li><a href="#services">Payroll Services</a></li>
-                    <li><a href="#services">Taxes</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="#services">About Us</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#privacy">Privacy Policy</a></li>
-                    <li><a href="#terms">Terms of Service</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <ul>
-                    <li>📧 Email: info@recordbooks.co.uk</li>
-                    <li>📞 Phone: 07768486427</li>
-                    <li>📍 Address: 61 Bridge Kingston London</li>
-                    <li>🕐 Hours: Mon-Fri, 9am-6pm</li>
-                </ul>
-            </div>
+        <div class="hero-actions">
+          <a class="btn" href="#contact">📱 Download App</a>
+          <a class="btn alt" href="#vendors">🏪 Become a Vendor</a>
         </div>
+      </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2026 Recordbooks. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                <a href="#privacy" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a> | 
-                <a href="#terms" style="color: #94a3b8; text-decoration: none;">Terms of Service</a> | 
-                <a href="#cookies" style="color: #94a3b8; text-decoration: none;">Cookie Policy</a>
-            </p>
+      <aside class="glass hero-panel reveal">
+        <h3>Tonight’s Live Impact</h3>
+        <div class="metrics">
+          <div class="metric"><h3 class="count" data-target="3240">0</h3><p>Items rescued</p></div>
+          <div class="metric"><h3>£<span class="count" data-target="42800">0</span></h3><p>Recovered revenue</p></div>
+          <div class="metric"><h3 class="count" data-target="12100">0</h3><p>Green Points earned</p></div>
+          <div class="metric"><h3><span class="count" data-target="61">0</span>%</h3><p>Avg sell-through</p></div>
         </div>
-    </footer>
+      </aside>
+    </div>
+  </header>
 
-    <script>
-        // Sticky Navigation
-        const navbar = document.getElementById('navbar');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+  <section id="innovations" class="section">
+    <div class="container">
+      <h2 class="title reveal">7 Breakthrough Innovations</h2>
+      <p class="subtitle reveal">Built to solve problems traditional discount marketplaces ignore.</p>
+      <div class="grid cards">
+        <article class="glass card reveal"><div class="icon">🧠</div><h3>AI Smart Pricing</h3><p>Automatic markdown optimization based on demand, timing, weather, and local events.</p></article>
+        <article class="glass card reveal"><div class="icon">🎁</div><h3>Mystery Deal Boxes</h3><p>Surprise bundles at 60–80% off without manual item-by-item listing.</p></article>
+        <article class="glass card reveal"><div class="icon">⏱️</div><h3>Live Flash Auctions</h3><p>Price drops every few minutes in the final 30–60 minutes before closing.</p></article>
+        <article class="glass card reveal"><div class="icon">🤝</div><h3>Neighborhood Group Buying</h3><p>Nearby buyers combine demand to unlock deeper discounts and delivery perks.</p></article>
+        <article class="glass card reveal"><div class="icon">🌍</div><h3>Waste-to-Reward Score</h3><p>Vendors build sustainability credibility while buyers earn Green Points.</p></article>
+        <article class="glass card reveal"><div class="icon">📸</div><h3>Instant Vendor Setup</h3><p>Snap remaining inventory and let AI generate listings with suggested prices.</p></article>
+        <article class="glass card reveal"><div class="icon">📊</div><h3>Business Analytics</h3><p>See what remains unsold most often and improve inventory planning.</p></article>
+      </div>
+    </div>
+  </section>
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+  <section id="vendors" class="section">
+    <div class="container split">
+      <article class="glass card reveal">
+        <h2 class="title">For Vendors</h2>
+        <p class="subtitle">Recover end-of-day value with minimal manual work.</p>
+        <p>• Auto listing from inventory photos</p>
+        <p>• Dynamic close-time pricing</p>
+        <p>• Sustainability score tracking</p>
+        <p>• Analytics for inventory optimization</p>
+      </article>
+      <article id="buyers" class="glass card reveal">
+        <h2 class="title">For Buyers</h2>
+        <p class="subtitle">Save more and reduce waste in your neighborhood.</p>
+        <p>• Deep discounts on local products</p>
+        <p>• Mystery boxes and flash auctions</p>
+        <p>• Group-buy savings</p>
+        <p>• Green reward points for each rescue purchase</p>
+      </article>
+    </div>
+  </section>
 
-        // Mobile Menu Toggle
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+  <section id="pricing" class="section">
+    <div class="container">
+      <h2 class="title reveal">Revenue Model</h2>
+      <p class="subtitle reveal">Designed for sustainable, scalable growth.</p>
+      <div class="grid cards">
+        <article class="glass card reveal"><h3>Transaction Commission</h3><p>Small fee per completed sale.</p></article>
+        <article class="glass card reveal"><h3>Premium Vendor Plans</h3><p>Advanced automation and analytics tools.</p></article>
+        <article class="glass card reveal"><h3>Sponsored Promotions</h3><p>Boosted local placements and campaigns.</p></article>
+        <article class="glass card reveal"><h3>Delivery Fees</h3><p>Convenience pricing plus group-delivery options.</p></article>
+        <article class="glass card reveal"><h3>Data Insights</h3><p>Trend reporting for smarter stock planning.</p></article>
+      </div>
+    </div>
+  </section>
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
+  <section id="about" class="section">
+    <div class="container">
+      <div class="cta reveal">
+        <h2>Vision: The World’s Largest Zero-Waste Night Marketplace</h2>
+        <p>Match unsold inventory to nearby buyers in real-time, every night, in every city.</p>
+        <a class="btn" href="#contact">Join Waitlist</a>
+      </div>
+    </div>
+  </section>
 
-        // Scroll Reveal Animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="title reveal">Join NightFlip</h2>
+      <p class="subtitle reveal">Tell us if you're joining as a buyer, vendor, or partner.</p>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
+      <form class="glass form reveal" onsubmit="submitForm(event)">
+        <label for="name">Full Name</label>
+        <input id="name" required type="text" placeholder="Jane Doe" />
 
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            observer.observe(el);
-        });
+        <label for="email">Email</label>
+        <input id="email" required type="email" placeholder="jane@example.com" />
 
-        // Contact Form Handling
-        function openContactForm(planName) {
-            const contactSection = document.getElementById('contact');
-            const planSelect = document.getElementById('plan');
-            
-            // Scroll to contact form
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-            
-            // Set plan based on button clicked
-            setTimeout(() => {
-                if (planName.includes('Micro Monthly Retainer')) {
-                    planSelect.value = 'software';
-                } else if (planName.includes('Monthly Retainer')) {
-                    planSelect.value = 'monthly-retainer';
-                } else if (planName.includes('Yearly Retainer')) {
-                    planSelect.value = 'yearly-retainer';
-                }
-            }, 500);
+        <label for="role">I am joining as</label>
+        <select id="role" required>
+          <option value="">Select one</option>
+          <option>Buyer</option>
+          <option>Vendor</option>
+          <option>Partner</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" rows="4" placeholder="Tell us more..."></textarea>
+
+        <button class="btn" type="submit">Submit</button>
+        <p id="formMsg" class="form-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p><strong>NightFlip</strong> — Smart clearance powered by AI</p>
+      <p>© 2026 NightFlip. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+    }
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
 
-        // Pricing calculation functions
-        function updateSoftwarePrice() {
-            const addon = document.getElementById('software-addon');
-            const priceElement = document.getElementById('software-price');
-            
-            if (addon.checked) {
-                priceElement.textContent = '£70';
-            } else {
-                priceElement.textContent = '£50';
-            }
+    // Counter animation
+    function animateCount(el, target) {
+      let start = 0;
+      const duration = 1400;
+      const step = target / (duration / 16);
+      function tick() {
+        start += step;
+        if (start < target) {
+          el.textContent = Math.floor(start).toLocaleString();
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = target.toLocaleString();
         }
+      }
+      tick();
+    }
 
-        function updateYearlyPrice() {
-            const smallAddon = document.getElementById('yearly-addon-small');
-            const mediumAddon = document.getElementById('yearly-addon-medium');
-            const priceElement = document.getElementById('yearly-price');
-            
-            // Implement mutual exclusivity
-            if (smallAddon.checked && mediumAddon.checked) {
-                // If both are checked, uncheck the one that was not just clicked
-                if (event && event.target === smallAddon) {
-                    mediumAddon.checked = false;
-                } else if (event && event.target === mediumAddon) {
-                    smallAddon.checked = false;
-                }
-            }
-            
-            // Update price based on selection
-            if (smallAddon.checked) {
-                priceElement.textContent = '£350';
-            } else if (mediumAddon.checked) {
-                priceElement.textContent = '£550';
-            } else {
-                priceElement.textContent = '£250';
-            }
-        }
-
-        function updateMonthlyPrice() {
-            const basePrice = 150;
-            const addonPrice = 50;
-            
-            const payroll = document.getElementById('monthly-payroll').checked;
-            const vat = document.getElementById('monthly-vat').checked;
-            const mtd = document.getElementById('monthly-mtd').checked;
-            const discount = document.getElementById('monthly-discount').checked;
-            
-            let totalPrice = basePrice;
-            
-            // Add addon prices
-            if (payroll) totalPrice += addonPrice;
-            if (vat) totalPrice += addonPrice;
-            if (mtd) totalPrice += addonPrice;
-            
-            // Apply discount
-            if (discount) {
-                totalPrice = totalPrice * 0.5;
-            }
-            
-            const priceElement = document.getElementById('monthly-price');
-            priceElement.textContent = '£' + totalPrice.toFixed(0);
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const formMessage = document.getElementById('formMessage');
-            const form = document.getElementById('contactForm');
-            
-            // Disable button during submission
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                company: document.getElementById('company').value,
-                phone: document.getElementById('phone').value,
-                plan: document.getElementById('plan').value,
-                message: document.getElementById('message').value,
-                timestamp: new Date().toISOString()
-            };
-            
-            // Simulate form submission (client-side only)
-            setTimeout(() => {
-                console.log('Form Data:', formData);
-                
-                // Show success message
-                formMessage.innerHTML = `
-                    <div class="form-message success">
-                        Thank you ${formData.name}! Your message has been received. 
-                        We'll get back to you at ${formData.email} within 24 hours.
-                    </div>
-                `;
-                
-                // Reset form
-                form.reset();
-                
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-                
-                // Store in local storage (for demo purposes)
-                const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-                submissions.push(formData);
-                localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
-                
-                // Scroll to message
-                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Clear message after 5 seconds
-                setTimeout(() => {
-                    formMessage.innerHTML = '';
-                }, 5000);
-            }, 1500);
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+    const counters = document.querySelectorAll('.count');
+    if (counters.length) {
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const t = parseInt(entry.target.dataset.target, 10);
+            animateCount(entry.target, t);
+            counterObserver.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.5 });
+      counters.forEach(c => counterObserver.observe(c));
+    }
 
-        // Add animation to buttons on hover
-        document.querySelectorAll('.cta-button, .plan-button, .submit-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-3px)';
-            });
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Log page view (for analytics simulation)
-        console.log('Recordbooks Website Loaded');
-        console.log('Version: 1.0.0');
-        console.log('All features operational - Client-side only');
-    </script>
+    // Contact form (frontend demo)
+    function submitForm(e) {
+      e.preventDefault();
+      const msg = document.getElementById('formMsg');
+      msg.textContent = "Thanks! You're on the NightFlip waitlist.";
+      e.target.reset();
+    }
+  </script>
 </body>
-    </html>
+</html>
