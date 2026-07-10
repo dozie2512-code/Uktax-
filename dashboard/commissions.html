@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy | Commissions</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="commissions-page" data-required-role="partner">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-badge">NB</span>Night Buy</div>
+      <ul class="side-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="buyer.html">Buyer</a></li>
+        <li><a href="vendor.html">Vendor</a></li>
+        <li><a href="commissions.html" aria-current="page">Commissions</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <button class="btn link" type="button" data-action="logout">Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="btn alt menu-toggle" type="button" data-action="toggle-menu" aria-label="Toggle menu">☰ Menu</button>
+        <span class="badge neutral" data-user-chip></span>
+      </header>
+
+      <p id="page-notice" role="status" aria-live="polite"></p>
+
+      <section class="grid cols-4">
+        <article class="glass card"><h3>Total commissions</h3><p class="metric-value">£8,920</p></article>
+        <article class="glass card"><h3>Pending payout</h3><p class="metric-value">£1,120</p></article>
+        <article class="glass card"><h3>Paid to date</h3><p class="metric-value">£7,800</p></article>
+        <article class="glass card"><h3>Conversion rate</h3><p class="metric-value">14.7%</p></article>
+      </section>
+
+      <section class="glass card" style="margin-top:.8rem;">
+        <div class="section-head"><h2>Referral link</h2></div>
+        <div class="grid cols-3">
+          <div class="field" style="grid-column: span 2;">
+            <label for="referral-link">Your referral URL</label>
+            <input class="input" id="referral-link" readonly />
+          </div>
+          <div style="display:flex;align-items:end;gap:.45rem;flex-wrap:wrap;">
+            <button id="generate-referral" class="btn" type="button">Generate</button>
+            <button id="copy-referral" class="btn alt" type="button">Copy</button>
+          </div>
+        </div>
+        <p id="referral-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="glass card" style="margin-top:.8rem;">
+        <div class="section-head"><h2>Commission ledger</h2></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Date</th><th>Ref ID</th><th>Order</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>2026-07-08</td><td>REF-301</td><td>#NB-4012</td><td>£12.00</td><td><span class="badge success">Paid</span></td></tr>
+              <tr><td>2026-07-07</td><td>REF-300</td><td>#NB-4010</td><td>£8.50</td><td><span class="badge warning">Pending</span></td></tr>
+              <tr><td>2026-07-06</td><td>REF-299</td><td>#NB-3995</td><td>£10.20</td><td><span class="badge neutral">Processing</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:.6rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;">
+          <button id="request-payout" class="btn" type="button">Request payout</button>
+          <span id="payout-state" class="notice" aria-live="polite"></span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

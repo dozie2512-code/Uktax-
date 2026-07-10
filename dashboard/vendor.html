@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy | Vendor</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="vendor-page" data-required-role="vendor">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-badge">NB</span>Night Buy</div>
+      <ul class="side-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="buyer.html">Buyer</a></li>
+        <li><a href="vendor.html" aria-current="page">Vendor</a></li>
+        <li><a href="commissions.html">Commissions</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <button class="btn link" type="button" data-action="logout">Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="btn alt menu-toggle" type="button" data-action="toggle-menu" aria-label="Toggle menu">☰ Menu</button>
+        <span class="badge neutral" data-user-chip></span>
+      </header>
+
+      <p id="page-notice" role="status" aria-live="polite"></p>
+
+      <section class="grid cols-4">
+        <article class="glass card"><h3>Revenue today</h3><p class="metric-value">£1,240</p></article>
+        <article class="glass card"><h3>Items sold</h3><p class="metric-value">112</p></article>
+        <article class="glass card"><h3>Pending pickup</h3><p class="metric-value">9</p></article>
+        <article class="glass card"><h3>Waste avoided</h3><p class="metric-value">78kg</p></article>
+      </section>
+
+      <section class="glass card" style="margin-top:.8rem;">
+        <div class="section-head"><h2>Add listing</h2></div>
+        <form id="vendor-add-form" class="grid cols-3">
+          <div class="field">
+            <label for="listing-name">Item name</label>
+            <input class="input" id="listing-name" required />
+          </div>
+          <div class="field">
+            <label for="listing-stock">Stock</label>
+            <input class="input" id="listing-stock" type="number" min="1" required />
+          </div>
+          <div class="field">
+            <label for="listing-status">Status</label>
+            <select id="listing-status" required>
+              <option value="">Select status</option>
+              <option>Live</option>
+              <option>Pending Pickup</option>
+              <option>Draft</option>
+            </select>
+          </div>
+          <div><button class="btn" type="submit">Add listing</button></div>
+        </form>
+        <p id="vendor-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="glass card" style="margin-top:.8rem;">
+        <div class="section-head"><h2>Inventory</h2></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Item</th><th>Stock</th><th>Status</th></tr></thead>
+            <tbody id="vendor-inventory"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="glass card" style="margin-top:.8rem;">
+        <div class="section-head"><h2>Recent sales</h2></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Order</th><th>Item</th><th>Buyer</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>#NB-4012</td><td>Bakery Saver Box</td><td>A. James</td><td>£12.40</td><td><span class="badge success">Paid</span></td></tr>
+              <tr><td>#NB-4010</td><td>Fruit Rescue Mix</td><td>K. Bello</td><td>£7.50</td><td><span class="badge warning">Pickup due</span></td></tr>
+              <tr><td>#NB-4009</td><td>Cafe Closing Bundle</td><td>M. Drew</td><td>£9.80</td><td><span class="badge neutral">Packed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

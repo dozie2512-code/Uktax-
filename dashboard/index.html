@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Buy | Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="dashboard-home">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-badge">NB</span>Night Buy</div>
+      <ul class="side-links">
+        <li><a href="index.html" aria-current="page">Overview</a></li>
+        <li><a id="role-home-link" href="buyer.html">Role workspace</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <button class="btn link" type="button" data-action="logout">Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="btn alt menu-toggle" type="button" data-action="toggle-menu" aria-label="Toggle menu">☰ Menu</button>
+        <span class="badge neutral" data-user-chip></span>
+      </header>
+
+      <p id="page-notice" role="status" aria-live="polite"></p>
+
+      <section class="grid cols-3">
+        <article class="glass card">
+          <h2>Buyer workspace</h2>
+          <p>Browse real-time deal cards and test filters.</p>
+          <a class="btn" href="buyer.html">Open buyer page</a>
+        </article>
+        <article class="glass card">
+          <h2>Vendor workspace</h2>
+          <p>Review inventory, sales, and add listings.</p>
+          <a class="btn" href="vendor.html">Open vendor page</a>
+        </article>
+        <article class="glass card">
+          <h2>Commissions workspace</h2>
+          <p>Track payout metrics and referral performance.</p>
+          <a class="btn" href="commissions.html">Open commissions page</a>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
