@@ -137,12 +137,25 @@
     document.getElementById('dash-page-title').textContent = PAGE_TITLES[route] || 'Dashboard';
 
     var roleInitial = (session.role || 'U')[0].toUpperCase();
-    document.getElementById('dash-user-info').innerHTML =
-      '<div class="topbar-user">' +
-        '<span class="user-badge" aria-hidden="true">' + roleInitial + '</span>' +
-        '<span>' + esc(session.name || session.email) + '</span>' +
-        '<button class="btn-sm btn-outline" style="border:1px solid var(--line-strong)" onclick="NB.logout()">Sign Out</button>' +
-      '</div>';
+    var userInfoEl = document.getElementById('dash-user-info');
+    userInfoEl.innerHTML = '';
+    var topbarUser = document.createElement('div');
+    topbarUser.className = 'topbar-user';
+    var badgeSpan = document.createElement('span');
+    badgeSpan.className = 'user-badge';
+    badgeSpan.setAttribute('aria-hidden', 'true');
+    badgeSpan.textContent = roleInitial;
+    var nameSpan = document.createElement('span');
+    nameSpan.textContent = session.name || session.email;
+    var signOutBtn = document.createElement('button');
+    signOutBtn.className = 'btn-sm btn-outline';
+    signOutBtn.style.border = '1px solid var(--line-strong)';
+    signOutBtn.textContent = 'Sign Out';
+    signOutBtn.addEventListener('click', logout);
+    topbarUser.appendChild(badgeSpan);
+    topbarUser.appendChild(nameSpan);
+    topbarUser.appendChild(signOutBtn);
+    userInfoEl.appendChild(topbarUser);
 
     // Inject view content
     var content = document.getElementById('dash-content');
@@ -575,7 +588,7 @@
       '<td>' + item.qty + '</td>' +
       '<td>£' + item.price.toFixed(2) + '</td>' +
       '<td><span class="badge badge-' + item.status + '">' + cap + '</span></td>' +
-      '<td><button class="btn-sm btn-outline" onclick="alert(\'Demo: Edit \' + ' + item.id + ')">Edit</button></td>' +
+      '<td><button class="btn-sm btn-outline" onclick="alert(\'Demo: Edit listing #' + item.id + '\')">Edit</button></td>' +
     '</tr>';
   }
 
