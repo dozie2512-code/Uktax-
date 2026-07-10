@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Night Buy — Premium Smart Clearance Marketplace</title>
   <meta name="description" content="Night Buy helps vendors recover revenue and reduce waste with AI smart pricing, flash auctions, mystery bundles, and real-time local demand." />
+  <link rel="stylesheet" href="dashboard/assets/styles.css" />
   <style>
     :root{
       --bg:#f8f6f1;
@@ -29,11 +30,11 @@
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(900px 520px at 0% -8%, #fff7df 0%, transparent 58%),
-        radial-gradient(900px 520px at 100% 0%, #f6e8be 0%, transparent 60%),
+        radial-gradient(900px 520px at 0% -8%,#fff7df 0%,transparent 58%),
+        radial-gradient(900px 520px at 100% 0%,#f6e8be 0%,transparent 60%),
         linear-gradient(180deg,var(--bg),var(--bg-2));
       line-height:1.68;
       min-height:100vh;
@@ -52,6 +53,7 @@
     .glow.two{background:#d4b04b;bottom:8%;right:-130px;animation-delay:1.7s}
     @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
 
+    /* ---- Landing nav ---- */
     .nav{
       position:sticky;top:0;z-index:40;
       background:rgba(255,255,255,.82);
@@ -71,20 +73,19 @@
       display:grid;place-items:center;
       box-shadow:0 10px 26px rgba(201,162,39,.34);
     }
-
     .links{list-style:none;display:flex;gap:1.05rem}
     .links a{
       color:#4e4638;text-decoration:none;font-weight:600;font-size:.93rem;
       padding:.36rem .5rem;border-radius:8px;transition:.2s ease;
     }
     .links a:hover{color:#241d10;background:rgba(201,162,39,.1)}
-
     .menu-btn{
       display:none;cursor:pointer;
       border:1px solid var(--line-strong);background:#fff;color:var(--text);
-      border-radius:10px;padding:.4rem .65rem;
+      border-radius:10px;padding:.4rem .65rem;font-size:1rem;
     }
 
+    /* ---- Shared button (landing) ---- */
     .btn{
       text-decoration:none;border:none;cursor:pointer;
       background:linear-gradient(135deg,var(--gold),var(--gold-deep));
@@ -92,7 +93,7 @@
       font-weight:800;font-size:.92rem;letter-spacing:.01em;
       display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
       box-shadow:0 14px 34px rgba(156,122,29,.28);
-      transition:transform .25s ease, box-shadow .25s ease;
+      transition:transform .25s ease,box-shadow .25s ease;
     }
     .btn:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(156,122,29,.34)}
     .btn.alt{
@@ -101,6 +102,7 @@
     }
     .hide-mobile{display:inline-flex}
 
+    /* ---- Landing hero ---- */
     .hero{padding:86px 0 62px}
     .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:1.1rem;align-items:center}
     .pill{
@@ -117,6 +119,7 @@
     .hero p{color:var(--muted);max-width:61ch;margin-bottom:1.35rem}
     .hero-actions{display:flex;gap:.72rem;flex-wrap:wrap}
 
+    /* ---- Glass card ---- */
     .glass{
       background:var(--paper-soft);
       border:1px solid var(--line);
@@ -124,7 +127,6 @@
       backdrop-filter:blur(10px);
       box-shadow:var(--shadow-md);
     }
-
     .hero-panel{padding:1.05rem}
     .panel-title{
       font-size:.93rem;font-weight:700;color:#6e5a2b;
@@ -139,18 +141,18 @@
     .metric h3{font-size:1.17rem;color:#7b621d}
     .metric p{font-size:.82rem;color:#5b4f36}
 
+    /* ---- Landing sections ---- */
     .section{padding:64px 0}
     .title{
       font-size:clamp(1.45rem,2.4vw,2.15rem);
       letter-spacing:-.01em;margin-bottom:.5rem;
     }
     .subtitle{color:var(--muted);margin-bottom:1.25rem}
-
     .grid{display:grid;gap:1rem}
     .cards{grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
     .card{
       padding:1.02rem;
-      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
     }
     .card:hover{
       transform:translateY(-5px);
@@ -158,7 +160,6 @@
       border-color:var(--line-strong);
       background:#fff;
     }
-
     .icon{
       width:42px;height:42px;border-radius:12px;
       display:grid;place-items:center;font-size:1.14rem;
@@ -168,24 +169,23 @@
     }
     .card h3{font-size:1.04rem;margin-bottom:.46rem}
     .card p{font-size:.95rem;color:#4a4234}
-
     .split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
-
     .cta{
       text-align:center;padding:38px 16px;border-radius:20px;
       border:1px solid rgba(201,162,39,.42);
-      background:linear-gradient(135deg, #fff7dc 0%, #f4e1aa 100%);
+      background:linear-gradient(135deg,#fff7dc 0%,#f4e1aa 100%);
       box-shadow:var(--shadow-lg);
     }
     .cta p{color:#5a4d31;margin:.45rem 0 1.05rem}
 
+    /* ---- Contact form ---- */
     .form{max-width:700px;padding:1.08rem}
     .form label{display:block;margin:.82rem 0 .36rem;font-weight:600}
     .form input,.form select,.form textarea{
       width:100%;font:inherit;color:#201a10;background:#fff;
       border:1px solid rgba(150,115,28,.28);
       border-radius:11px;padding:.74rem;
-      transition:border-color .2s ease, box-shadow .2s ease;
+      transition:border-color .2s ease,box-shadow .2s ease;
     }
     .form input:focus,.form select:focus,.form textarea:focus{
       outline:none;border-color:rgba(156,122,29,.72);
@@ -194,15 +194,18 @@
     .form input::placeholder,.form textarea::placeholder{color:#7d7053}
     .form-msg{margin-top:.75rem;color:#7b621d;font-weight:600}
 
+    /* ---- Footer ---- */
     .footer{
       padding:26px 0 40px;text-align:center;
       color:#5a503c;font-size:.92rem;
     }
 
+    /* ---- Reveal animation ---- */
     .reveal{opacity:0;transform:translateY(14px);transition:.56s ease}
     .reveal.show{opacity:1;transform:none}
 
-    @media (max-width: 860px){
+    /* ---- Responsive (landing) ---- */
+    @media(max-width:860px){
       .hero-grid,.split{grid-template-columns:1fr}
       .links{
         display:none;position:absolute;top:76px;left:0;right:0;
@@ -216,212 +219,175 @@
   </style>
 </head>
 <body>
-  <div class="glow one"></div>
-  <div class="glow two"></div>
+  <div class="glow one" aria-hidden="true"></div>
+  <div class="glow two" aria-hidden="true"></div>
 
-  <nav class="nav">
+  <!-- ===================== Landing Navigation ===================== -->
+  <nav id="landing-nav" class="nav" style="display:none" aria-label="Main navigation">
     <div class="container nav-wrap">
-      <a class="logo" href="#home"><span class="logo-badge">NB</span>Night Buy</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">☰</button>
-      <ul class="links" id="navLinks">
+      <a class="logo" href="#home"><span class="logo-badge" aria-hidden="true">NB</span>Night Buy</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="links" id="navLinks" role="list">
         <li><a href="#home">Home</a></li>
         <li><a href="#vendors">Vendors</a></li>
         <li><a href="#buyers">Buyers</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="login.html">Sign Up</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="#login">Sign Up</a></li>
+        <li><a href="#login">Login</a></li>
       </ul>
-      <a class="btn hide-mobile" href="login.html">Get Started</a>
+      <a class="btn hide-mobile" href="#login">Get Started</a>
     </div>
   </nav>
 
-  <header id="home" class="hero">
-    <div class="container hero-grid">
-      <div class="reveal">
-        <span class="pill">AI-Powered Smart Clearance Marketplace</span>
-        <h1>Sell more before closing. Waste less by morning.</h1>
-        <p>
-          Night Buy predicts unsold inventory and automatically launches dynamic discounts in real-time.
-          Vendors recover revenue, buyers unlock premium local deals, and communities reduce waste together.
-        </p>
-        <div class="hero-actions">
-          <a class="btn" href="login.html">Create Account</a>
-          <a class="btn alt" href="#vendors">Become a Vendor</a>
+  <!-- ===================== View: Landing Home ===================== -->
+  <div id="view-home" style="display:none">
+    <header id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="pill">AI-Powered Smart Clearance Marketplace</span>
+          <h1>Sell more before closing. Waste less by morning.</h1>
+          <p>
+            Night Buy predicts unsold inventory and automatically launches dynamic discounts in real-time.
+            Vendors recover revenue, buyers unlock premium local deals, and communities reduce waste together.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#login">Create Account</a>
+            <a class="btn alt" href="#login">Become a Vendor</a>
+          </div>
+        </div>
+
+        <aside class="glass hero-panel reveal">
+          <p class="panel-title">Tonight's Live Impact</p>
+          <div class="metrics">
+            <div class="metric"><h3 class="count" data-target="3240">0</h3><p>Items rescued</p></div>
+            <div class="metric"><h3>£<span class="count" data-target="42800">0</span></h3><p>Recovered revenue</p></div>
+            <div class="metric"><h3 class="count" data-target="12100">0</h3><p>Green Points earned</p></div>
+            <div class="metric"><h3><span class="count" data-target="61">0</span>%</h3><p>Avg sell-through</p></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="innovations" class="section">
+      <div class="container">
+        <h2 class="title reveal">7 Breakthrough Innovations</h2>
+        <p class="subtitle reveal">Built to solve problems traditional discount marketplaces ignore.</p>
+        <div class="grid cards">
+          <article class="glass card reveal"><div class="icon" aria-hidden="true">🧠</div><h3>AI Smart Pricing</h3><p>Automatic markdown optimisation based on demand, timing, weather, and local events.</p></article>
+          <article class="glass card reveal"><div class="icon" aria-hidden="true">🎁</div><h3>Mystery Deal Bundles</h3><p>Surprise bundles at 60–80% off without manual item-by-item listing.</p></article>
+          <article class="glass card reveal"><div class="icon" aria-hidden="true">⏱️</div><h3>Live Flash Auctions</h3><p>Price drops every few minutes in the final 30–60 minutes before closing.</p></article>
+          <article class="glass card reveal"><div class="icon" aria-hidden="true">🤝</div><h3>Neighbourhood Group Buying</h3><p>Nearby buyers combine demand to unlock deeper discounts and delivery perks.</p></article>
+          <article class="glass card reveal"><div class="icon" aria-hidden="true">🌍</div><h3>Waste-to-Reward Score</h3><p>Vendors build sustainability credibility while buyers earn Green Points.</p></article>
+          <article class="glass card reveal"><div class="icon" aria-hidden="true">📸</div><h3>Instant Vendor Setup</h3><p>Snap remaining inventory and let AI generate listings with suggested prices.</p></article>
+          <article class="glass card reveal"><div class="icon" aria-hidden="true">📊</div><h3>Business Analytics</h3><p>See what remains unsold most often and improve inventory planning.</p></article>
         </div>
       </div>
+    </section>
 
-      <aside class="glass hero-panel reveal">
-        <p class="panel-title">Tonight’s Live Impact</p>
-        <div class="metrics">
-          <div class="metric"><h3 class="count" data-target="3240">0</h3><p>Items rescued</p></div>
-          <div class="metric"><h3>£<span class="count" data-target="42800">0</span></h3><p>Recovered revenue</p></div>
-          <div class="metric"><h3 class="count" data-target="12100">0</h3><p>Green Points earned</p></div>
-          <div class="metric"><h3><span class="count" data-target="61">0</span>%</h3><p>Avg sell-through</p></div>
+    <section id="vendors" class="section">
+      <div class="container split">
+        <article class="glass card reveal">
+          <h2 class="title">For Vendors</h2>
+          <p class="subtitle">Recover end-of-day value with minimal manual work.</p>
+          <p>• Auto listing from inventory photos</p>
+          <p>• Dynamic close-time pricing</p>
+          <p>• Sustainability score tracking</p>
+          <p>• Analytics for inventory optimisation</p>
+          <div style="margin-top:1.1rem"><a class="btn" href="#login">List Your Surplus</a></div>
+        </article>
+        <article class="glass card reveal">
+          <h2 class="title">For Buyers</h2>
+          <p class="subtitle">Save more and reduce waste in your neighbourhood.</p>
+          <p>• Deep discounts on local products</p>
+          <p>• Mystery bundles and flash auctions</p>
+          <p>• Group-buy savings</p>
+          <p>• Green reward points for each rescue purchase</p>
+          <div style="margin-top:1.1rem"><a class="btn" href="#login">Start Saving</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="container">
+        <h2 class="title reveal">Revenue Model</h2>
+        <p class="subtitle reveal">Designed for sustainable, scalable growth.</p>
+        <div class="grid cards">
+          <article class="glass card reveal"><h3>Transaction Commission</h3><p>Small fee per completed sale.</p></article>
+          <article class="glass card reveal"><h3>Premium Vendor Plans</h3><p>Advanced automation and analytics tools.</p></article>
+          <article class="glass card reveal"><h3>Sponsored Promotions</h3><p>Boosted local placements and campaigns.</p></article>
+          <article class="glass card reveal"><h3>Delivery Fees</h3><p>Convenience pricing plus group-delivery options.</p></article>
+          <article class="glass card reveal"><h3>Data Insights</h3><p>Trend reporting for smarter stock planning.</p></article>
         </div>
-      </aside>
-    </div>
-  </header>
-
-  <section id="innovations" class="section">
-    <div class="container">
-      <h2 class="title reveal">7 Breakthrough Innovations</h2>
-      <p class="subtitle reveal">Built to solve problems traditional discount marketplaces ignore.</p>
-      <div class="grid cards">
-        <article class="glass card reveal"><div class="icon">🧠</div><h3>AI Smart Pricing</h3><p>Automatic markdown optimization based on demand, timing, weather, and local events.</p></article>
-        <article class="glass card reveal"><div class="icon">🎁</div><h3>Mystery Deal Bundles</h3><p>Surprise bundles at 60–80% off without manual item-by-item listing.</p></article>
-        <article class="glass card reveal"><div class="icon">⏱️</div><h3>Live Flash Auctions</h3><p>Price drops every few minutes in the final 30–60 minutes before closing.</p></article>
-        <article class="glass card reveal"><div class="icon">🤝</div><h3>Neighborhood Group Buying</h3><p>Nearby buyers combine demand to unlock deeper discounts and delivery perks.</p></article>
-        <article class="glass card reveal"><div class="icon">🌍</div><h3>Waste-to-Reward Score</h3><p>Vendors build sustainability credibility while buyers earn Green Points.</p></article>
-        <article class="glass card reveal"><div class="icon">📸</div><h3>Instant Vendor Setup</h3><p>Snap remaining inventory and let AI generate listings with suggested prices.</p></article>
-        <article class="glass card reveal"><div class="icon">📊</div><h3>Business Analytics</h3><p>See what remains unsold most often and improve inventory planning.</p></article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="vendors" class="section">
-    <div class="container split">
-      <article class="glass card reveal">
-        <h2 class="title">For Vendors</h2>
-        <p class="subtitle">Recover end-of-day value with minimal manual work.</p>
-        <p>• Auto listing from inventory photos</p>
-        <p>• Dynamic close-time pricing</p>
-        <p>• Sustainability score tracking</p>
-        <p>• Analytics for inventory optimization</p>
-      </article>
-      <article id="buyers" class="glass card reveal">
-        <h2 class="title">For Buyers</h2>
-        <p class="subtitle">Save more and reduce waste in your neighborhood.</p>
-        <p>• Deep discounts on local products</p>
-        <p>• Mystery bundles and flash auctions</p>
-        <p>• Group-buy savings</p>
-        <p>• Green reward points for each rescue purchase</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="pricing" class="section">
-    <div class="container">
-      <h2 class="title reveal">Revenue Model</h2>
-      <p class="subtitle reveal">Designed for sustainable, scalable growth.</p>
-      <div class="grid cards">
-        <article class="glass card reveal"><h3>Transaction Commission</h3><p>Small fee per completed sale.</p></article>
-        <article class="glass card reveal"><h3>Premium Vendor Plans</h3><p>Advanced automation and analytics tools.</p></article>
-        <article class="glass card reveal"><h3>Sponsored Promotions</h3><p>Boosted local placements and campaigns.</p></article>
-        <article class="glass card reveal"><h3>Delivery Fees</h3><p>Convenience pricing plus group-delivery options.</p></article>
-        <article class="glass card reveal"><h3>Data Insights</h3><p>Trend reporting for smarter stock planning.</p></article>
+    <section id="about" class="section">
+      <div class="container">
+        <div class="cta reveal">
+          <h2>Vision: The World's Largest Zero-Waste Night Marketplace</h2>
+          <p>Match unsold inventory to nearby buyers in real-time, every night, in every city.</p>
+          <a class="btn" href="#login">Sign Up Now</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about" class="section">
-    <div class="container">
-      <div class="cta reveal">
-        <h2>Vision: The World’s Largest Zero-Waste Night Marketplace</h2>
-        <p>Match unsold inventory to nearby buyers in real-time, every night, in every city.</p>
-        <a class="btn" href="login.html">Sign Up Now</a>
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="title reveal">Get Early Access</h2>
+        <p class="subtitle reveal">Create your account as a buyer, vendor, or partner.</p>
+
+        <form class="glass form reveal" id="contact-form" novalidate>
+          <label for="c-name">Full Name</label>
+          <input id="c-name" required type="text" placeholder="Jane Doe" />
+
+          <label for="c-email">Email</label>
+          <input id="c-email" required type="email" placeholder="jane@example.com" />
+
+          <label for="c-role">I am signing up as</label>
+          <select id="c-role" required>
+            <option value="">Select one</option>
+            <option>Buyer</option>
+            <option>Vendor</option>
+            <option>Partner</option>
+          </select>
+
+          <label for="c-message">Message (optional)</label>
+          <textarea id="c-message" rows="4" placeholder="Tell us more…"></textarea>
+
+          <button class="btn" type="submit">Send Request</button>
+          <p id="c-form-msg" class="form-msg" role="status"></p>
+        </form>
       </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p><strong>Night Buy</strong> — Smart clearance powered by AI</p>
+        <p>© 2026 Night Buy. All rights reserved.</p>
+      </div>
+    </footer>
+  </div><!-- /view-home -->
+
+  <!-- ===================== View: Login ===================== -->
+  <div id="view-login" style="display:none"></div>
+
+  <!-- ===================== Dashboard Shell ===================== -->
+  <div id="dash-shell" style="display:none">
+    <aside id="sidebar" class="sidebar" aria-label="Dashboard sidebar"></aside>
+    <div class="dash-body">
+      <header class="dash-topbar">
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+        <span id="dash-page-title" class="dash-page-title"></span>
+        <div id="dash-user-info"></div>
+      </header>
+      <main class="dash-content" id="dash-content"></main>
     </div>
-  </section>
+  </div>
 
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="title reveal">Sign Up for Night Buy</h2>
-      <p class="subtitle reveal">Create your account as a buyer, vendor, or partner.</p>
+  <!-- Mobile sidebar overlay -->
+  <div id="sidebar-overlay" aria-hidden="true"></div>
 
-      <form class="glass form reveal" onsubmit="submitForm(event)">
-        <label for="name">Full Name</label>
-        <input id="name" required type="text" placeholder="Jane Doe" />
-
-        <label for="email">Email</label>
-        <input id="email" required type="email" placeholder="jane@example.com" />
-
-        <label for="role">I am signing up as</label>
-        <select id="role" required>
-          <option value="">Select one</option>
-          <option>Buyer</option>
-          <option>Vendor</option>
-          <option>Partner</option>
-        </select>
-
-        <label for="message">Message</label>
-        <textarea id="message" rows="4" placeholder="Tell us more..."></textarea>
-
-        <button class="btn" type="submit">Create Account</button>
-        <p id="formMsg" class="form-msg"></p>
-      </form>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <p><strong>Night Buy</strong> — Smart clearance powered by AI</p>
-      <p>© 2026 Night Buy. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    if (menuBtn && navLinks) {
-      menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
-    }
-
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => observer.observe(el));
-
-    function animateCount(el, target) {
-      let start = 0;
-      const duration = 1400;
-      const step = target / (duration / 16);
-      function tick() {
-        start += step;
-        if (start < target) {
-          el.textContent = Math.floor(start).toLocaleString();
-          requestAnimationFrame(tick);
-        } else {
-          el.textContent = target.toLocaleString();
-        }
-      }
-      tick();
-    }
-
-    const counters = document.querySelectorAll('.count');
-    if (counters.length) {
-      const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const t = parseInt(entry.target.dataset.target, 10);
-            animateCount(entry.target, t);
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      counters.forEach(c => counterObserver.observe(c));
-    }
-
-    function submitForm(e) {
-      e.preventDefault();
-      const msg = document.getElementById('formMsg');
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const role = document.getElementById('role').value;
-
-      if (!name || !email || !role) {
-        msg.textContent = 'Please complete all required fields.';
-        return;
-      }
-
-      msg.textContent = `Thanks ${name}! Your ${role.toLowerCase()} account request has been received.`;
-    }
-  </script>
+  <script src="dashboard/assets/app.js"></script>
 </body>
 </html>
