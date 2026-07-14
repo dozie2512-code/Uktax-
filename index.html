@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Campus Collective AI – AI-Driven Procurement &amp; Logistics</title>
+  <title>Campus Collective – Student Food &amp; Provisions Group Buying</title>
   <style>
     :root {
       --brand: #c58b13;
@@ -166,7 +166,7 @@
 <body>
   <header id="landing-nav" class="landing-nav" role="banner" style="display:none">
     <div class="landing-nav-inner container">
-      <a class="brand" href="#home"><span class="badge" aria-hidden="true">CC</span><span>Campus Collective AI</span></a>
+      <a class="brand" href="#home"><span class="badge" aria-hidden="true">GB</span><span>Campus Collective</span></a>
       <button id="menuBtn" class="btn-sm btn-outline" type="button" aria-label="Toggle menu">Menu</button>
       <nav id="navLinks" class="nav-links" aria-label="Primary navigation">
         <a href="#home">Home</a>
@@ -177,43 +177,43 @@
   </header>
 
   <main>
-    <section id="view-home" style="display:none" aria-label="Campus Collective AI home">
+    <section id="view-home" style="display:none" aria-label="Campus Collective home">
       <div class="container">
         <section class="hero reveal">
           <article class="hero-card">
-            <h1>🤖 AI-Driven Procurement &amp; Logistics for Education.</h1>
-            <p>Campus Collective AI predicts student purchasing demand, aggregates orders across institutions, dynamically negotiates bulk pricing with suppliers, and optimises last-mile delivery through school-based micro-fulfilment hubs.</p>
+            <h1>🛒 Group Buying for Food &amp; Provisions on Campus.</h1>
+            <p>Campus Collective lets students in the same hostel or campus join group orders for food and provisions. The bigger the group, the lower the price — everyone saves when the threshold is hit.</p>
             <div class="hero-cta">
-              <a href="#login" class="btn btn-primary">Get Started</a>
+              <a href="#login" class="btn btn-primary">Join a Group Buy</a>
               <a href="#login" class="btn btn-outline">Sign In</a>
             </div>
           </article>
           <article class="hero-card">
-            <h3 style="margin-top:0">How Campus Collective AI Works</h3>
+            <h3 style="margin-top:0">How Group Buying Works</h3>
             <ol style="padding-left:1.1rem;margin:.3rem 0 0;line-height:1.55;color:var(--muted)">
-              <li><strong>AI Forecasts.</strong> Demand-prediction models analyse purchasing patterns across institutions.</li>
-              <li><strong>Order Aggregation.</strong> Purchases are pooled across schools to unlock bulk-pricing tiers.</li>
-              <li><strong>Dynamic Negotiation.</strong> The platform auto-negotiates with suppliers in real time.</li>
-              <li><strong>Smart Delivery.</strong> Last-mile logistics are routed through campus micro-fulfilment hubs.</li>
+              <li><strong>Browse Group Orders.</strong> See active group windows for food &amp; provisions on your campus.</li>
+              <li><strong>Join Your Group.</strong> Students in your hostel or block join the same order window.</li>
+              <li><strong>Threshold Unlocks Price.</strong> When the minimum group size is met, everyone gets the lower group price.</li>
+              <li><strong>Campus Delivery.</strong> Order is confirmed and delivered to your hostel or campus hub.</li>
             </ol>
           </article>
         </section>
 
         <section class="stats-grid reveal" aria-label="Platform snapshot">
-          <article class="metric-card"><div class="metric-label">Orders Aggregated Today</div><div class="metric-value count" data-target="312">0</div><div class="metric-sub">Pooled across institutions</div></article>
-          <article class="metric-card"><div class="metric-label">Partner Institutions</div><div class="metric-value count" data-target="74">0</div><div class="metric-sub">Using Campus Collective AI</div></article>
-          <article class="metric-card"><div class="metric-label">Bulk Savings (£)</div><div class="metric-value count" data-target="48500">0</div><div class="metric-sub">Negotiated this month</div></article>
-          <article class="metric-card"><div class="metric-label">CO₂ Reduced (kg)</div><div class="metric-value count" data-target="1860">0</div><div class="metric-sub">Via optimised logistics 🌍</div></article>
+          <article class="metric-card"><div class="metric-label">Active Group Orders</div><div class="metric-value count" data-target="312">0</div><div class="metric-sub">↑ 28 joined this hour</div></article>
+          <article class="metric-card"><div class="metric-label">Hostels / Campuses</div><div class="metric-value count" data-target="74">0</div><div class="metric-sub">Participating this week</div></article>
+          <article class="metric-card"><div class="metric-label">Student Savings (£)</div><div class="metric-value count" data-target="48500">0</div><div class="metric-sub">Unlocked this month</div></article>
+          <article class="metric-card"><div class="metric-label">Students Saving</div><div class="metric-value count" data-target="1860">0</div><div class="metric-sub">Via group orders 🎓</div></article>
         </section>
 
         <section class="panel reveal">
-          <h3 style="margin-top:0">Ready to transform procurement for your institution?</h3>
+          <h3 style="margin-top:0">Ready to start group buying at your campus?</h3>
           <form id="contact-form" class="dash-form" novalidate>
             <div class="form-row">
               <div class="form-group"><label for="c-name">Name *</label><input id="c-name" type="text" required /></div>
               <div class="form-group"><label for="c-email">Email *</label><input id="c-email" type="email" required /></div>
             </div>
-            <div class="form-group"><label for="c-role">Your role *</label><select id="c-role" required><option value="">Select</option><option value="Buyer">Buyer (Institution Procurement)</option><option value="Vendor">Supplier (List Products)</option><option value="Partner">Partner/Affiliate (Earn Commissions)</option></select></div>
+            <div class="form-group"><label for="c-role">Your role *</label><select id="c-role" required><option value="">Select</option><option value="Student">Student (Join Group Orders)</option><option value="Vendor">Vendor (List Food &amp; Provisions)</option><option value="Campus Rep">Campus Rep (Coordinate Group Buys)</option></select></div>
             <button class="btn-sm btn-primary" type="submit">Send</button>
             <p id="c-form-msg" class="login-sub" role="status"></p>
           </form>
@@ -240,7 +240,7 @@
   </main>
 
   <footer id="main-footer" class="main-footer" style="display:none">
-    <div class="container">© <span id="year"></span> Campus Collective AI. AI-driven procurement &amp; logistics for the education sector. 🌍</div>
+    <div class="container">© <span id="year"></span> Campus Collective. Student group buying for food &amp; provisions. 🎓</div>
   </footer>
 
   <script>
@@ -258,67 +258,70 @@
 
     var NAV_ITEMS = [
       { route: 'dashboard', icon: '🏠', label: 'Overview' },
-      { route: 'buyer', icon: '📋', label: 'Procurement' },
-      { route: 'vendor', icon: '🤖', label: 'Supply Hub' },
-      { route: 'commissions', icon: '💰', label: 'Commissions' },
+      { route: 'buyer', icon: '🛒', label: 'Group Marketplace' },
+      { route: 'vendor', icon: '🏪', label: 'Vendor Hub' },
+      { route: 'commissions', icon: '🎁', label: 'Rewards' },
       { route: 'settings', icon: '⚙️', label: 'Settings' }
     ];
 
     var PAGE_TITLES = {
       dashboard: 'Dashboard Overview',
-      buyer: 'Procurement Marketplace',
-      vendor: 'Supply Hub Dashboard',
-      commissions: 'Commissions & Referrals',
+      buyer: 'Group Marketplace',
+      vendor: 'Vendor Hub',
+      commissions: 'Rewards & Referrals',
       settings: 'Account Settings'
     };
 
+    var GROUP_BASE = Date.now();
+
     var PRODUCTS = [
-      { id:1, name:'A4 Copy Paper (5-ream case)', cat:'Stationery', price:18.99, orig:32.50, disc:42, tag:'Bulk Deal', emoji:'📄', aiScore:92 },
-      { id:2, name:'Whiteboard Marker Set (24pk)', cat:'Stationery', price:6.49, orig:14.99, disc:57, tag:'Deal', emoji:'✏️', aiScore:85 },
-      { id:3, name:'Lab Safety Goggle Pack (30)', cat:'Lab Supplies', price:28.99, orig:64.00, disc:55, tag:'Priority Order', emoji:'🥽', aiScore:88 },
-      { id:4, name:'STEM Robotics Starter Kit', cat:'Technology', price:49.99, orig:129.99, disc:62, tag:'Priority Order', emoji:'🤖', aiScore:95 },
-      { id:5, name:'Assorted Bundle – Classroom Essentials', cat:'Stationery', price:22.49, orig:48.00, disc:53, tag:'Bundle Deal', emoji:'🎁', aiScore:78 },
-      { id:6, name:'Adjustable Height Desk Chair', cat:'Furniture', price:59.99, orig:149.00, disc:60, tag:'Deal', emoji:'🪑', aiScore:89 },
-      { id:7, name:'Printer Ink Cartridge Bundle', cat:'Technology', price:14.49, orig:34.50, disc:58, tag:'Deal', emoji:'🖨️', aiScore:82 },
-      { id:8, name:'Microscope Set (School Grade)', cat:'Lab Supplies', price:74.99, orig:189.00, disc:60, tag:'Priority Order', emoji:'🔬', aiScore:91 },
-      { id:9, name:'Mystery Classroom Bundle', cat:'Stationery', price:12.99, orig:40.00, disc:68, tag:'Bundle Deal', emoji:'🎁', aiScore:76 },
-      { id:10, name:'Dry-Wipe Board (A1, pack of 5)', cat:'Stationery', price:19.49, orig:39.99, disc:51, tag:'Deal', emoji:'📋', aiScore:80 },
-      { id:11, name:'Laptop Trolley (30-bay)', cat:'Technology', price:199.99, orig:420.00, disc:52, tag:'Deal', emoji:'💻', aiScore:84 },
-      { id:12, name:'Chemistry Reagent Kit', cat:'Lab Supplies', price:34.99, orig:89.00, disc:61, tag:'Priority Order', emoji:'🧪', aiScore:93 }
+      { id:1,  name:'Instant Noodles (30-pack)',        cat:'Noodles & Grains', price:4.99,  orig:8.99,  disc:44, tag:'Group Deal',   emoji:'🍜', aiScore:92, minGroupQty:20, joinedQty:17, windowMins:120 },
+      { id:2,  name:'White Rice (10kg bag)',             cat:'Noodles & Grains', price:9.49,  orig:16.99, disc:44, tag:'Flash Group',   emoji:'🍚', aiScore:88, minGroupQty:15, joinedQty:15, windowMins:45  },
+      { id:3,  name:'Sliced Bread (6-loaf pack)',        cat:'Bakery',           price:5.49,  orig:9.60,  disc:43, tag:'Flash Group',   emoji:'🍞', aiScore:85, minGroupQty:12, joinedQty:8,  windowMins:90  },
+      { id:4,  name:'Mixed Fruit Juice (12-pack)',       cat:'Drinks',           price:6.99,  orig:13.99, disc:50, tag:'Group Deal',   emoji:'🧃', aiScore:80, minGroupQty:25, joinedQty:22, windowMins:180 },
+      { id:5,  name:'Free-Range Eggs (30-tray)',         cat:'Dairy & Eggs',     price:7.99,  orig:14.50, disc:45, tag:'Flash Group',   emoji:'🥚', aiScore:90, minGroupQty:10, joinedQty:10, windowMins:30  },
+      { id:6,  name:'Peanut Butter & Jam Bundle',        cat:'Spreads & Snacks', price:5.29,  orig:10.50, disc:50, tag:'Bundle Deal',  emoji:'🥜', aiScore:76, minGroupQty:20, joinedQty:11, windowMins:240 },
+      { id:7,  name:'Baked Beans (24-can pack)',         cat:'Canned Goods',     price:8.49,  orig:16.99, disc:50, tag:'Group Deal',   emoji:'🥫', aiScore:83, minGroupQty:30, joinedQty:24, windowMins:150 },
+      { id:8,  name:'Crisps Multipack (30 bags)',        cat:'Snacks',           price:5.99,  orig:12.50, disc:52, tag:'Flash Group',   emoji:'🍟', aiScore:87, minGroupQty:15, joinedQty:15, windowMins:60  },
+      { id:9,  name:'Pasta Bundle (6 × 500g)',           cat:'Noodles & Grains', price:4.29,  orig:7.99,  disc:46, tag:'Bundle Deal',  emoji:'🍝', aiScore:79, minGroupQty:18, joinedQty:9,  windowMins:300 },
+      { id:10, name:'Breakfast Cereal (3-box pack)',     cat:'Breakfast',        price:7.49,  orig:14.99, disc:50, tag:'Group Deal',   emoji:'🥣', aiScore:82, minGroupQty:20, joinedQty:14, windowMins:210 },
+      { id:11, name:'Energy Drinks Case (24-can)',       cat:'Drinks',           price:14.99, orig:28.50, disc:47, tag:'Flash Group',   emoji:'⚡', aiScore:84, minGroupQty:25, joinedQty:19, windowMins:75  },
+      { id:12, name:'Snack Bar Variety Box (48-count)',  cat:'Snacks',           price:11.99, orig:24.99, disc:52, tag:'Bundle Deal',  emoji:'🍫', aiScore:78, minGroupQty:15, joinedQty:7,  windowMins:360 }
     ];
 
     var INVENTORY = [
-      { id:1, name:'A4 Copy Paper (5-ream case)', cat:'Stationery', status:'active', qty:120, price:18.99, deliveryScore:98 },
-      { id:2, name:'Whiteboard Marker Set (24pk)', cat:'Stationery', status:'active', qty:60, price:6.49, deliveryScore:95 },
-      { id:3, name:'Lab Safety Goggle Pack (30)', cat:'Lab Supplies', status:'pending', qty:30, price:28.99, deliveryScore:90 },
-      { id:4, name:'STEM Robotics Starter Kit', cat:'Technology', status:'active', qty:18, price:49.99, deliveryScore:92 },
-      { id:5, name:'Adjustable Height Desk Chair', cat:'Furniture', status:'sold', qty:0, price:59.99, deliveryScore:0 },
-      { id:6, name:'Microscope Set (School Grade)', cat:'Lab Supplies', status:'draft', qty:8, price:74.99, deliveryScore:0 },
-      { id:7, name:'Dry-Wipe Board (A1, pack of 5)', cat:'Stationery', status:'active', qty:40, price:19.49, deliveryScore:96 },
-      { id:8, name:'Laptop Trolley (30-bay)', cat:'Technology', status:'expired', qty:0, price:199.99, deliveryScore:0 }
+      { id:1, name:'Instant Noodles (30-pack)',       cat:'Noodles & Grains', status:'active',  qty:500, price:4.99,  deliveryScore:98 },
+      { id:2, name:'White Rice (10kg bag)',            cat:'Noodles & Grains', status:'active',  qty:200, price:9.49,  deliveryScore:95 },
+      { id:3, name:'Sliced Bread (6-loaf pack)',       cat:'Bakery',           status:'active',  qty:120, price:5.49,  deliveryScore:90 },
+      { id:4, name:'Mixed Fruit Juice (12-pack)',      cat:'Drinks',           status:'pending', qty:80,  price:6.99,  deliveryScore:88 },
+      { id:5, name:'Free-Range Eggs (30-tray)',        cat:'Dairy & Eggs',     status:'sold',    qty:0,   price:7.99,  deliveryScore:0  },
+      { id:6, name:'Baked Beans (24-can pack)',        cat:'Canned Goods',     status:'draft',   qty:50,  price:8.49,  deliveryScore:0  },
+      { id:7, name:'Crisps Multipack (30 bags)',       cat:'Snacks',           status:'active',  qty:150, price:5.99,  deliveryScore:96 },
+      { id:8, name:'Energy Drinks Case (24-can)',      cat:'Drinks',           status:'expired', qty:0,   price:14.99, deliveryScore:0  }
     ];
 
     var ORDERS = [
-      { id:'ORD-1041', item:'A4 Copy Paper (5-ream case)', buyer:'greenwich.college', total:'£379.80', status:'processing', date:'Today 09:14', campusPoints:6 },
-      { id:'ORD-1040', item:'Whiteboard Marker Set (24pk)', buyer:'southwark.academy', total:'£129.80', status:'processing', date:'Today 08:58', campusPoints:4 },
-      { id:'ORD-1039', item:'Lab Safety Goggle Pack (30)', buyer:'kings.prep', total:'£289.90', status:'paid', date:'Today 08:12', campusPoints:5 },
-      { id:'ORD-1038', item:'STEM Robotics Starter Kit', buyer:'lewisham.school', total:'£499.90', status:'paid', date:'Today 07:45', campusPoints:7 },
-      { id:'ORD-1037', item:'Dry-Wipe Board (A1, pack of 5)', buyer:'hackney.college', total:'£389.80', status:'paid', date:'Today 07:30', campusPoints:8 }
+      { id:'GRP-1041', item:'White Rice (10kg bag)',          buyer:'Hall A Students',    total:'£94.90', status:'processing', date:'Today 09:14', campusPoints:6 },
+      { id:'GRP-1040', item:'Instant Noodles (30-pack)',      buyer:'Hall B Students',    total:'£49.90', status:'processing', date:'Today 08:58', campusPoints:4 },
+      { id:'GRP-1039', item:'Free-Range Eggs (30-tray)',      buyer:'Block C Rooms',      total:'£79.90', status:'paid',       date:'Today 08:12', campusPoints:5 },
+      { id:'GRP-1038', item:'Crisps Multipack (30 bags)',     buyer:'Flat D Students',    total:'£89.85', status:'paid',       date:'Today 07:45', campusPoints:7 },
+      { id:'GRP-1037', item:'Sliced Bread (6-loaf pack)',     buyer:'Halls Block E',      total:'£54.90', status:'paid',       date:'Today 07:30', campusPoints:8 }
     ];
 
     var LEDGER = [
-      { date:'2026-07-09', desc:'Referral — Greenwich College signup', amount:12.40, status:'paid' },
-      { date:'2026-07-08', desc:'Referral — Southwark Academy signup', amount:9.80, status:'paid' },
-      { date:'2026-07-08', desc:'Referral — Kings Prep signup', amount:15.00, status:'pending' },
-      { date:'2026-07-07', desc:'Referral — Lewisham School signup', amount:12.40, status:'paid' },
-      { date:'2026-07-06', desc:'Referral — Hackney College signup', amount:12.40, status:'paid' },
-      { date:'2026-07-05', desc:'Referral — Islington Academy signup', amount:18.00, status:'pending' },
-      { date:'2026-07-04', desc:'Referral — Bromley Institute signup', amount:12.40, status:'paid' }
+      { date:'2026-07-09', desc:'Referral — Hall A student signup',      amount:12.40, status:'paid' },
+      { date:'2026-07-08', desc:'Referral — Hall B student signup',      amount:9.80,  status:'paid' },
+      { date:'2026-07-08', desc:'Referral — Block C group signup',       amount:15.00, status:'pending' },
+      { date:'2026-07-07', desc:'Referral — Flat D student signup',      amount:12.40, status:'paid' },
+      { date:'2026-07-06', desc:'Referral — Block E student signup',     amount:12.40, status:'paid' },
+      { date:'2026-07-05', desc:'Referral — Student House F signup',     amount:18.00, status:'pending' },
+      { date:'2026-07-04', desc:'Referral — Campus G group signup',      amount:12.40, status:'paid' }
     ];
 
     var cart = {};
     var campusPoints = 47;
     var flashAuctionCountdowns = {};
+    var countdownTimer = null;
 
     function getSession() {
       try { return JSON.parse(localStorage.getItem(AUTH_KEY)); } catch (e) { return null; }
@@ -383,6 +386,8 @@
     }
 
     function renderView(route, session) {
+      if (countdownTimer) { clearInterval(countdownTimer); countdownTimer = null; }
+
       var landingNav = document.getElementById('landing-nav');
       var viewHome = document.getElementById('view-home');
       var viewLogin = document.getElementById('view-login');
@@ -415,19 +420,19 @@
       document.getElementById('view-login').innerHTML =
         '<div class="login-page">' +
           '<div class="login-card">' +
-            '<a href="#home" class="login-logo"><span class="login-logo-badge">CC</span>Campus Collective AI</a>' +
+            '<a href="#home" class="login-logo"><span class="login-logo-badge">GB</span>Campus Collective</a>' +
             '<h2 style="margin:.25rem 0">Welcome back</h2>' +
-            '<p class="login-sub">Sign in to your Campus Collective AI account</p>' +
+            '<p class="login-sub">Sign in to your Campus Collective account</p>' +
             '<form class="login-form" id="login-form" novalidate>' +
               '<div class="form-group"><label for="login-email">Email address</label><input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email" /></div>' +
               '<div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" name="password" placeholder="min 4 characters" autocomplete="current-password" /></div>' +
-              '<div class="form-group"><label for="login-role">Sign in as</label><select id="login-role" name="role"><option value="">Select your role</option><option value="buyer">Buyer (Institution Procurement)</option><option value="vendor">Supplier (Supply Hub)</option><option value="affiliate">Affiliate Partner</option></select></div>' +
+              '<div class="form-group"><label for="login-role">Sign in as</label><select id="login-role" name="role"><option value="">Select your role</option><option value="buyer">Student (Group Buyer)</option><option value="vendor">Vendor (Food &amp; Provisions)</option><option value="affiliate">Campus Rep / Affiliate</option></select></div>' +
               '<label class="login-remember"><input type="checkbox" id="login-remember" />Remember me</label>' +
               '<div id="login-error" style="display:none" role="alert"></div>' +
               '<div id="login-success" style="display:none" role="status"></div>' +
               '<button type="submit" class="login-submit">Sign In</button>' +
             '</form>' +
-            '<a href="#home" class="login-back">← Back to Campus Collective AI</a>' +
+            '<a href="#home" class="login-back">← Back to Campus Collective</a>' +
           '</div>' +
         '</div>';
 
@@ -500,7 +505,7 @@
 
       var sidebar = document.getElementById('sidebar');
       sidebar.innerHTML =
-        '<div class="sidebar-header"><a href="#home" class="sidebar-logo"><span class="sidebar-logo-badge">CC</span>Campus Collective AI</a></div>' +
+        '<div class="sidebar-header"><a href="#home" class="sidebar-logo"><span class="sidebar-logo-badge">GB</span>Campus Collective</a></div>' +
         '<nav class="sidebar-nav" aria-label="Dashboard navigation">' + navHtml + '</nav>' +
         '<div class="sidebar-footer"><div class="sidebar-user-email" title="' + esc(session.email) + '">' + esc(session.email) + '</div><button class="btn-logout" onclick="NB.logout()">Sign Out</button></div>';
 
@@ -567,24 +572,24 @@
     function getDashboardHtml(session) {
       var role = (session.role || '').toLowerCase();
       var ctaMap = {
-        buyer: '<a href="#buyer" class="btn-sm btn-primary">Browse Procurement →</a>',
-        vendor: '<a href="#vendor" class="btn-sm btn-primary">Supply Hub Dashboard →</a>',
-        affiliate: '<a href="#commissions" class="btn-sm btn-primary">My Commissions →</a>',
-        partner: '<a href="#commissions" class="btn-sm btn-primary">My Commissions →</a>'
+        buyer: '<a href="#buyer" class="btn-sm btn-primary">Browse Group Marketplace →</a>',
+        vendor: '<a href="#vendor" class="btn-sm btn-primary">Vendor Hub →</a>',
+        affiliate: '<a href="#commissions" class="btn-sm btn-primary">My Rewards →</a>',
+        partner: '<a href="#commissions" class="btn-sm btn-primary">My Rewards →</a>'
       };
-      var cta = ctaMap[role] || '<a href="#buyer" class="btn-sm btn-primary">Explore Procurement →</a>';
+      var cta = ctaMap[role] || '<a href="#buyer" class="btn-sm btn-primary">Explore Group Marketplace →</a>';
 
       return '<div class="stats-grid">' +
-          metricCard('Orders Aggregated', '312', '↑ 28 new this hour') +
-          metricCard('Partner Institutions', '74', 'Using Campus Collective AI') +
-          metricCard('Active Negotiations', '12', 'In progress') +
-          metricCard('Bulk Savings', '£48.5k', 'This month 🌍') +
+          metricCard('Active Group Orders', '312', '↑ 28 joined this hour') +
+          metricCard('Hostels / Campuses', '74', 'Participating this week') +
+          metricCard('Students Joined Today', '1,860', 'Across all group orders') +
+          metricCard('Student Savings', '£48.5k', 'Unlocked this month 🎓') +
         '</div>' +
         '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.8rem">' +
-          '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Welcome back, ' + esc(session.name || 'there') + '! 👋</h3><p style="font-size:.88rem;color:var(--muted);margin:.2rem 0 .8rem">You\'re ' + esc(role) + ' on Campus Collective AI. ' + (role === 'buyer' ? 'Your Campus Points: ' + campusPoints : 'AI is optimising your procurement in real-time.') + '</p>' + cta + '</div>' +
-          '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Quick Links</h3><div style="display:flex;gap:.45rem;flex-wrap:wrap"><a href="#settings" class="btn-sm btn-outline">Account Settings</a><a href="#login" class="btn-sm btn-outline">Help & Support</a></div></div>' +
+          '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Welcome back, ' + esc(session.name || 'there') + '! 👋</h3><p style="font-size:.88rem;color:var(--muted);margin:.2rem 0 .8rem">You\'re signed in as <strong>' + esc(role) + '</strong> on Campus Collective. ' + (role === 'buyer' ? 'Your Campus Points: ' + campusPoints : 'Manage your food &amp; provisions listings.') + '</p>' + cta + '</div>' +
+          '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Quick Links</h3><div style="display:flex;gap:.45rem;flex-wrap:wrap"><a href="#settings" class="btn-sm btn-outline">Account Settings</a><a href="#login" class="btn-sm btn-outline">Help &amp; Support</a></div></div>' +
         '</div>' +
-        '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Platform Activity</h3><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Event</th><th>Details</th><th>Impact</th><th>Time</th></tr></thead><tbody><tr><td>AI Bulk Order Negotiated</td><td>STEM Robotics Starter Kit</td><td><span class="badge badge-active">Live</span></td><td>09:45</td></tr><tr><td>Priority Order Pooling</td><td>Lab Safety Goggle Pack — 3 institutions joined</td><td><span class="badge badge-pending">Active</span></td><td>09:40</td></tr><tr><td>Delivery Optimised</td><td>Greenwich College hub: 12 orders routed</td><td><span class="badge badge-active">Complete</span></td><td>08:30</td></tr></tbody></table></div></div>';
+        '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Group Buy Activity</h3><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Event</th><th>Details</th><th>Status</th><th>Time</th></tr></thead><tbody><tr><td>Group Price Unlocked 🔓</td><td>White Rice (10kg) — threshold met (15 students)</td><td><span class="badge badge-active">Confirmed</span></td><td>09:45</td></tr><tr><td>Group Window Active</td><td>Instant Noodles (30-pack) — 17 of 20 joined</td><td><span class="badge badge-pending">Open</span></td><td>09:40</td></tr><tr><td>Order Delivered</td><td>Hall A hub: 12 group orders fulfilled</td><td><span class="badge badge-active">Complete</span></td><td>08:30</td></tr></tbody></table></div></div>';
     }
 
     function metricCard(label, value, sub) {
@@ -595,44 +600,93 @@
       var cats = ['All'].concat(PRODUCTS.map(function (p) { return p.cat; }).filter(function (v, i, a) { return a.indexOf(v) === i; }));
       var catOpts = cats.map(function (c) { return '<option value="' + c + '">' + c + '</option>'; }).join('');
       var allCards = PRODUCTS.map(function (p) { return productCardHtml(p); }).join('');
-      var flashCards = PRODUCTS.filter(function (p) { return p.tag === 'Priority Order'; }).map(function (p) {
-        return '<div class="product-card"><div class="product-card-img">' + p.emoji + '</div><span class="ai-badge">AI: ' + p.aiScore + '%</span><div class="product-card-body"><span class="product-card-tag">⚡ Priority Order</span><h4>' + esc(p.name) + '</h4><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-was">£' + p.orig.toFixed(2) + '</span><span class="price-disc">' + p.disc + '% off</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '" style="width:100%">Add to Cart</button></div></div>';
+      var flashCards = PRODUCTS.filter(function (p) { return p.tag === 'Flash Group'; }).map(function (p) {
+        return productCardHtml(p);
       }).join('');
-      var mysteryCards = PRODUCTS.filter(function (p) { return p.tag === 'Bundle Deal'; }).map(function (p) {
+      var bundleCards = PRODUCTS.filter(function (p) { return p.tag === 'Bundle Deal'; }).map(function (p) {
         var boxValue = (p.orig * 1.2).toFixed(2);
-        return '<div class="product-card"><div class="product-card-img" style="background:linear-gradient(135deg,#e8d5f5,#c9a4e8)">' + p.emoji + '</div><span class="ai-badge">Bundle 🎁</span><div class="product-card-body"><span class="product-card-tag">📦 Bundle Deal</span><h4>' + esc(p.name) + '</h4><p style="font-size:.76rem;color:var(--muted);margin:.3rem 0">Typical value: £' + boxValue + '</p><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-disc">Save ' + p.disc + '%</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '" style="width:100%">Add Bundle</button></div></div>';
+        return '<div class="product-card"><div class="product-card-img" style="background:linear-gradient(135deg,#e8d5f5,#c9a4e8)">' + p.emoji + '</div><div class="product-card-body"><span class="product-card-tag">📦 Bundle Deal</span><h4>' + esc(p.name) + '</h4><p style="font-size:.76rem;color:var(--muted);margin:.3rem 0">Bundle value: £' + boxValue + '</p><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-disc">Save ' + p.disc + '%</span></div>' + groupProgressHtml(p) + '</div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '" style="width:100%">' + joinBtnLabel(p) + '</button></div></div>';
       }).join('');
 
-      return '<div class="cart-bar"><span>🛒 Cart: <span id="cart-count" class="cart-count">0</span> items</span><span>🎓 Campus Points: <strong id="campus-pts">' + campusPoints + '</strong></span><span>Total: <strong id="cart-total">£0.00</strong></span><button id="checkout-btn" class="btn-sm btn-success">Place Order</button></div>' +
-        '<div class="filter-bar"><input type="search" id="search-input" placeholder="Search procurement items…" aria-label="Search items" style="flex:1;min-width:150px" /><select id="cat-filter" aria-label="Filter by category" style="min-width:120px"><option value="All">All Categories</option>' + catOpts + '</select><select id="tag-filter" aria-label="Filter by type" style="min-width:120px"><option value="All">All Types</option><option value="Deal">Regular Deal</option><option value="Priority Order">Priority Order</option><option value="Bundle Deal">Bundle Deal</option></select></div>' +
+      return '<div class="cart-bar"><span>🛒 Cart: <span id="cart-count" class="cart-count">0</span> items</span><span>🎓 Campus Points: <strong id="campus-pts">' + campusPoints + '</strong></span><span>Total: <strong id="cart-total">£0.00</strong></span><button id="checkout-btn" class="btn-sm btn-success">Place Group Order</button></div>' +
+        '<div class="filter-bar"><input type="search" id="search-input" placeholder="Search food &amp; provisions…" aria-label="Search items" style="flex:1;min-width:150px" /><select id="cat-filter" aria-label="Filter by category" style="min-width:120px"><option value="All">All Categories</option>' + catOpts + '</select><select id="tag-filter" aria-label="Filter by type" style="min-width:120px"><option value="All">All Types</option><option value="Group Deal">Group Deal</option><option value="Flash Group">Flash Group</option><option value="Bundle Deal">Bundle Deal</option></select></div>' +
         '<div id="products-grid" class="products-grid">' + allCards + '</div>' +
         '<p id="no-results" style="display:none;color:var(--muted);text-align:center;padding:1.2rem;font-weight:600">No items match your search. Check back soon!</p>' +
-        '<div class="section-header" style="margin-top:1.1rem"><h2>⚡ Priority Orders — Limited Availability</h2></div><div class="products-grid">' + flashCards + '</div>' +
-        '<div class="section-header" style="margin-top:.5rem"><h2>🎁 Bundle Deals — AI-Curated</h2></div><div class="products-grid">' + mysteryCards + '</div>';
+        '<div class="section-header" style="margin-top:1.1rem"><h2>⚡ Flash Groups — Closing Soon</h2></div><div class="products-grid">' + flashCards + '</div>' +
+        '<div class="section-header" style="margin-top:.5rem"><h2>🎁 Bundle Deals — Best Value</h2></div><div class="products-grid">' + bundleCards + '</div>';
+    }
+
+    function groupProgressHtml(p) {
+      var pct = Math.min(100, Math.round(p.joinedQty / p.minGroupQty * 100));
+      var unlocked = p.joinedQty >= p.minGroupQty;
+      var endsAt = GROUP_BASE + p.windowMins * 60 * 1000;
+      var statusHtml = unlocked
+        ? '<span style="color:var(--green);font-weight:700">🔓 Group price unlocked!</span>'
+        : '<span id="pb-status-' + p.id + '">' + p.joinedQty + ' of ' + p.minGroupQty + ' students joined</span>';
+      return '<div class="progress-bar" title="' + pct + '% of group target"><div class="progress-fill" id="pb-fill-' + p.id + '" style="width:' + pct + '%"></div></div>' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;font-size:.72rem;margin:.15rem 0">' +
+          statusHtml +
+          '<span class="countdown" data-ends="' + endsAt + '" id="cd-' + p.id + '">⏱ …</span>' +
+        '</div>';
+    }
+
+    function joinBtnLabel(p) {
+      return p.joinedQty >= p.minGroupQty ? 'Join at Group Price ✓' : 'Join Group Buy';
     }
 
     function productCardHtml(p) {
-      return '<div class="product-card" data-id="' + p.id + '" data-cat="' + p.cat + '" data-tag="' + p.tag + '" data-name="' + p.name.toLowerCase() + '"><div class="product-card-img">' + p.emoji + '</div><span class="ai-badge">AI: ' + p.aiScore + '%</span><div class="product-card-body"><span class="product-card-tag">' + esc(p.tag) + '</span><h4>' + esc(p.name) + '</h4><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-was">£' + p.orig.toFixed(2) + '</span><span class="price-disc">' + p.disc + '% off</span></div></div><div class="product-card-actions"><button class="btn-sm btn-primary" data-add="' + p.id + '" style="width:100%">Add to Cart</button></div></div>';
+      return '<div class="product-card" data-id="' + p.id + '" data-cat="' + p.cat + '" data-tag="' + p.tag + '" data-name="' + p.name.toLowerCase() + '"><div class="product-card-img">' + p.emoji + '</div><span class="ai-badge">AI: ' + p.aiScore + '%</span><div class="product-card-body"><span class="product-card-tag">' + esc(p.tag) + '</span><h4>' + esc(p.name) + '</h4><div class="product-price"><span class="price-now">£' + p.price.toFixed(2) + '</span><span class="price-was">£' + p.orig.toFixed(2) + '</span><span class="price-disc">' + p.disc + '% off</span></div>' + groupProgressHtml(p) + '</div><div class="product-card-actions"><button class="btn-sm btn-primary" id="pb-btn-' + p.id + '" data-add="' + p.id + '" style="width:100%">' + joinBtnLabel(p) + '</button></div></div>';
+    }
+
+    function formatCountdown(ms) {
+      if (ms <= 0) return 'Ended';
+      var s = Math.floor(ms / 1000);
+      var h = Math.floor(s / 3600);
+      var m = Math.floor((s % 3600) / 60);
+      var ss = s % 60;
+      return 'Ends in ' + (h > 0 ? h + 'h ' : '') + (m < 10 ? '0' + m : m) + 'm ' + (ss < 10 ? '0' + ss : ss) + 's';
     }
 
     function initBuyer() {
       cart = {};
       updateCartUI();
 
+      // Start live countdowns
+      countdownTimer = setInterval(function () {
+        var cdEls = document.querySelectorAll('[data-ends]');
+        if (!cdEls.length) { clearInterval(countdownTimer); countdownTimer = null; return; }
+        cdEls.forEach(function (el) {
+          var remaining = parseInt(el.dataset.ends, 10) - Date.now();
+          el.textContent = '⏱ ' + formatCountdown(remaining);
+        });
+      }, 1000);
+      // Initial render
+      document.querySelectorAll('[data-ends]').forEach(function (el) {
+        var remaining = parseInt(el.dataset.ends, 10) - Date.now();
+        el.textContent = '⏱ ' + formatCountdown(remaining);
+      });
+
       var grid = document.getElementById('dash-content');
       function buyerClickHandler(e) {
         if (!document.getElementById('products-grid')) {
           grid.removeEventListener('click', buyerClickHandler);
+          if (countdownTimer) { clearInterval(countdownTimer); countdownTimer = null; }
           return;
         }
         var btn = e.target.closest('[data-add]');
         if (!btn) return;
         var id = parseInt(btn.dataset.add, 10);
         cart[id] = (cart[id] || 0) + 1;
+        // Simulate joining: increment joinedQty up to minGroupQty
+        var prod = PRODUCTS.filter(function (x) { return x.id === id; })[0];
+        if (prod && prod.joinedQty < prod.minGroupQty) {
+          prod.joinedQty = Math.min(prod.minGroupQty, prod.joinedQty + 1);
+          updateGroupProgress(id);
+        }
         updateCartUI();
         var orig = btn.textContent;
-        btn.textContent = '✓ Added';
-        setTimeout(function () { if (btn.isConnected) btn.textContent = orig; }, 900);
+        btn.textContent = '✓ Joined!';
+        setTimeout(function () { if (btn.isConnected) btn.textContent = joinBtnLabel(prod || { joinedQty: 0, minGroupQty: 1 }); }, 900);
       }
       grid.addEventListener('click', buyerClickHandler);
 
@@ -669,10 +723,39 @@
           var total = document.getElementById('cart-total').textContent;
           var pts = Math.floor(count * 2.5);
           campusPoints += pts;
-          alert('✅ Order placed for ' + count + ' item(s)!\nTotal: ' + total + '\n🎓 +' + pts + ' Campus Points earned!');
+          var allUnlocked = Object.keys(cart).every(function (cid) {
+            var p = PRODUCTS.filter(function (x) { return x.id === parseInt(cid, 10); })[0];
+            return p && p.joinedQty >= p.minGroupQty;
+          });
+          var statusMsg = allUnlocked
+            ? '✓ All items confirmed at group price!'
+            : '⏳ Some items are pending group confirmation — your price is locked in once the group threshold is met.';
+          alert('✅ Group Buy order placed for ' + count + ' item(s)!\nTotal: ' + total + '\n\n' + statusMsg + '\n\n🎓 +' + pts + ' Campus Points earned!');
           cart = {};
           updateCartUI();
         });
+      }
+    }
+
+    function updateGroupProgress(id) {
+      var prod = PRODUCTS.filter(function (x) { return x.id === id; })[0];
+      if (!prod) return;
+      var pct = Math.min(100, Math.round(prod.joinedQty / prod.minGroupQty * 100));
+      var fillEl = document.getElementById('pb-fill-' + id);
+      if (fillEl) fillEl.style.width = pct + '%';
+      var statusEl = document.getElementById('pb-status-' + id);
+      if (statusEl) {
+        if (prod.joinedQty >= prod.minGroupQty) {
+          statusEl.innerHTML = '<span style="color:var(--green);font-weight:700">🔓 Group price unlocked!</span>';
+          var joinBtn = document.getElementById('pb-btn-' + id);
+          if (joinBtn) {
+            joinBtn.textContent = 'Join at Group Price ✓';
+            joinBtn.className = 'btn-sm btn-success';
+            joinBtn.style.width = '100%';
+          }
+        } else {
+          statusEl.textContent = prod.joinedQty + ' of ' + prod.minGroupQty + ' students joined';
+        }
       }
     }
 
@@ -713,16 +796,16 @@
       }).join('');
 
       return '<div class="stats-grid">' +
-          metricCard('Revenue (Bulk-Negotiated)', '£2,140', '↑ 18% vs last week') +
-          metricCard('Units Fulfilled', '312', '↑ 48 via bulk deals') +
-          metricCard('Delivery Score', avgDeliveryScore + '%', '↑ Outstanding 🌍') +
-          metricCard('AI Bulk Savings', '£420', 'Avg per negotiation') +
+          metricCard('Revenue (Group Orders)', '£2,140', '↑ 18% vs last week') +
+          metricCard('Units Fulfilled', '312', '↑ 48 via group deals') +
+          metricCard('Fulfilment Score', avgDeliveryScore + '%', '↑ Outstanding 🎓') +
+          metricCard('Student Savings Enabled', '£420', 'Avg per group window') +
         '</div>' +
-        '<div class="green-score">🌍 <strong>Delivery Score: ' + avgDeliveryScore + '%</strong> — Your fulfilment hubs are performing above sector average this week!</div>' +
-        '<div class="panel"><div class="section-header"><h3>📊 AI Procurement Insights</h3></div><div class="analytics-grid"><div class="analytics-card"><div class="analytics-label">Top Demand Category</div><div class="analytics-value">Stationery</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">↑ 42 units/week avg. Consider restocking now.</p></div><div class="analytics-card"><div class="analytics-label">Peak Order Window</div><div class="analytics-value">08:00–10:30</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">List priority items during this window for fastest pooling.</p></div><div class="analytics-card"><div class="analytics-label">Suggested Bulk Discount</div><div class="analytics-value">45–55%</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">Optimal tier to attract institutional buyers.</p></div></div></div>' +
-        '<div class="panel"><div class="section-header"><h3>My Supply Listings</h3><button class="btn-sm btn-primary" id="add-listing-btn">+ Add Listing</button></div><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Item</th><th>Category</th><th>Qty</th><th>Price</th><th>Status</th><th>Delivery Score</th></tr></thead><tbody id="inventory-tbody">' + invRows + '</tbody></table></div></div>' +
-        '<div class="panel"><h3>Recent Purchase Orders</h3><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Order</th><th>Item</th><th>Institution</th><th>Total</th><th>Status</th><th>Date</th></tr></thead><tbody>' + orderRows + '</tbody></table></div></div>' +
-        '<div id="add-listing-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="add-modal-title"><div class="modal-box"><div class="modal-header"><h3 id="add-modal-title" style="margin:0">+ Add Supply Listing</h3><button id="modal-close-btn" class="modal-close" type="button" aria-label="Close modal">✕</button></div><form id="add-listing-form" class="dash-form" novalidate style="margin-top:.8rem"><div class="form-group"><label for="listing-name">Item Name *</label><input id="listing-name" type="text" placeholder="e.g., A4 Copy Paper (5-ream case)" required /></div><div class="form-group"><label for="listing-cat">Category *</label><select id="listing-cat" required><option value="">Select</option><option value="Stationery">Stationery</option><option value="Technology">Technology</option><option value="Lab Supplies">Lab Supplies</option><option value="Furniture">Furniture</option><option value="Books">Books</option><option value="Cleaning">Cleaning</option></select></div><div class="form-row"><div class="form-group"><label for="listing-qty">Qty *</label><input id="listing-qty" type="number" min="1" placeholder="0" required /></div><div class="form-group"><label for="listing-price">Base Price £ *</label><input id="listing-price" type="number" step=".01" min="0" placeholder="0.00" required /></div></div><div class="form-group"><label for="listing-img">Photo (simulate upload)</label><input id="listing-img" type="file" accept="image/*" /><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">📸 AI will auto-categorise items &amp; suggest bulk pricing when this feature is live.</p></div><div id="listing-msg" style="display:none;margin:.8rem 0"></div><button type="submit" class="btn-sm btn-primary" style="width:100%">Add Listing</button></form></div></div>';
+        '<div class="green-score">🎓 <strong>Fulfilment Score: ' + avgDeliveryScore + '%</strong> — Your campus hubs are performing above average this week!</div>' +
+        '<div class="panel"><div class="section-header"><h3>📊 Group Buy Insights</h3></div><div class="analytics-grid"><div class="analytics-card"><div class="analytics-label">Top Demand Category</div><div class="analytics-value">Noodles &amp; Grains</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">↑ 42 units/week avg. Consider restocking now.</p></div><div class="analytics-card"><div class="analytics-label">Peak Group Window</div><div class="analytics-value">08:00–10:30</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">List group deals during this window for fastest uptake.</p></div><div class="analytics-card"><div class="analytics-label">Suggested Group Discount</div><div class="analytics-value">45–55%</div><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">Optimal tier to attract student group orders.</p></div></div></div>' +
+        '<div class="panel"><div class="section-header"><h3>My Vendor Listings</h3><button class="btn-sm btn-primary" id="add-listing-btn">+ Add Listing</button></div><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Item</th><th>Category</th><th>Qty</th><th>Price</th><th>Status</th><th>Fulfilment Score</th></tr></thead><tbody id="inventory-tbody">' + invRows + '</tbody></table></div></div>' +
+        '<div class="panel"><h3>Recent Group Orders</h3><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Order</th><th>Item</th><th>Student Group</th><th>Total</th><th>Status</th><th>Date</th></tr></thead><tbody>' + orderRows + '</tbody></table></div></div>' +
+        '<div id="add-listing-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="add-modal-title"><div class="modal-box"><div class="modal-header"><h3 id="add-modal-title" style="margin:0">+ Add Vendor Listing</h3><button id="modal-close-btn" class="modal-close" type="button" aria-label="Close modal">✕</button></div><form id="add-listing-form" class="dash-form" novalidate style="margin-top:.8rem"><div class="form-group"><label for="listing-name">Item Name *</label><input id="listing-name" type="text" placeholder="e.g., Instant Noodles (30-pack)" required /></div><div class="form-group"><label for="listing-cat">Category *</label><select id="listing-cat" required><option value="">Select</option><option value="Noodles & Grains">Noodles &amp; Grains</option><option value="Bakery">Bakery</option><option value="Drinks">Drinks</option><option value="Dairy & Eggs">Dairy &amp; Eggs</option><option value="Canned Goods">Canned Goods</option><option value="Snacks">Snacks</option><option value="Spreads & Snacks">Spreads &amp; Snacks</option><option value="Breakfast">Breakfast</option></select></div><div class="form-row"><div class="form-group"><label for="listing-qty">Qty *</label><input id="listing-qty" type="number" min="1" placeholder="0" required /></div><div class="form-group"><label for="listing-price">Base Price £ *</label><input id="listing-price" type="number" step=".01" min="0" placeholder="0.00" required /></div></div><div class="form-group"><label for="listing-img">Photo (simulate upload)</label><input id="listing-img" type="file" accept="image/*" /><p style="font-size:.75rem;color:var(--muted);margin:.3rem 0">📸 Photo helps students identify items in group orders.</p></div><div id="listing-msg" style="display:none;margin:.8rem 0"></div><button type="submit" class="btn-sm btn-primary" style="width:100%">Add Listing</button></form></div></div>';
     }
 
     function initVendor() {
@@ -766,7 +849,7 @@
           if (tbody) tbody.insertAdjacentHTML('beforeend', invRowHtml(newItem));
 
           msgEl.className = 'form-msg-success';
-          msgEl.textContent = '✓ "' + name + '" added! AI suggests: £' + (parseFloat(price) * 0.72).toFixed(2) + ' bulk price for ' + deliveryEst + '% predicted delivery score.';
+          msgEl.textContent = '✓ "' + name + '" added! Suggested group price: £' + (parseFloat(price) * 0.72).toFixed(2) + ' with ' + deliveryEst + '% predicted fulfilment score.';
           msgEl.style.display = '';
           form.reset();
           setTimeout(function () {
@@ -781,7 +864,7 @@
 
     function getCommissionsHtml(session) {
       var refCode = (session.name || 'user').replace(/[^a-z0-9]/gi, '').toLowerCase() || 'user';
-      var refLink = 'https://campuscollective.ai/join?ref=' + refCode;
+      var refLink = 'https://campuscollective.app/join?ref=' + refCode;
       var ledgerRows = LEDGER.map(function (r) {
         var cap = r.status.charAt(0).toUpperCase() + r.status.slice(1);
         return '<tr><td>' + r.date + '</td><td>' + esc(r.desc) + '</td><td><strong>£' + r.amount.toFixed(2) + '</strong></td><td><span class="badge badge-' + r.status + '">' + cap + '</span></td></tr>';
@@ -846,13 +929,13 @@
       return '<div class="settings-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">' +
           '<div><div class="panel"><h3 style="margin:.1rem 0 .6rem">Profile Information</h3><form class="dash-form" id="profile-form"><div class="form-group"><label for="s-name">Display Name</label><input id="s-name" type="text" value="' + esc(session.name || '') + '" /></div><div class="form-group"><label for="s-email">Email</label><input id="s-email" type="email" value="' + esc(session.email || '') + '" /></div><div id="profile-msg" style="display:none;margin:.8rem 0"></div><button type="submit" class="btn-sm btn-primary" style="width:100%">Save Profile</button></form></div></div>' +
           '<div><div class="panel"><h3 style="margin:.1rem 0 .6rem">Notification Preferences</h3>' +
-            notifToggle('notif-flash', 'Priority Order Alerts', 'AI-pooled &amp; time-sensitive procurement', true) +
-            notifToggle('notif-deals', 'New Procurement Alerts', 'Fresh procurement opportunities for institutions', true) +
+            notifToggle('notif-flash', 'Flash Group Alerts', 'Group windows closing soon — act fast', true) +
+            notifToggle('notif-deals', 'New Group Deal Alerts', 'Fresh group orders opening on your campus', true) +
             notifToggle('notif-orders', 'Order Updates', 'Fulfilment &amp; delivery status', true) +
-            notifToggle('notif-referrals', 'Referral Notifications', 'When an institution uses your link', false) +
-            notifToggle('notif-platform', 'Platform News', 'Campus Collective AI updates &amp; tips', false) +
+            notifToggle('notif-referrals', 'Referral Notifications', 'When a student uses your referral link', false) +
+            notifToggle('notif-platform', 'Platform News', 'Campus Collective updates &amp; tips', false) +
             '<div id="notif-msg" style="display:none;margin-top:.75rem"></div><button class="btn-sm btn-primary" id="save-notif-btn" style="width:100%;padding:.68rem;border-radius:10px;font-size:.9rem;margin-top:.5rem">Save Preferences</button>' +
-            '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Account</h3><p style="font-size:.86rem;color:var(--muted);margin-bottom:.9rem">Manage your Campus Collective AI account access.</p><div style="display:flex;gap:.5rem;flex-direction:column"><button class="btn-sm btn-outline" type="button">Change Password</button><button class="btn-sm btn-danger" type="button">Delete Account</button></div></div>' +
+            '<div class="panel"><h3 style="margin:.1rem 0 .6rem">Account</h3><p style="font-size:.86rem;color:var(--muted);margin-bottom:.9rem">Manage your Campus Collective account access.</p><div style="display:flex;gap:.5rem;flex-direction:column"><button class="btn-sm btn-outline" type="button">Change Password</button><button class="btn-sm btn-danger" type="button">Delete Account</button></div></div>' +
         '</div>' +
         '</div>';
     }
